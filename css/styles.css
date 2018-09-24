@@ -1,0 +1,32 @@
+body * {
+    background: grey;
+}
+
+ul {
+    display: block;
+}
+
+ul li {
+    float: left;
+    padding: 20px;
+}
+
+#loginItem {
+    float: right;
+}
+
+section {
+    min-width: 600px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.clearfix {
+    float: none;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
