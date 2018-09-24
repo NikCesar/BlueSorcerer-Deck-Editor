@@ -11,22 +11,21 @@ ul li {
     padding: 20px;
 }
 
+#topBar {
+    position: fixed;
+    width: 100%;
+
+    top: 0;
+}
+
 #loginItem {
     float: right;
 }
 
-section {
+#content {
     min-width: 600px;
     max-width: 1000px;
     margin: 0 auto;
-}
 
-.clearfix {
-    float: none;
-}
-
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
+    margin-top: 220px;
 }
