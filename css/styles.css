@@ -2,6 +2,11 @@ body * {
     background: grey;
 }
 
+body {
+    font-family: "Franklin Gothic Book";
+    height: 100%;
+}
+
 ul {
     display: block;
 }
@@ -22,10 +27,61 @@ ul li {
     float: right;
 }
 
-#content {
+.content {
     min-width: 600px;
     max-width: 1000px;
     margin: 0 auto;
 
     margin-top: 220px;
+}
+
+#loginWindow {
+    position: absolute;
+    background-color: grey;
+    top: 50%;
+    left: 50%;
+    width: 40%;
+    height: 40%;
+    margin-top: -25%;
+    margin-left: -25%;
+}
+
+#credentials input {
+    background: white;
+}
+
+#credentials {
+    text-align: center;
+    margin: 3em auto;
+}
+
+#credentials section {
+    margin: 1em;
+}
+
+#register {
+    text-align: center;
+    margin: 1em auto;
+    padding: 1em;
+}
+
+#register div {
+    margin: 1em;
+}
+
+#profile {
+    padding: 1em 0;
+}
+
+#profile input {
+    background: white;
+}
+
+#profile div {
+    margin: 2em;
+}
+
+#submit {
+    margin: 2em;
+    display: block;
 }
