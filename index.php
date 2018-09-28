@@ -1,3 +1,6 @@
+<?php
+    include "php/requestHandler.php";
+?>
 <!doctype html>
 <html>
     <head>
@@ -28,6 +31,8 @@
 
        <div class="content">
             <section id="newestDecks">
+                <input type="text" onkeyup="searchForCards(this.value);" />
+
                 <div>Deck 1</div>
                 <div>Deck 2</div>
                 <div>Deck 3</div>
