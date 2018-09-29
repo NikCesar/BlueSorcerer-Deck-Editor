@@ -6,10 +6,10 @@
     <head>
         <title>BlueSorcerer - 4 * your deckbuilding</title>
         <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset200802.css">
-        <link rel="stylesheet" href="css/root.css">
+        <link rel="stylesheet" href="assets/css/root.css">
 
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="script/script.js"></script>
+        <script src="assets/js/script.js"></script>
     </head>
 
     <body>
