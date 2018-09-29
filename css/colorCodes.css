@@ -1,18 +1,16 @@
-body {
-
+:root {
     /* Hearthstone Brown-hues */
-    background: #3A2125;
-    background: #542909;
-    background: #AF4900;
-    background: #B86500;
-    background: #CC8617;
-    background: #F2B737;
+    --hueDarkBrown: #3A2125;
+    --hueBrown:     #542909;
+    --hueDarkOrange:#AF4900;
+    --hueOrange:    #B86500;
+    --hueDarkYellow:#CC8617;
+    --hueYellow:    #F2B737;
 
     /* Hearthstone Blue-hues */
-    background: #37253B;
-    background: #645F97;
-    background: #236FF6;
-    background: #71FBFF;
-    background: #E1FFFF;
-
+    --hueDarkViolet:#37253B;
+    --hueViolet:    #645F97;
+    --hueBlue:      #236FF6;
+    --hueTurquoise: #71FBFF;
+    --hueWhite:     #E1FFFF;
 }

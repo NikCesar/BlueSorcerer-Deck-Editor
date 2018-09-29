@@ -1,3 +1,5 @@
+@import url(nav.css);
+
 body * {
     background: grey;
 }
@@ -7,24 +9,11 @@ body {
     height: 100%;
 }
 
-ul {
-    display: block;
-}
-
-ul li {
-    float: left;
-    padding: 20px;
-}
-
 #topBar {
     position: fixed;
     width: 100%;
 
     top: 0;
-}
-
-#loginItem {
-    float: right;
 }
 
 .content {
