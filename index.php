@@ -16,7 +16,8 @@
         <div id="topBar">
             <header>
                     <h1>Blue Sorcerer</h1>
-                    <img src="assets/img/sorcerer.png" width="100" />
+                    <h3>Deck Editor</h3>
+                    <img id="headerImage" src="assets/img/sorcerer_header.png" />
                 </header>
                  
                 <nav>

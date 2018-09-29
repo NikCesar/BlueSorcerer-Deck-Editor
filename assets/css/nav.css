@@ -6,21 +6,57 @@ header {
     background-position: bottom;
     background-repeat: repeat-x;
 
-    font-family: "HeadingFont";
+    height: 150px;
+}
+
+nav {
+    background-image: url(../img/header.png);
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: repeat-x;
 }
 
 #topBar h1 {
-    font-family: "TitleFont";
     font-size: 3em;
 }
 
-a {
-    color: var(--hueYellow);
+#topBar h3 {
+    font-size: 1em;
+    position: absolute;
+    left: 475px;
+    top: 64px;
+}
+
+#topBar h1, h3 {
+    font-family: "TitleFont";
+    font-size: 3em;
+
+    position: absolute;
+    left: 160px;
+    top: 35px;
+
+    color: var(--hueWhite);
+    text-shadow: 0 0 5px var(--hueBlue);
+}
+
+#headerImage {
+    height:120px;
+
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+nav a {
+    color: var(--hueWhite);
+    text-shadow: 0 0 5px var(--hueBlue);
+
     text-decoration: none;
+
+    transition: all 0.3s linear;
 }
 
 a:hover, a:active {
-    color: var(--hueOrange);
+    color: var(--hueYellow);
 }
 
 #loginItem {
