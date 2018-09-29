@@ -7,7 +7,7 @@
         <title>BlueSorcerer - 4 * your deckbuilding</title>
         <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset200802.css">
         <link rel="stylesheet" href="css/root.css">
-        
+
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="script/script.js"></script>
     </head>
@@ -27,6 +27,7 @@
                         <li><a href="#">Link 4</a></li>
                         <li id="loginItem"><a href="html/userProfile.html">Login</a></li>
                     </ul>
+                    <div style="clear: both"></div>
                 </nav>
         </div>
 
