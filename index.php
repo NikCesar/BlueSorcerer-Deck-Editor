@@ -16,7 +16,7 @@
         <div id="topBar">
             <header>
                     <h1>Blue Sorcerer</h1>
-                    <img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX30132559.jpg" width="100" />
+                    <img src="assets/img/sorcerer.png" width="100" />
                 </header>
                  
                 <nav>
