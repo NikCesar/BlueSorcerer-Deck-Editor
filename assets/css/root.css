@@ -1,8 +1,5 @@
 @import url(nav.css);
-
-body * {
-    background: grey;
-}
+@import url(variables.css);
 
 body {
     font-family: "Franklin Gothic Book";
