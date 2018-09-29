@@ -13,6 +13,9 @@
     --hueBlue:      #236FF6;
     --hueTurquoise: #71FBFF;
     --hueWhite:     #E1FFFF;
+
+    /* Custom hues */
+    --hueSlateGray: #302d2b;
 }
 
 @font-face {

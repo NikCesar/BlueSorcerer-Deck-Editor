@@ -4,6 +4,7 @@
 body {
     font-family: "Franklin Gothic Book";
     height: 100%;
+    background: linear-gradient(to right, black 1%, var(--hueWhite) 50%, black 99%);
 }
 
 #topBar {
@@ -17,8 +18,12 @@ body {
     min-width: 600px;
     max-width: 1000px;
     margin: 0 auto;
-
     margin-top: 220px;
+
+    padding: 2em;
+
+    background: var(--hueSlateGray);
+    color: var(--hueWhite);
 }
 
 #loginWindow {
