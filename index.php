@@ -4,33 +4,11 @@
 <!doctype html>
 <html>
     <head>
-        <title>BlueSorcerer - 4 * your deckbuilding</title>
-        <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset200802.css">
-        <link rel="stylesheet" href="assets/css/root.css">
-
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="assets/js/script.js"></script>
+        <?php include "pages/partials/_scripts.php"; ?>
     </head>
 
     <body>
-        <div id="topBar">
-            <header>
-                    <h1>Blue Sorcerer</h1>
-                    <h3>Deck Editor</h3>
-                    <img id="headerImage" src="assets/img/sorcerer_header.png" />
-                </header>
-                 
-                <nav>
-                    <ul>
-                        <li><a href="#">Link 1</a></li>
-                        <li><a href="#">Link 2</a></li>
-                        <li><a href="#">Link 3</a></li>
-                        <li><a href="#">Link 4</a></li>
-                        <li id="loginItem"><a href="pages/userProfile.html">Login</a></li>
-                    </ul>
-                    <div style="clear: both"></div>
-                </nav>
-        </div>
+        <?php include "pages/partials/_topBar.php"; ?>
 
        <div class="content">
             <section id="newestDecks">

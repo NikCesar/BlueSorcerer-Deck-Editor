@@ -20,7 +20,7 @@
 
             <nav>
                 <ul>
-                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.php">Home</a></li>
                     <li><a href="#">Link 2</a></li>
                     <li><a href="#">Link 3</a></li>
                     <li><a href="#">Link 4</a></li>
