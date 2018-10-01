@@ -10,16 +10,17 @@
 
         <div class="content small-content">
             <div class="centered">
-                <section id="username">
-                    <label id="usernameLabel">Username: </label>
-                    <input id="usernameTextArea">
+                <section>
+                    <label>Username: </label>
+                    <input id="username" />
                 </section>
 
-                <section id="password">
-                    <label id="pwLabel">Password: </label>
-                    <input id="pw" type="password">
+                <section>
+                    <label>Password: </label>
+                    <input id="password" type="password" />
                 </section>
-                <button id="loginButton">Login</button>
+
+                <input type="submit" value="Login" />
             </div>
 
             <div id="register">
