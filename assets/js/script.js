@@ -11,7 +11,7 @@ function searchForCards(query) {
 function callPhpFunction(functionName, param, successCallback) {
     $.ajax({
         type: "GET",
-        url: "php/requestHandler.php",
+        url: "modules/requestHandler.php",
         data: "functionname=" + functionName + "&" + param,
         success: successCallback
     });

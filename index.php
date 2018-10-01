@@ -1,5 +1,5 @@
 <?php
-    include "php/requestHandler.php";
+    include "modules/requestHandler.php";
 ?>
 <!doctype html>
 <html>
@@ -26,7 +26,7 @@
                         <li><a href="#">Link 2</a></li>
                         <li><a href="#">Link 3</a></li>
                         <li><a href="#">Link 4</a></li>
-                        <li id="loginItem"><a href="html/userProfile.html">Login</a></li>
+                        <li id="loginItem"><a href="pages/userProfile.html">Login</a></li>
                     </ul>
                     <div style="clear: both"></div>
                 </nav>
