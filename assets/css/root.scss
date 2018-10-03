@@ -7,13 +7,6 @@ body {
     background: linear-gradient(to right, black 1%, var(--hueWhite) 50%, black 99%);
 }
 
-#topBar {
-    position: fixed;
-    width: 100%;
-
-    top: 0;
-}
-
 .content {
     min-width: 600px;
     max-width: 1000px;
@@ -24,19 +17,19 @@ body {
 
     background: var(--hueSlateGray);
     color: var(--hueWhite);
-}
 
-.content input {
-    background: white;
-}
+    input {
+        background: white;
+    }
 
-.content section {
-    margin: 1em;
-}
+    section {
+        margin: 1em;
+    }
 
-.content.small-content {
-    min-width: 400px;
-    max-width: 500px;
+    &.small-content {
+        min-width: 400px;
+        max-width: 500px;
+    }
 }
 
 .centered {
@@ -48,25 +41,20 @@ body {
     text-align: center;
     margin: 1em auto;
     padding: 1em;
-}
 
-#register div {
-    margin: 1em;
+    div {
+        margin: 1em;
+    }
 }
 
 #profile {
     padding: 1em 0;
-}
 
-#profile input {
-    background: white;
-}
+    input {
+        background: white;
+    }
 
-#profile div {
-    margin: 2em;
-}
-
-#submit {
-    margin: 2em;
-    display: block;
+    div {
+        margin: 2em;
+    }
 }

@@ -16,27 +16,34 @@ nav {
     background-repeat: repeat-x;
 }
 
-#topBar h1 {
-    font-size: 3em;
-}
+#topBar {
+    position: fixed;
+    width: 100%;
 
-#topBar h3 {
-    font-size: 1em;
-    position: absolute;
-    left: 475px;
-    top: 64px;
-}
+    top: 0;
 
-#topBar h1, h3 {
-    font-family: "TitleFont";
-    font-size: 3em;
+    h1 {
+        font-size: 3em;
+    }
 
-    position: absolute;
-    left: 160px;
-    top: 35px;
+    h3 {
+        font-size: 1em;
+        position: absolute;
+        left: 475px;
+        top: 64px;
+    }
 
-    color: var(--hueWhite);
-    text-shadow: 0 0 5px var(--hueBlue);
+    h1, h3 {
+        font-family: "TitleFont";
+        font-size: 3em;
+    
+        position: absolute;
+        left: 160px;
+        top: 35px;
+    
+        color: var(--hueWhite);
+        text-shadow: 0 0 5px var(--hueBlue);
+    }
 }
 
 #headerImage {
@@ -46,28 +53,30 @@ nav {
     padding-left: 20px;
 }
 
-nav a {
-    color: var(--hueWhite);
-    text-shadow: 0 0 5px var(--hueBlue);
+nav {
+    a {
+        color: var(--hueWhite);
+        text-shadow: 0 0 5px var(--hueBlue);
+    
+        text-decoration: none;
+    
+        transition: all 0.3s linear;
 
-    text-decoration: none;
+        &:hover, &:active {
+            color: var(--hueYellow);
+        }
+    }
+    
+    #loginItem {
+        float: right;
+    }
+    
+    ul {
+        display: block;
 
-    transition: all 0.3s linear;
-}
-
-a:hover, a:active {
-    color: var(--hueYellow);
-}
-
-#loginItem {
-    float: right;
-}
-
-ul {
-    display: block;
-}
-
-ul li {
-    float: left;
-    padding: 20px;
+        li {
+            float: left;
+            padding: 20px;
+        }
+    }
 }
