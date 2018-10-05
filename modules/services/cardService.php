@@ -1,20 +1,30 @@
 <?php
     class CardService
     {
-        // https://market.mashape.com/omgvamp/hearthstone
-        private $baseUrl = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/'; 
-        private $authenticationArray = array('X-Mashape-Key: Law2aqNS0LmshaQuw94sPj0yVk0bp1Ni6AXjsnvgaylweSq7CG');
+        private $baseUrl = 'https://api.hearthstonejson.com/v1/latest/enUS/cards.collectible.json'; 
+        private $allCards = array();
+
+        function __construct() {
+            $this->downloadAllCards();
+        }
+
+        private function downloadAllCards() {
+            ini_set("allow_url_fopen", 1);
+            $json = file_get_contents($this->baseUrl);
+            $this->allCards = json_decode($json);
+        }
 
         public function searchForCards($query)
-        {
-            $curlRequest = curl_init($this->baseUrl . "search/" . $query);
+        {           
+            $foundCards = array();
 
-            curl_setopt($curlRequest, CURLOPT_HTTPHEADER, $this->authenticationArray);
-            curl_setopt($curlRequest, CURLOPT_RETURNTRANSFER, true);
+            foreach($this->allCards as $card) {
+                if (strpos(strtolower($card->name), strtolower($query)) !== false) {
+                    array_push($foundCards, $card);
+                }
+            }
 
-            $response = curl_exec($curlRequest);
-
-            return $response;
+            return $foundCards;
         }
     }
 ?>
