@@ -20,9 +20,12 @@
             }
         }
 
-        public function searchForCard($query)
+        public function searchForCards($query)
         {           
             $foundCards = array();
+
+            if (trim($query) == '')
+                return $foundCards;
 
             foreach($this->cardsMap as $card) {
                 if (strpos(strtolower($card[0]->name), strtolower($query)) !== false) {

@@ -1,6 +1,6 @@
 function searchForCards(query) {
     delay(function() {
-        callPhpFunction("searchForCard", "query="+query, function(result) {
+        callPhpFunction("searchForCards", "query="+query, function(result) {
             // do something with the result.
             console.log(result);
         });

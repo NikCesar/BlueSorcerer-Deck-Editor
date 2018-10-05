@@ -3,8 +3,8 @@
 
     $cardService = new CardService();
 
-    if(isset($_GET['functionname']) && $_GET['functionname'] == "searchForCard"){
+    if(isset($_GET['functionname']) && $_GET['functionname'] == "searchForCards"){
         $query = $_GET['query'];
-        echo json_encode($cardService->searchForCard($query));
+        echo json_encode($cardService->searchForCards($query));
     }
 ?>
