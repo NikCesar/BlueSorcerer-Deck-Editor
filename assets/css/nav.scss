@@ -22,27 +22,26 @@ nav {
 
     top: 0;
 
+    h1, h3 {
+        font-family: "TitleFont";        
+        position: absolute;
+        
+        color: var(--hueWhite);
+        text-shadow: 0 0 5px var(--hueBlue);
+    }
+
     h1 {
         font-size: 3em;
+
+        left: 160px;
+        top: 35px;
     }
 
     h3 {
         font-size: 1em;
-        position: absolute;
+
         left: 475px;
         top: 64px;
-    }
-
-    h1, h3 {
-        font-family: "TitleFont";
-        font-size: 3em;
-    
-        position: absolute;
-        left: 160px;
-        top: 35px;
-    
-        color: var(--hueWhite);
-        text-shadow: 0 0 5px var(--hueBlue);
     }
 }
 
