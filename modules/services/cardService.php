@@ -6,10 +6,7 @@
         private $cardsMap = array();
 
         function __construct() {
-            $this->downloadAllCards();
-        }
-
-        private function downloadAllCards() {
+            // download all cards 
             ini_set("allow_url_fopen", 1);
             $json = file_get_contents($this->baseUrl);
             $allCards = json_decode($json);
