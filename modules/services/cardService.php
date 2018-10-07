@@ -1,20 +1,47 @@
 <?php
     class CardService
     {
-        // https://market.mashape.com/omgvamp/hearthstone
-        private $baseUrl = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/'; 
-        private $authenticationArray = array('X-Mashape-Key: Law2aqNS0LmshaQuw94sPj0yVk0bp1Ni6AXjsnvgaylweSq7CG');
+        private $baseUrl = 'https://api.hearthstonejson.com/v1/latest/enUS/cards.collectible.json'; 
+        private $imageUrlFormat = "https://art.hearthstonejson.com/v1/render/latest/enUS/256x/{id}.png";
+        private $cardsMap = array();
+
+        function __construct() {
+            // download all cards 
+            ini_set("allow_url_fopen", 1);
+            $json = file_get_contents($this->baseUrl);
+            $allCards = json_decode($json);
+
+            foreach ($allCards as $row) {
+                $row->imgLink = str_replace("{id}", $row->id, $this->imageUrlFormat);
+                $this->cardsMap[$row->id][] = $row;
+            }
+        }
 
         public function searchForCards($query)
-        {
-            $curlRequest = curl_init($this->baseUrl . "search/" . $query);
+        {           
+            $foundCards = array();
 
-            curl_setopt($curlRequest, CURLOPT_HTTPHEADER, $this->authenticationArray);
-            curl_setopt($curlRequest, CURLOPT_RETURNTRANSFER, true);
+            if (trim($query) == '')
+                return $foundCards;
 
-            $response = curl_exec($curlRequest);
+            foreach($this->cardsMap as $card) {
+                if (strpos(strtolower($card[0]->name), strtolower($query)) !== false) {
+                    array_push($foundCards, $card[0]);
+                }
+            }
 
-            return $response;
+            return $foundCards;
+        }
+
+        public function getCardsByDecklist($ids)
+        {           
+            $foundCards = array();
+
+            foreach($ids as $cardId) {
+                array_push($foundCards, $this->cardsMap[$cardId][0]);
+            }
+
+            return $foundCards;
         }
     }
 ?>

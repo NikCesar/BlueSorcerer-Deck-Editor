@@ -1,5 +1,18 @@
 <?php
     include "modules/requestHandler.php";
+
+    $newestDecks = array(
+        (object) array("name" => "Temp burn aggro damage deck",
+              "description" => "My new super aggressive top tier deck! Check it out.",
+              "class" => "Hunter",
+              "score" => 92),
+        (object)  array("name" => "Rakdos Burn",
+              "description" => "I got gud, now look at my deck!",
+              "class" => "Mage",
+              "score" => -1),
+    );
+
+    $topDecks = $newestDecks;
 ?>
 <!doctype html>
 <html>
@@ -13,114 +26,27 @@
        <div class="content">
             <section id="newestDecks">
                 <input type="text" onkeyup="searchForCards(this.value);" />
-
-                <div>Deck 1</div>
-                <div>Deck 2</div>
-                <div>Deck 3</div>
-                <div>Deck 4</div>
-                <div>Deck 5</div>
-                <div>Deck 6</div>
-                <div>Deck 7</div>
-                <div>Deck 8</div>
-                <div>Deck 9</div>
-                <div>Deck 10</div>
-                <div>Deck 1</div>
-                <div>Deck 2</div>
-                <div>Deck 3</div>
-                <div>Deck 4</div>
-                <div>Deck 5</div>
-                <div>Deck 6</div>
-                <div>Deck 7</div>
-                <div>Deck 8</div>
-                <div>Deck 9</div>
-                <div>Deck 10</div>
-                <div>Deck 5</div>
-                <div>Deck 6</div>
-                <div>Deck 7</div>
-                <div>Deck 8</div>
-                <div>Deck 9</div>
-                <div>Deck 10</div>
+                
+                <?php foreach($newestDecks as $index=>$deck): ?>
+                    <div class="deck-listing">
+                        <h3><?php echo $deck->name ?></h3>
+                        <div class="description"><?php echo $deck->description ?></div>
+                        <div class="class"><?php echo $deck->class ?></div>
+                        <div class="score"><?php echo $deck->score ?></div>
+                    </div>
+                <?php endforeach; ?>
             </section>
     
             <section id="topDecks">
-                <div>Deck 1</div>
-                <div>Deck 2</div>
-                <div>Deck 3</div>
-                <div>Deck 4</div>
-                <div>Deck 5</div>
-                <div>Deck 6</div>
-                <div>Deck 7</div>
-                <div>Deck 8</div>
-                <div>Deck 9</div>
-                <div>Deck 10</div>
-                <div>Deck 1</div>
-                <div>Deck 2</div>
-                <div>Deck 3</div>
-                <div>Deck 4</div>
-                <div>Deck 5</div>
-                <div>Deck 6</div>
-                <div>Deck 7</div>
-                <div>Deck 8</div>
-                <div>Deck 9</div>
-                <div>Deck 10</div>
-                <div>Deck 2</div>
-                <div>Deck 3</div>
-                <div>Deck 4</div>
-                <div>Deck 5</div>
-                <div>Deck 6</div>
-                <div>Deck 7</div>
-                <div>Deck 8</div>
-                <div>Deck 9</div>
-                <div>Deck 10</div>
-                <div>Deck 1</div>
-                <div>Deck 2</div>
-                <div>Deck 3</div>
-                <div>Deck 4</div>
-                <div>Deck 5</div>
-                <div>Deck 6</div>
-                <div>Deck 7</div>
-                <div>Deck 8</div>
-                <div>Deck 9</div>
-                <div>Deck 10</div>
-                <div>Deck 2</div>
-                <div>Deck 3</div>
-                <div>Deck 4</div>
-                <div>Deck 5</div>
-                <div>Deck 6</div>
-                <div>Deck 7</div>
-                <div>Deck 8</div>
-                <div>Deck 9</div>
-                <div>Deck 10</div>
-                <div>Deck 1</div>
-                <div>Deck 2</div>
-                <div>Deck 3</div>
-                <div>Deck 4</div>
-                <div>Deck 5</div>
-                <div>Deck 6</div>
-                <div>Deck 7</div>
-                <div>Deck 8</div>
-                <div>Deck 9</div>
-                <div>Deck 10</div>
-                <div>Deck 2</div>
-                <div>Deck 3</div>
-                <div>Deck 4</div>
-                <div>Deck 5</div>
-                <div>Deck 6</div>
-                <div>Deck 7</div>
-                <div>Deck 8</div>
-                <div>Deck 9</div>
-                <div>Deck 10</div>
-                <div>Deck 1</div>
-                <div>Deck 2</div>
-                <div>Deck 3</div>
-                <div>Deck 4</div>
-                <div>Deck 5</div>
-                <div>Deck 6</div>
-                <div>Deck 7</div>
-                <div>Deck 8</div>
-                <div>Deck 9</div>
-                <div>Deck 10</div>
-                </section>
+                <?php foreach($topDecks as $index=>$deck): ?>
+                    <div class="deck-listing">
+                        <h3><?php echo $deck->name ?></h3>
+                        <div class="description"><?php echo $deck->description ?></div>
+                        <div class="class"><?php echo $deck->class ?></div>
+                        <div class="score"><?php echo $deck->score ?></div>
+                    </div>
+                <?php endforeach; ?>
+            </section>
        </div>
 
         <footer></footer>
