@@ -17,10 +17,71 @@
 
                 <div>
                     <label>Rule text contains </label>
-                    <input type="text" id="cardText">
+                    <input type="text" id="cardText" />
                 </div>
 
-                <input type="submit" value="search" />
+                <div>
+                    <label>Card cost </label>
+                    <input type="number" id="cardCost" />
+                </div>
+
+                <div>
+                    <label>Belongs to class </label>
+                    <select id="classSelect">
+                        <option value="Druid">Druid</option>
+                        <option value="Hunter">Hunter</option>
+                        <option value="Mage">Mage</option>
+                        <option value="Paladin">Paladin</option>
+                        <option value="Priest">Priest</option>
+                        <option value="Rogue">Rogue</option>
+                        <option value="Shaman">Shaman</option>
+                        <option value="Warlock">Warlock</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Card type </label>
+                    <select id="typeSelect" onchange="raceSelectEnabled()">
+                        <option value=""></option>
+                        <option value="Weapon">Weapon</option>
+                        <option value="Minion">Minion</option>
+                        <option value="Spell">Spell</option>
+                        <option value="Hero">Hero Card</option> <!-- collectible == true, else we also get the unplayable heroes -->
+                    </select>
+                </div>
+
+                <div id="raceSelectDiv" style="display: none">
+                    <label>Race </label>
+                    <select id="raceSelect">
+                        <option value="Beast">Beast</option>
+                        <option value="Demon">Demon</option>
+                        <option value="Dragon">Dragon</option>
+                        <option value="Mech">Mech</option>
+                        <option value="Murloc">Murloc</option>
+                        <option value="Pirate">Pirate</option>
+                        <option value="Totem">Totem</option>
+                        <option value="Elemental">Elemental</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Belongs to set </label>
+                    <select id="setSelect">
+                        <option value="Basic">Basic</option>
+                        <option value="Classic">Classic</option>
+                        <option value="Goblins vs Gnomes">Goblins vs Gnomes</option>
+                        <option value="The Grand Tournament">The Grand Tournament</option>
+                        <option value="Whispers of the Old Gods">Whispers of the Old Gods</option>
+                        <option value="Mean Streets of Gadgetzan">Mean Streets of Gadgetzan</option>
+                        <option value="Journey to Un'Goro">Journey to Un'Goro</option>
+                        <option value="Knights of the Frozen Throne">Knights of the Frozen Throne</option>
+                        <option value="Kobolds & Catacombs">Kobolds & Catacombs</option>
+                        <option value="The Witchwood">The Witchwood</option>
+                        <option value="The Boomsday Project">The Boomsday Project</option>
+                    </select>
+                </div>
+
+                <input type="submit" value="search"/>
             </section>
 
             <hr />

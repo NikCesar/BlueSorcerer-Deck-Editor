@@ -1,6 +1,6 @@
 function searchForCards(query) {
-    delay(function() {
-        callPhpFunction("searchForCards", "query="+query, function(result) {
+    delay(function () {
+        callPhpFunction("searchForCards", "query=" + query, function (result) {
             // do something with the result.
             console.log(result);
         });
@@ -17,11 +17,24 @@ function callPhpFunction(functionName, param, successCallback) {
     });
 }
 
-var delay = (function() {
+var delay = (function () {
     var timer = 0;
-    return function(callback, ms){
-        clearTimeout (timer);
+    return function (callback, ms) {
+        clearTimeout(timer);
         timer = setTimeout(callback, ms);
     };
-    })();
+})();
+
 // #endregion
+
+function raceSelectEnabled() {
+
+    typeSelectValue = document.getElementById("typeSelect").value;
+    if (typeSelectValue == "Minion") {
+        document.getElementById("raceSelectDiv").style.display = "block";
+    }
+    else {
+        document.getElementById("raceSelectDiv").style.display = "none";
+    }
+
+}

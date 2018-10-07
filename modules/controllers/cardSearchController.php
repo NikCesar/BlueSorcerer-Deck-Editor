@@ -1,5 +1,5 @@
 <?php
-    require "$_SERVER[DOCUMENT_ROOT]/modules/services/cardService.php"; 
+    require "$_SERVER[DOCUMENT_ROOT]/modules/services/cardService.php";
 
     $cardService = new CardService();
 

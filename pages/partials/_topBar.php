@@ -9,7 +9,7 @@
         
     <nav>
         <ul>
-            <li><a href="#">Link 1</a></li>
+            <li id="cardSearch"><a href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/pages/cardSearch.php">Card Search</a></li>
             <li><a href="#">Link 2</a></li>
             <li><a href="#">Link 3</a></li>
             <li><a href="#">Link 4</a></li>
