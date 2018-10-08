@@ -4,3 +4,5 @@
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="http://<?php echo $_SERVER['SERVER_NAME']; ?>/assets/js/script.js"></script>
+
+<?php include "assets/values/languages.php"; ?>

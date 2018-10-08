@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 
 <html>
@@ -11,36 +15,37 @@
         <div class="content">
             <section id="cardFilter">
                 <div>
-                    <label>Card name contains </label>
+                    <label><?php echo $GLOBALS["texts"]["CardSearchName"][$_SESSION["language"]]; ?></label>
                     <input type="text" id="cardName" />
                 </div>
 
                 <div>
-                    <label>Rule text contains </label>
+                    <label><?php echo $texts["CardSearchRule"][$_SESSION["language"]]; ?></label>
                     <input type="text" id="cardText" />
                 </div>
 
                 <div>
-                    <label>Card cost </label>
+                    <label><?php echo $texts["CardSearchCost"][$_SESSION["language"]]; ?></label>
                     <input type="number" id="cardCost" />
                 </div>
 
                 <div>
-                    <label>Belongs to class </label>
+                    <label><?php echo $texts["CardSearchClass"][$_SESSION["language"]]; ?></label>
                     <select id="classSelect">
-                        <option value="Druid">Druid</option>
-                        <option value="Hunter">Hunter</option>
-                        <option value="Mage">Mage</option>
-                        <option value="Paladin">Paladin</option>
-                        <option value="Priest">Priest</option>
-                        <option value="Rogue">Rogue</option>
-                        <option value="Shaman">Shaman</option>
-                        <option value="Warlock">Warlock</option>
+                        <option value=""></option>
+                        <option value="Druid"><?php echo $texts["ClassDruid"][$_SESSION["language"]]; ?></option>
+                        <option value="Hunter"><?php echo $texts["ClassHunter"][$_SESSION["language"]]; ?></option>
+                        <option value="Mage"><?php echo $texts["ClassMage"][$_SESSION["language"]]; ?></option>
+                        <option value="Paladin"><?php echo $texts["ClassPaladin"][$_SESSION["language"]]; ?></option>
+                        <option value="Priest"><?php echo $texts["ClassPriest"][$_SESSION["language"]]; ?></option>
+                        <option value="Rogue"><?php echo $texts["ClassRogue"][$_SESSION["language"]]; ?></option>
+                        <option value="Shaman"><?php echo $texts["ClassShaman"][$_SESSION["language"]]; ?></option>
+                        <option value="Warlock"><?php echo $texts["ClassWarlock"][$_SESSION["language"]]; ?></option>
                     </select>
                 </div>
 
                 <div>
-                    <label>Card type </label>
+                    <label><?php echo $texts["CardSearchType"][$_SESSION["language"]]; ?> </label>
                     <select id="typeSelect" onchange="raceSelectEnabled()">
                         <option value=""></option>
                         <option value="Weapon">Weapon</option>

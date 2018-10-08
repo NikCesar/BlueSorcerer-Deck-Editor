@@ -1,6 +1,8 @@
 <?php
     include "modules/requestHandler.php";
 
+    session_start();
+
     $newestDecks = array(
         (object) array("name" => "Temp burn aggro damage deck",
               "description" => "My new super aggressive top tier deck! Check it out.",
@@ -13,6 +15,8 @@
     );
 
     $topDecks = $newestDecks;
+
+    $_SESSION["language"] = "de";
 ?>
 <!doctype html>
 <html>
@@ -25,6 +29,7 @@
 
        <div class="content">
             <section id="newestDecks">
+                <label><?php echo $texts["NewestDecks"][$_SESSION["language"]]; ?></label>
                 <input type="text" onkeyup="searchForCards(this.value);" />
                 
                 <?php foreach($newestDecks as $index=>$deck): ?>
@@ -38,6 +43,7 @@
             </section>
     
             <section id="topDecks">
+                <label><?php echo $texts["TopDecks"][$_SESSION["language"]]; ?></label>
                 <?php foreach($topDecks as $index=>$deck): ?>
                     <div class="deck-listing">
                         <h3><?php echo $deck->name ?></h3>
