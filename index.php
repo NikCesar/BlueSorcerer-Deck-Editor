@@ -2,8 +2,13 @@
     include "modules/requestHandler.php";
     include "modules/helpers/contentRenderer.php";
 
-    $pageId = urldecode($_GET["page"]);
+    if (isset($_GET["page"])) {
+        $pageId = urldecode($_GET["page"]);
+    } else {
+        $pageId = "home";
+    }
 ?>
+
 <!doctype html>
 <html>
     <head>
