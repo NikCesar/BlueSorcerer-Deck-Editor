@@ -58,11 +58,12 @@ class CardService
                     } else {
                         if (strtolower($card[0]->$key) === strtolower($value)) {
                             $cardIsMatch = true;
-                            break;
+                        } else {
+                            $cardIsMatch = false;
                         }
                     }
                 } else {
-
+                    $cardIsMatch = false;
                 }
             }
             if ($cardIsMatch) {
