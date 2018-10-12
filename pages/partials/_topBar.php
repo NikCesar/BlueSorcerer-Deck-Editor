@@ -9,11 +9,11 @@
         
     <nav>
         <ul>
-            <li id="cardSearch"><a href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/pages/cardSearch.php">Card Search</a></li>
+            <li id="cardSearch"><a href="/?page=cardSearch">Card Search</a></li>
             <li><a href="#">Link 2</a></li>
             <li><a href="#">Link 3</a></li>
             <li><a href="#">Link 4</a></li>
-            <li id="loginItem"><a href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/pages/userProfile.php">Login</a></li>
+            <li id="loginItem"><a href="/?page=userProfile">Login</a></li>
         </ul>
         <div style="clear: both"></div>
     </nav>
