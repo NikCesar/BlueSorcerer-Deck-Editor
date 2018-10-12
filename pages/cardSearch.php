@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!doctype html>
 
 <html>
@@ -11,36 +15,37 @@
         <div class="content">
             <section id="cardFilter">
                 <div>
-                    <label>Card name contains </label>
+                    <label><?php echo text("DeckEditor"); ?></label>
                     <input type="text" id="cardName" />
                 </div>
 
                 <div>
-                    <label>Rule text contains </label>
+                    <label><?php echo text("CardSearchRule"); ?></label>
                     <input type="text" id="cardText" />
                 </div>
 
                 <div>
-                    <label>Card cost </label>
+                    <label><?php echo text("CardSearchCost"); ?></label>
                     <input type="number" id="cardCost" />
                 </div>
 
                 <div>
-                    <label>Belongs to class </label>
+                    <label><?php echo text("CardSearchClass"); ?></label>
                     <select id="classSelect">
-                        <option value="Druid">Druid</option>
-                        <option value="Hunter">Hunter</option>
-                        <option value="Mage">Mage</option>
-                        <option value="Paladin">Paladin</option>
-                        <option value="Priest">Priest</option>
-                        <option value="Rogue">Rogue</option>
-                        <option value="Shaman">Shaman</option>
-                        <option value="Warlock">Warlock</option>
+                        <option value=""></option>
+                        <option value="Druid"><?php echo text("ClassDruid"); ?></option>
+                        <option value="Hunter"><?php echo text("ClassHunter"); ?></option>
+                        <option value="Mage"><?php echo text("ClassMage"); ?></option>
+                        <option value="Paladin"><?php echo text("ClassPaladin"); ?></option>
+                        <option value="Priest"><?php echo text("ClassPriest"); ?></option>
+                        <option value="Rogue"><?php echo text("ClassRogue"); ?></option>
+                        <option value="Shaman"><?php echo text("ClassShaman"); ?></option>
+                        <option value="Warlock"><?php echo text("ClassWarlock"); ?></option>
                     </select>
                 </div>
 
                 <div>
-                    <label>Card type </label>
+                    <label><?php echo text("CardSearchType"); ?> </label>
                     <select id="typeSelect" onchange="raceSelectEnabled()">
                         <option value=""></option>
                         <option value="Weapon">Weapon</option>
