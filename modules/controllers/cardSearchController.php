@@ -7,4 +7,8 @@
         $query = $_GET['query'];
         echo json_encode($cardService->searchForCards($query));
     }
+    if (isset($_GET['functionname']) && $_GET['functionname'] == "searchForCardsByQueries"){
+        $queries = $_GET['queries'];
+        echo json_encode($cardService->searchForCardsByQueries($queries));
+    }
 ?>
