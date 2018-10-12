@@ -2,7 +2,7 @@
     <header>
         <a href="http://<?php echo $_SERVER['SERVER_NAME']; ?>">
             <h1>Blue Sorcerer</h1>
-            <h3>Deck Editor</h3>
+            <h3><?php echo text("DeckEditor"); ?></h3>
             <img id="headerImage" src="http://<?php echo $_SERVER['SERVER_NAME']; ?>/assets/img/sorcerer_header.png" />
         </a>
     </header>
