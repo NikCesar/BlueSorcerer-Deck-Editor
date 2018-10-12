@@ -16,6 +16,16 @@
             
             return $results;
         }
+
+        public function getUserByUsername($username) {
+            $users = $this->executeQuery("SELECT Id, Username, Password FROM user WHERE Username = '" . $username . "'");
+
+            if (sizeof($users) === 1) {
+                return $users[0];
+            }
+            // throw exception;
+            return null;
+        }
     }
 
 ?>

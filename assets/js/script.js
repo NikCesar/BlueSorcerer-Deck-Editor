@@ -87,3 +87,22 @@ function raceSelectEnabled() {
     }
 
 }
+
+function showModal() {
+    var modal = document.getElementById("modal");
+    modal.style.display = "block";
+
+    //setTimeout(hideModal, 5000);
+}
+
+function hideModal() {
+    var modal = document.getElementById("modal");
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        hideModal();
+    }
+}

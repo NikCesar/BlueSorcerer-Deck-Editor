@@ -1,8 +1,13 @@
 <?php
+    include "modules/helpers/globals.php";
+
     include "modules/requestHandler.php";
     include "modules/helpers/contentRenderer.php";
 
-    session_start();
+    if (!isset($_SESSION))
+    {
+        session_start();
+    }
 
     if (isset($_GET["page"])) {
         $pageId = urldecode($_GET["page"]);
