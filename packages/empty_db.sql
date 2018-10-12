@@ -77,8 +77,7 @@ CREATE TABLE `user` (
   `Id` int(11) NOT NULL,
   `Username` varchar(100) NOT NULL,
   `Password` varchar(100) NOT NULL,
-  `Firstname` varchar(100) NOT NULL,
-  `Lastname` varchar(100) NOT NULL,
+  `Email` varchar(100) NOT NULL,
   `RoleId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -86,8 +85,8 @@ CREATE TABLE `user` (
 -- Daten für Tabelle `user`
 --
 
-INSERT INTO `user` (`Id`, `Username`, `Password`, `Firstname`, `Lastname`, `RoleId`) VALUES
-(1, 'admin', '$2y$10$3dAA8rRh89l4RsMeRFIu1eE.Ysmeh5yYDBCySXW7z88Uh7NhIMCke', 'Admin', 'Admin', 1);
+INSERT INTO `user` (`Id`, `Username`, `Password`, `Email`, `RoleId`) VALUES
+(1, 'admin', '$2y$10$3dAA8rRh89l4RsMeRFIu1eE.Ysmeh5yYDBCySXW7z88Uh7NhIMCke', 'admin@admin.com', 1);
 
 --
 -- Indizes der exportierten Tabellen
