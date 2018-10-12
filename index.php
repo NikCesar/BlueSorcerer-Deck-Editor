@@ -10,7 +10,7 @@
         $pageId = "home";
     }
 
-    $_SESSION["language"] = "de";
+    $_SESSION["language"] = "en";
 ?>
 
 <!doctype html>
