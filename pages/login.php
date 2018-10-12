@@ -1,6 +1,16 @@
+<?php 
+    function isMessageVisible() {
+        if (hasMessage("loginFail")) {
+            echo "block";
+        } else {
+            echo "none";
+        }
+    }
+?>
+
 <div class="content small-content">
     <div class="centered">
-        <form action="#" method="POST">
+        <form action="" method="POST">
             <input type="text" name="functionname" value="login" style="display:none" />
 
             <section>
@@ -11,6 +21,10 @@
             <section>
                 <label>Password: </label>
                 <input id="password" name="password" type="password" />
+            </section>
+
+            <section style="display: <?php echo isMessageVisible(); ?>;">
+                <label>YOU FAILED THE LOGIN!</label>
             </section>
 
             <input type="submit" value="Login" />
