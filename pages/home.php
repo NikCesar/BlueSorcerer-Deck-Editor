@@ -15,6 +15,7 @@
 
 <div class="content">
     <section id="newestDecks">
+        <h2><?php echo text("NewestDecks"); ?></h2>
         <input type="text" onkeyup="searchForCards(this.value);" />
         
         <?php foreach($newestDecks as $index=>$deck): ?>
@@ -28,6 +29,7 @@
     </section>
 
     <section id="topDecks">
+        <h2><?php echo text("TopDecks"); ?></h2>
         <?php foreach($topDecks as $index=>$deck): ?>
             <div class="deck-listing">
                 <h3><?php echo $deck->name ?></h3>
