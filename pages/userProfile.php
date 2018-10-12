@@ -17,6 +17,10 @@
         </div>
         <input id="submit" type="submit">
 
+        <form action="" method="GET">
+            <input type="text" name="functionname" value="logout" style="display:none" />
+            <input type="submit" value="Logout" />
+        </form>
 
     </section>
 </div>
