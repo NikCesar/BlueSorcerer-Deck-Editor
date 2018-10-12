@@ -13,7 +13,7 @@
             <li><a href="#">Link 2</a></li>
             <li><a href="#">Link 3</a></li>
             <li><a href="#">Link 4</a></li>
-            <li id="loginItem"><a href="/?page=userProfile">Login</a></li>
+            <li id="loginItem"><a href="/?page=login">Login</a></li>
         </ul>
         <div style="clear: both"></div>
     </nav>

@@ -1,16 +1,20 @@
 <div class="content small-content">
     <div class="centered">
-        <section>
-            <label>Username: </label>
-            <input id="username" />
-        </section>
+        <form action="#" method="POST">
+            <input type="text" name="functionname" value="login" style="display:none" />
 
-        <section>
-            <label>Password: </label>
-            <input id="password" type="password" />
-        </section>
+            <section>
+                <label>Username: </label>
+                <input id="username" name="username" />
+            </section>
 
-        <input type="submit" value="Login" />
+            <section>
+                <label>Password: </label>
+                <input id="password" name="password" type="password" />
+            </section>
+
+            <input type="submit" value="Login" />
+        </form>
     </div>
 
     <div id="register">
