@@ -51,7 +51,11 @@
         "CardSetKFT" => array("en" => "Knights of the Frozen Throne", "de" => "Ritter des Frostthrohns"),
         "CardSetKaC" => array("en" => "Kobolds & Catacombs", "de" => "Kobolde & Katakomben"),
         "CardSetWood" => array("en" => "The Witchwood", "de" => "Der Hexenwald"),
-        "CardSetBdP" => array("en" => "The Boomsday Project", "de" => "Dr. Booms Geheimlabor")
+        "CardSetBdP" => array("en" => "The Boomsday Project", "de" => "Dr. Booms Geheimlabor"),
+        "loginSuccess" => array("en" => "The login was successful.", "de" => "Sie wurden erfolgreich eingeloggt."),
+        "loginFail" => array("en" => "The login was not successful.", "de" => "Der Loginversuch ist fehlgeschlagen."),
+        "logoutSuccess" => array("en" => "You sucessfully logged out.", "de" => "Sie wurden erfolgreich abgemeldet."),
+
     );
 
     function text($key){
