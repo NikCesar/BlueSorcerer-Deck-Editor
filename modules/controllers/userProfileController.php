@@ -9,4 +9,8 @@
             exit;
         }
     }
+
+    if(isset($_POST['functionname']) && $_POST['functionname'] == "saveUserProfile"){
+        // TODO: Logic to update user.
+    }
 ?>
