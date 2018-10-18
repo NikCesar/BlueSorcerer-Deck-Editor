@@ -18,6 +18,7 @@
         } else {
             header("Location: http://" . $_SERVER["SERVER_NAME"] . "?page=login&message=loginFail");
         }
+        exit;
     }
 
     function verifyLogin($username, $password, $dbUser) {
