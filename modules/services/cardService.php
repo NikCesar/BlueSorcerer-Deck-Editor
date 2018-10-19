@@ -39,26 +39,23 @@ class CardService
     {
         $foundCards = array();
 
-        if (trim($queries) == '')
+        if (count($queries) == 0){
             return $foundCards;
-
-        $queryArray = json_decode($queries);
+        }
 
         foreach ($this->cardsMap as $card) {
-            $cardIsMatch = false;
-            foreach ($queryArray as $key => $value) {
+            $cardIsMatch = true;
+            foreach ($queries as $key => $value) {
                 if (property_exists($card[0], $key)) {
                     if ($key === "name" || $key === "text") {
                         if ($value === "") {
                             $cardIsMatch = true;
-                        } else if (strpos(strtolower($card[0]->$key), strtolower($value)) !== false) {
-                            $cardIsMatch = true;
+                        } else if (strpos(strtolower($card[0]->$key), strtolower($value)) === false) {
+                            $cardIsMatch = false;
                             break;
                         }
                     } else {
-                        if (strtolower($card[0]->$key) === strtolower($value)) {
-                            $cardIsMatch = true;
-                        } else {
+                        if (strtolower($card[0]->$key) !== strtolower($value)) {
                             $cardIsMatch = false;
                         }
                     }
@@ -70,7 +67,10 @@ class CardService
                 array_push($foundCards, $card[0]);
             }
         }
-
+        usort($foundCards, function($a, $b) {
+            $isBigger = $a->cost > $b->cost;
+            return $isBigger;
+        });
         return $foundCards;
     }
 
