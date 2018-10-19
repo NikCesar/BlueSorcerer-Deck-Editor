@@ -32,34 +32,12 @@ h3 {
         background-position: center -2px;
 
         height: 100px;
-        width: calc(100% - 95px);
-        transform: translate(20px, -40px);
-        margin-bottom: -50px;
-
-        &::before {
-            content: "";
-            top: 0;
-            left: -20px;
-            width: 60px;
-            height: 100%;
-            position: absolute;
-            background-image: url(../../img/content-header.png);
-            background-position: left -106px;
-        }
-
-        &::after {
-            content: "";
-            top: 0;
-            right: -75px;
-            width: 120px;
-            height: 100%;
-            position: absolute;
-            background-image: url(../../img/content-header.png);
-            background-position: right -106px;
-        }
+        width: 100%;
+        transform: translate(0, -40px);
+        margin-bottom: -40px;
     }
 
-    background: url(../../img/background.jpg) 50% var(--hueBackground);
+    background: url(../../img/background.jpg);
     color: black;
 
     input {
@@ -154,4 +132,9 @@ h3 {
 .displayedCard {
     display: inline-block;
     width: 240px;
+    transition: all 0.2s ease;
+
+    &:hover {
+        transform: translateY(0) scale(1.1);
+    }
 }
