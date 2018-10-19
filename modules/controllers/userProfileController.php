@@ -14,8 +14,8 @@
 
     if(isset($_POST['functionname']) && $_POST['functionname'] == "saveUserProfile"){
         $id = $_SESSION["user"]->Id;
-        $username = $_POST["Username"];
-        $email = $_POST["Email"];
+        $username = strip_tags($_POST["Username"]);
+        $email = strip_tags($_POST["Email"]);
 
         $updatedUser = $dbService->updateUser($id, $username, $email);
 
