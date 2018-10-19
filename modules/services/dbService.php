@@ -6,22 +6,15 @@
             $this->sqlClient = new mysqli("localhost", "root", "", "bluesorcerer");
         }
 
-        public function executeQuery($sqlQuery) {
-            $result = $this->sqlClient->query($sqlQuery);
-            $results = array();
-
-            while($row = $result->fetch_assoc()) {
-                array_push($results, (object)$row);
-            }
-            
-            return $results;
-        }
-
         public function getUserByUsername($username) {
-            $users = $this->executeQuery("SELECT Id, Username, Password, Email FROM user WHERE Username = '" . $username . "'");
+            $query = $this->sqlClient->prepare("SELECT Id, Username, Password, Email FROM user WHERE Username = ?");
+            $query->bind_param("s", $username);
+            $query->execute();
+
+            $users = $query->get_result()->fetch_all(MYSQLI_ASSOC);
 
             if (sizeof($users) === 1) {
-                return $users[0];
+                return (object) $users[0];
             }
             // throw exception;
             return null;
