@@ -114,6 +114,6 @@
                     <?php endif; ?>
                 <?php endforeach; ?>
             <?php endforeach; ?>
-        <?php endif; ?>"
+        <?php endif; ?>
     </section>
 </div>
