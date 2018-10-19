@@ -1,4 +1,6 @@
 <?php
+    $dbService = new DbService();
+
     if(isset($_GET['functionname']) && $_GET['functionname'] == "logout"){
         if (isLoggedIn()) {
             $_SESSION["user"] = null;
@@ -11,6 +13,12 @@
     }
 
     if(isset($_POST['functionname']) && $_POST['functionname'] == "saveUserProfile"){
-        // TODO: Logic to update user.
+        $id = $_SESSION["user"]->Id;
+        $username = $_POST["Username"];
+        $email = $_POST["Email"];
+
+        $updatedUser = $dbService->updateUser($id, $username, $email);
+
+        $_SESSION["user"] = $updatedUser;
     }
 ?>
