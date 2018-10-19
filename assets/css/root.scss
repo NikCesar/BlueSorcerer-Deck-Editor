@@ -5,6 +5,10 @@
 @import "components/nav";
 @import "components/modal";
 
+html {
+    height: calc(100% - 260px);
+}
+
 body {
     font-family: "Franklin Gothic Book";
     height: 100%;
@@ -20,6 +24,7 @@ h3 {
 }
 
 .content {
+    min-height: 100%;
     margin-top: 260px;
 
     #content-header {
