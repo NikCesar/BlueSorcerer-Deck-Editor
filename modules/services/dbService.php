@@ -19,6 +19,17 @@
             // throw exception;
             return null;
         }
+
+        public function updateUser($id, $username, $email) {
+            $query = $this->sqlClient->prepare("UPDATE user SET Username = ?, Email = ? WHERE Id = ?");
+            $query->bind_param("ssi", $username, $email, $id);
+            $query->execute();
+
+            if($query->affected_rows === 0) {
+                return null;
+            }
+            return $this->getUserByUsername($username);
+        }
     }
 
 ?>
