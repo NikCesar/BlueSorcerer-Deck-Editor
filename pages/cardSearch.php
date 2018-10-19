@@ -1,4 +1,6 @@
 <div class="content">
+    <div id="content-header"></div>
+    
     <section id="cardFilter">
         <form action="" method="POST">
             <input type="text" name="functionname" value="searchForCardsByQueries" style="display:none">
@@ -102,7 +104,6 @@
     <hr/>
 
     <section id="searchedCards">
-        <h3>Result</h3>
         <?php if (isset($_SESSION["searchResult"])): ?>
             <?php $searchResult = $_SESSION["searchResult"];
             foreach ($searchResult as $card): ?>

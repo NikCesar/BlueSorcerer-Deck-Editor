@@ -14,6 +14,8 @@
 ?>
 
 <div class="content">
+    <div id="content-header"></div>
+
     <section id="newestDecks">
         <h2><?php echo text("NewestDecks"); ?></h2>
         <input type="text" onkeyup="searchForCards(this.value);" />

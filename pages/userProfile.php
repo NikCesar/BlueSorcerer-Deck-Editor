@@ -6,6 +6,8 @@
 ?>
 
 <div class="content">
+    <div id="content-header"></div>
+
     <section class="<?php echo (isset($_POST["isEditMode"]) && $_POST["isEditMode"]) ? "isEditMode" : "isReadMode" ?>">
         <form action="" method="POST">
             <input type="text" name="functionname" value="saveUserProfile" class="hidden" />

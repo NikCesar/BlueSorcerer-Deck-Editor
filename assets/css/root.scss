@@ -8,13 +8,11 @@
 body {
     font-family: "Franklin Gothic Book";
     height: 100%;
-    background: linear-gradient(to right, black -15%, rgb(232, 212, 168) 50%, black 115%);
+    background: var(--hueSlateGray);
 }
 
 h3 {
     font-size: 1.4em;
-    color: var(--hueWhite);
-    text-shadow: 0 0 5px var(--hueBlue);
 }
 
 .hidden {
@@ -22,15 +20,42 @@ h3 {
 }
 
 .content {
-    min-width: 600px;
-    max-width: 1000px;
-    margin: 0 auto;
-    margin-top: 220px;
+    margin-top: 260px;
 
-    padding: 2em;
+    #content-header {
+        background-image: url(../../img/content-header.png);
+        background-position: center -2px;
 
-    background: var(--hueSlateGray);
-    color: var(--hueWhite);
+        height: 100px;
+        width: calc(100% - 95px);
+        transform: translate(20px, -40px);
+        margin-bottom: -50px;
+
+        &::before {
+            content: "";
+            top: 0;
+            left: -20px;
+            width: 60px;
+            height: 100%;
+            position: absolute;
+            background-image: url(../../img/content-header.png);
+            background-position: left -106px;
+        }
+
+        &::after {
+            content: "";
+            top: 0;
+            right: -75px;
+            width: 120px;
+            height: 100%;
+            position: absolute;
+            background-image: url(../../img/content-header.png);
+            background-position: right -106px;
+        }
+    }
+
+    background: url(../../img/background.jpg) 50% var(--hueBackground);
+    color: black;
 
     input {
         background: white;
@@ -115,6 +140,13 @@ h3 {
     }
 }
 
+#searchedCards {
+    max-width: 1000px;
+    margin: 1em auto;
+    text-align: center;
+}
+
 .displayedCard {
     display: inline-block;
+    width: 240px;
 }
