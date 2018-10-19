@@ -68,7 +68,9 @@ class CardService
             }
         }
         usort($foundCards, function($a, $b) {
-            $isBigger = $a->cost > $b->cost;
+            $aCost = property_exists($a, "cost") ? $a->cost : 0;
+            $bCost = property_exists($b, "cost") ? $b->cost : 0;
+            $isBigger = $aCost > $bCost;
             return $isBigger;
         });
         return $foundCards;
