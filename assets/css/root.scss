@@ -1,11 +1,14 @@
-@import "nav.scss";
-@import "variables.scss";
-@import "modal.scss";
+@import "_variables";
+
+@import "elements/forms";
+
+@import "components/nav";
+@import "components/modal";
 
 body {
     font-family: "Franklin Gothic Book";
     height: 100%;
-    background: linear-gradient(to right, black 1%, var(--hueWhite) 50%, black 99%);
+    background: linear-gradient(to right, black -15%, rgb(232, 212, 168) 50%, black 115%);
 }
 
 h3 {
