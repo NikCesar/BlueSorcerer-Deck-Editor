@@ -27,17 +27,46 @@ var delay = (function () {
 
 // #endregion
 
-function raceSelectEnabled() {
+function validateCardSearchInput() {
+    var cardSearchSubmitButton = document.getElementById("cardSearchSubmit");
+    var cardCostInputElement = document.getElementById("cardCost");
+    var cardTypeSelectElement = document.getElementById("typeSelect");
+    var cardRaceSelectElement = document.getElementById("raceSelect");
 
-    typeSelectValue = document.getElementById("typeSelect").value;
-    if (typeSelectValue == "Minion") {
-        document.getElementById("raceSelectDiv").style.display = "block";
-    }
-    else {
-        document.getElementById("raceSelectDiv").style.display = "none";
-    }
+    cardSearchSubmitButton.addEventListener("click", function (e) {
+        if (cardCostInputElement.value > 20) {
+            alert(failureTextCardCost);
+            e.preventDefault();
+            return false;
+        }
+
+        if ((cardTypeSelectElement.value !== "" && cardTypeSelectElement.value !== "Minion") && cardRaceSelectElement.value !== "") {
+            alert(failureTextCardRace);
+            e.preventDefault();
+            return false;
+        }
+
+        return true;
+    })
+}
+
+function setCardSearchTooltips() {
+    var cardNameInputElement = document.getElementById("cardName");
+
+
+    cardNameInputElement.addEventListener("mouseover", function () {
+        cardNameInputElement.title = cardNameTooltip;
+    })
 
 }
+
+// function activateTooltipster() {
+//     $(document).ready(function() {
+//         $('.tooltip').tooltipster({
+//             theme: 'tooltipster-noir'
+//         });
+//     })
+// }
 
 function showModal() {
     var modal = document.getElementById("modal");
@@ -52,7 +81,7 @@ function hideModal() {
 }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (event.target == modal) {
         hideModal();
     }
