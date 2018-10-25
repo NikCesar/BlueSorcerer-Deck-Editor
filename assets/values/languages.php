@@ -55,6 +55,9 @@
         "loginSuccess" => array("en" => "The login was successful.", "de" => "Sie wurden erfolgreich eingeloggt."),
         "loginFail" => array("en" => "The login was not successful.", "de" => "Der Loginversuch ist fehlgeschlagen."),
         "logoutSuccess" => array("en" => "You sucessfully logged out.", "de" => "Sie wurden erfolgreich abgemeldet."),
+        "cardSearchCostFailure" => array("en" => "There are no cards that cost more than 20 mana.", "de" => "Es gibt keine Karten die mehr als 20 Mana kosten."),
+        "cardSearchRaceFailure" => array("en" => "Only cards of type 'Minion' can have a race.", "de" => "Nur Karten vom Typ 'Diener' können eine Rasse haben."),
+        "cardNameTooltip" => array("en" => "Enter full or partial name of the card", "de" => "Geben Sie den vollen oder Teile des Namens ein")
 
     );
 
