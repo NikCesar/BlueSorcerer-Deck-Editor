@@ -32,7 +32,7 @@
         if (isset($_POST['typeSelect']) && $_POST['typeSelect'] !== "") {
             $queries['type'] = strip_tags($_POST['typeSelect']);
         }
-        if (isset($_POST['raceSelect']) && $_POST['raceSelect'] !== "") {
+        if ((isset($_POST['raceSelect']) && $_POST['raceSelect'] !== "") && (isset($_POST['typeSelect']) && ($_POST['typeSelect'] === "Minion" || $_POST['typeSelect'] === ""))) {
             $queries['race'] = strip_tags($_POST['raceSelect']);
         }
         if (isset($_POST['setSelect']) && $_POST['setSelect'] !== "") {
