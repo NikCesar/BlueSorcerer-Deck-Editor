@@ -1,15 +1,15 @@
 <div class="content">
     <div id="content-header"></div>
-    
+
     <section id="cardFilter">
-        <form action="" method="POST">
+        <form action="" method="POST" onsubmit="return validateCardSearchInput()">
             <input type="text" name="functionname" value="searchForCardsByQueries" style="display:none">
 
             <input type="text" name="page" value="cardSearch" style="display: none">
 
             <div>
                 <label><?php echo text("CardSearchName"); ?></label>
-                <input type="text" name="cardName" id="cardName"/>
+                <input type="text" class="tooltip" name="cardName" id="cardName"/>
             </div>
 
             <div>
@@ -19,17 +19,17 @@
 
             <div>
                 <label><?php echo text("CardSearchCost"); ?></label>
-                <input type="number" name="cardCost" id="cardCost"/>
+                <input type="number" min="0" name="cardCost" id="cardCost"/>
             </div>
 
             <div>
                 <label><?php echo text("CardSearchAttack"); ?></label>
-                <input type="number" name="cardAttack" id="cardAttack"/>
+                <input type="number" min="0" name="cardAttack" id="cardAttack"/>
             </div>
 
             <div>
                 <label><?php echo text("CardSearchHealth"); ?></label>
-                <input type="number" name="cardHealth" id="cardHealth"/>
+                <input type="number" min="1" name="cardHealth" id="cardHealth"/>
             </div>
 
             <div>
@@ -49,17 +49,16 @@
 
             <div>
                 <label><?php echo text("CardSearchType"); ?> </label>
-                <select name="typeSelect" id="typeSelect" onchange="raceSelectEnabled()">
+                <select name="typeSelect" id="typeSelect">
                     <option value="">-</option>
                     <option value="Weapon"><?php echo text("CardTypeWeapon"); ?></option>
                     <option value="Minion"><?php echo text("CardTypeMinion"); ?></option>
                     <option value="Spell"><?php echo text("CardTypeSpell"); ?></option>
                     <option value="Hero"><?php echo text("CardTypeHero"); ?></option>
-                    <!-- collectible == true, else we also get the unplayable heroes -->
                 </select>
             </div>
 
-            <div id="raceSelectDiv" style="display: none">
+            <div id="raceSelectDiv">
                 <label><?php echo text("CardSearchRace"); ?> </label>
                 <select name="raceSelect" id="raceSelect">
                     <option value="">-</option>
@@ -96,9 +95,20 @@
                     <option value="BOOMSDAY"><?php echo text("CardSetBdP"); ?></option>
                 </select>
             </div>
-
-            <input type="submit" value="<?php echo text("CardSearchSubmit"); ?>"/>
+            <input id="cardSearchSubmit" type="submit" value="<?php echo text("CardSearchSubmit"); ?>"/>
         </form>
+        <script type="text/javascript">
+            // activateTooltipster();
+
+            var failureTextCardCost = <?php echo json_encode(text("cardSearchCostFailure"))?>;
+            var failureTextCardRace = <?php echo json_encode(text("cardSearchRaceFailure"))?>;
+            validateCardSearchInput();
+
+            var cardNameTooltip = <?php echo json_encode(text("cardNameTooltip"))?>;
+            setCardSearchTooltips();
+
+
+        </script>
     </section>
 
     <hr/>
@@ -110,7 +120,7 @@
                 <?php foreach ($card as $key => $value): ?>
                     <?php if ($key === "imgLink"): ?>
                         <div class="displayedCard">
-                            <img src="<?php echo $value ?>" >
+                            <img src="<?php echo $value ?>">
                         </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
