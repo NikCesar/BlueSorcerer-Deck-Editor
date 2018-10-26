@@ -49,7 +49,6 @@ function addCardSearchValidation(failureTextCardCost, failureTextCardRace) {
         return true;
     })
 }
-
 function setCardSearchTooltips(cardNameTooltip, cardRuleTooltip, cardCostTooltip, cardAttackTooltip, cardHealthTooltip, cardClassTooltip, cardTypeTooltip) {
     $("#cardName").opentip(cardNameTooltip, { delay: 0.5 });
     $("#cardText").opentip(cardRuleTooltip, {delay: 0.5 });
@@ -62,21 +61,4 @@ function setCardSearchTooltips(cardNameTooltip, cardRuleTooltip, cardCostTooltip
 }
 
 
-function showModal() {
-    var modal = document.getElementById("modal");
-    modal.style.display = "block";
-
-    //setTimeout(hideModal, 5000);
-}
-
-function hideModal() {
-    var modal = document.getElementById("modal");
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
-    if (event.target == modal) {
-        hideModal();
-    }
-}
