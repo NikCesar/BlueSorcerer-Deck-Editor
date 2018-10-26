@@ -65,7 +65,8 @@ h3 {
             }
 
             input[type=submit] {
-                margin-left: 57%;
+                margin-left: 55%;
+
             }
         }
     }
@@ -75,6 +76,12 @@ h3 {
 
     input {
         background: white;
+
+        &[type=button], &[type=submit] {
+            border: 1px solid var(--hueDarkBrown);
+            background: white;
+            color: var(--hueDarkBrown);
+        }
     }
 
     section {
