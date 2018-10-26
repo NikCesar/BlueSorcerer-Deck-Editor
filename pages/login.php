@@ -1,5 +1,7 @@
-<div class="content small-content">
-    <div class="centered">
+<div class="content">
+    <div id="content-header"></div>
+
+    <div class="centered small-centered">
         <form action="" method="POST">
             <input type="text" name="functionname" value="login" style="display:none" />
 
@@ -17,14 +19,14 @@
 
             <input type="submit" value="Login" />
         </form>
-    </div>
 
-    <div id="register">
-        <div>
-            <a href="#">Forgot Password?</a>
-        </div>
-        <div>
-            <a href="#">No Account? Register now!</a>
+        <div id="register">
+            <div>
+                <a href="#">Forgot Password?</a>
+            </div>
+            <div>
+                <a href="#">No Account? Register now!</a>
+            </div>
         </div>
     </div>
 </div>
