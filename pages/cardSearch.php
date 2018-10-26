@@ -2,14 +2,14 @@
     <div id="content-header"></div>
 
     <section id="cardFilter">
-        <form action="" method="POST" onsubmit="return validateCardSearchInput()">
+        <form action="" method="POST">
             <input type="text" name="functionname" value="searchForCardsByQueries" style="display:none">
 
             <input type="text" name="page" value="cardSearch" style="display: none">
 
             <div>
                 <label><?php echo text("CardSearchName"); ?></label>
-                <input type="text" class="tooltip" name="cardName" id="cardName"/>
+                <input type="text" name="cardName" id="cardName"/>
             </div>
 
             <div>
@@ -98,16 +98,19 @@
             <input id="cardSearchSubmit" type="submit" value="<?php echo text("CardSearchSubmit"); ?>"/>
         </form>
         <script type="text/javascript">
-            // activateTooltipster();
-
             var failureTextCardCost = <?php echo json_encode(text("cardSearchCostFailure"))?>;
             var failureTextCardRace = <?php echo json_encode(text("cardSearchRaceFailure"))?>;
-            validateCardSearchInput();
+            addCardSearchValidation(failureTextCardCost, failureTextCardRace);
 
             var cardNameTooltip = <?php echo json_encode(text("cardNameTooltip"))?>;
-            setCardSearchTooltips();
+            var cardRuleTooltip = <?php echo json_encode(text("cardRuleTooltip"))?>;
+            var cardCostTooltip = <?php echo json_encode(text("cardCostTooltip"))?>;
+            var cardAttackTooltip = <?php echo json_encode(text("cardAttackTooltip"))?>;
+            var cardHealthTooltip = <?php echo json_encode(text("cardHealthTooltip"))?>;
+            var cardClassTooltip = <?php echo json_encode(text("cardClassTooltip"))?>;
+            var cardTypeTooltip = <?php echo json_encode(text("cardTypeTooltip"))?>;
 
-
+            setCardSearchTooltips(cardNameTooltip, cardRuleTooltip, cardCostTooltip, cardAttackTooltip, cardHealthTooltip, cardClassTooltip, cardTypeTooltip);
         </script>
     </section>
 
