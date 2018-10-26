@@ -57,8 +57,13 @@
         "logoutSuccess" => array("en" => "You sucessfully logged out.", "de" => "Sie wurden erfolgreich abgemeldet."),
         "cardSearchCostFailure" => array("en" => "There are no cards that cost more than 20 mana.", "de" => "Es gibt keine Karten die mehr als 20 Mana kosten."),
         "cardSearchRaceFailure" => array("en" => "Only cards of type 'Minion' can have a race.", "de" => "Nur Karten vom Typ 'Diener' können eine Rasse haben."),
-        "cardNameTooltip" => array("en" => "Enter full or partial name of the card", "de" => "Geben Sie den vollen oder Teile des Namens ein")
-
+        "cardNameTooltip" => array("en" => "Enter full or partial name of the card", "de" => "Geben Sie den vollen oder Teile des Namens ein"),
+        "cardRuleTooltip" => array("en" => "Enter full or partial rule text of the card", "de" => "Geben Sie den vollen oder Teile des Kartentextes ein"),
+        "cardCostTooltip" => array("en" => "Enter the manacost of the card", "de" => "Geben Sie die gewünschten Manakosten der Karte ein"),
+        "cardAttackTooltip" => array("en" => "Enter the attack value of the card", "de" => "Geben Sie die gewüschte Angriffsstärke der Karte ein"),
+        "cardHealthTooltip" => array("en" => "Enter the healthpoints of the card", "de" => "Geben Sie die gewünschten Lebenspunkte der Karte ein"),
+        "cardClassTooltip" => array("en" => "Choose which Heroclass the card belongs to", "de" => "Wählen Sie die Heldenklasse zu der die Karte gehört"),
+        "cardTypeTooltip" => array("en" => "Choose the type of the card", "de" => "Wählen Sie den gewünschten Typ der Karte")
     );
 
     function text($key){
