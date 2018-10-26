@@ -27,20 +27,20 @@ var delay = (function () {
 
 // #endregion
 
-function validateCardSearchInput() {
-    var cardSearchSubmitButton = document.getElementById("cardSearchSubmit");
-    var cardCostInputElement = document.getElementById("cardCost");
-    var cardTypeSelectElement = document.getElementById("typeSelect");
-    var cardRaceSelectElement = document.getElementById("raceSelect");
+function addCardSearchValidation(failureTextCardCost, failureTextCardRace) {
+    var cardSearchSubmitButton = $("#cardSearchSubmit");
+    var cardCostInputElement = $("#cardCost");
+    var cardTypeSelectElement = $("#typeSelect");
+    var cardRaceSelectElement = $("#raceSelect");
 
-    cardSearchSubmitButton.addEventListener("click", function (e) {
-        if (cardCostInputElement.value > 20) {
+    cardSearchSubmitButton.on("click", function (e) {
+        if (cardCostInputElement.val() > 20) {
             alert(failureTextCardCost);
             e.preventDefault();
             return false;
         }
 
-        if ((cardTypeSelectElement.value !== "" && cardTypeSelectElement.value !== "Minion") && cardRaceSelectElement.value !== "") {
+        if ((cardTypeSelectElement.val() !== "" && cardTypeSelectElement.val() !== "Minion") && cardRaceSelectElement.val() !== "") {
             alert(failureTextCardRace);
             e.preventDefault();
             return false;
@@ -50,23 +50,17 @@ function validateCardSearchInput() {
     })
 }
 
-function setCardSearchTooltips() {
-    var cardNameInputElement = document.getElementById("cardName");
-
-
-    cardNameInputElement.addEventListener("mouseover", function () {
-        cardNameInputElement.title = cardNameTooltip;
-    })
+function setCardSearchTooltips(cardNameTooltip, cardRuleTooltip, cardCostTooltip, cardAttackTooltip, cardHealthTooltip, cardClassTooltip, cardTypeTooltip) {
+    $("#cardName").opentip(cardNameTooltip, { delay: 0.5 });
+    $("#cardText").opentip(cardRuleTooltip, {delay: 0.5 });
+    $("#cardCost").opentip(cardCostTooltip, {delay: 0.5 });
+    $("#cardAttack").opentip(cardAttackTooltip, {delay: 0.5 });
+    $("#cardHealth").opentip(cardHealthTooltip, {delay: 0.5 });
+    $("#classSelect").opentip(cardClassTooltip, {delay: 0.5 });
+    $("#typeSelect").opentip(cardTypeTooltip, {delay: 0.5 });
 
 }
 
-// function activateTooltipster() {
-//     $(document).ready(function() {
-//         $('.tooltip').tooltipster({
-//             theme: 'tooltipster-noir'
-//         });
-//     })
-// }
 
 function showModal() {
     var modal = document.getElementById("modal");
