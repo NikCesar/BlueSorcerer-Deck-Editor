@@ -50,6 +50,23 @@ h3 {
             background-repeat: no-repeat;
             background-size: 100%;
             background-color: var(--hueLightBrown);
+
+            form {
+                section {
+                    label {
+                        width: 30%;
+                        float: left;
+                        text-align: right;
+                    }
+                    input {
+                        width: 40%;
+                    }
+                }
+            }
+
+            input[type=submit] {
+                margin-left: 57%;
+            }
         }
     }
 
