@@ -10,4 +10,8 @@ form {
             display: inline-block;
         }
     }
+
+    input[type=button], input[type=submit], button, a.button {
+        padding: 5px 10px;
+    }
 }
