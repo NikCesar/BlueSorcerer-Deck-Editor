@@ -109,8 +109,10 @@
             var cardHealthTooltip = <?php echo json_encode(text("cardHealthTooltip"))?>;
             var cardClassTooltip = <?php echo json_encode(text("cardClassTooltip"))?>;
             var cardTypeTooltip = <?php echo json_encode(text("cardTypeTooltip"))?>;
+            var cardRaceTooltip = <?php echo json_encode(text("cardRaceTooltip"))?>;
+            var cardSetTooltip = <?php echo json_encode(text("cardSetTooltip"))?>;
 
-            setCardSearchTooltips(cardNameTooltip, cardRuleTooltip, cardCostTooltip, cardAttackTooltip, cardHealthTooltip, cardClassTooltip, cardTypeTooltip);
+            setCardSearchTooltips(cardNameTooltip, cardRuleTooltip, cardCostTooltip, cardAttackTooltip, cardHealthTooltip, cardClassTooltip, cardTypeTooltip, cardRaceTooltip, cardSetTooltip);
         </script>
     </section>
 
