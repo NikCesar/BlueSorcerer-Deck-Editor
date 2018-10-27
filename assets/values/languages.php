@@ -63,7 +63,9 @@
         "cardAttackTooltip" => array("en" => "Enter the attack value of the card", "de" => "Geben Sie die gewüschte Angriffsstärke der Karte ein"),
         "cardHealthTooltip" => array("en" => "Enter the healthpoints of the card", "de" => "Geben Sie die gewünschten Lebenspunkte der Karte ein"),
         "cardClassTooltip" => array("en" => "Choose which Heroclass the card belongs to", "de" => "Wählen Sie die Heldenklasse zu der die Karte gehört"),
-        "cardTypeTooltip" => array("en" => "Choose the type of the card", "de" => "Wählen Sie den gewünschten Typ der Karte")
+        "cardTypeTooltip" => array("en" => "Choose the type of the card", "de" => "Wählen Sie den gewünschten Typ der Karte"),
+        "cardRaceTooltip" => array("en" => "Choose the race of the card", "de" => "Wählen Sie die gewünschte Rasse der Karte"),
+        "cardSetTooltip" => array("en" => "Choose the set in which the card was released", "de" => "Wählen Sie das Kartenset in welchem die Karte veröffentlicht wurde")
     );
 
     function text($key){
