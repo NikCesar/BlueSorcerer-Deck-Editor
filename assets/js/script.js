@@ -28,19 +28,14 @@ var delay = (function () {
 // #endregion
 
 function addCardSearchValidation(failureTextCardCost, failureTextCardRace) {
-    var cardSearchSubmitButton = $("#cardSearchSubmit");
-    var cardCostInputElement = $("#cardCost");
-    var cardTypeSelectElement = $("#typeSelect");
-    var cardRaceSelectElement = $("#raceSelect");
-
-    cardSearchSubmitButton.on("click", function (e) {
-        if (cardCostInputElement.val() > 20) {
+    $("#cardSearchSubmit").on("click", function (e) {
+        if ($("#cardCost").val() > 20) {
             alert(failureTextCardCost);
             e.preventDefault();
             return false;
         }
 
-        if ((cardTypeSelectElement.val() !== "" && cardTypeSelectElement.val() !== "Minion") && cardRaceSelectElement.val() !== "") {
+        if (($("#typeSelect").val() !== "" && $("#typeSelect").val() !== "Minion") && $("#raceSelect").val() !== "") {
             alert(failureTextCardRace);
             e.preventDefault();
             return false;
@@ -49,16 +44,15 @@ function addCardSearchValidation(failureTextCardCost, failureTextCardRace) {
         return true;
     })
 }
-function setCardSearchTooltips(cardNameTooltip, cardRuleTooltip, cardCostTooltip, cardAttackTooltip, cardHealthTooltip, cardClassTooltip, cardTypeTooltip) {
-    $("#cardName").opentip(cardNameTooltip, { delay: 0.5 });
-    $("#cardText").opentip(cardRuleTooltip, {delay: 0.5 });
-    $("#cardCost").opentip(cardCostTooltip, {delay: 0.5 });
-    $("#cardAttack").opentip(cardAttackTooltip, {delay: 0.5 });
-    $("#cardHealth").opentip(cardHealthTooltip, {delay: 0.5 });
-    $("#classSelect").opentip(cardClassTooltip, {delay: 0.5 });
-    $("#typeSelect").opentip(cardTypeTooltip, {delay: 0.5 });
 
+function setCardSearchTooltips(cardNameTooltip, cardRuleTooltip, cardCostTooltip, cardAttackTooltip, cardHealthTooltip, cardClassTooltip, cardTypeTooltip, cardRaceTooltip, cardSetTooltip) {
+    $("#cardName").opentip(cardNameTooltip, { delay: 1 });
+    $("#cardText").opentip(cardRuleTooltip, {delay: 1 });
+    $("#cardCost").opentip(cardCostTooltip, {delay: 1 });
+    $("#cardAttack").opentip(cardAttackTooltip, {delay: 1 });
+    $("#cardHealth").opentip(cardHealthTooltip, {delay: 1 });
+    $("#classSelect").opentip(cardClassTooltip, {delay: 1 });
+    $("#typeSelect").opentip(cardTypeTooltip, {delay: 1 });
+    $("#raceSelect").opentip(cardRaceTooltip, {delay: 1 });
+    $("#setSelect").opentip(cardSetTooltip, {delay: 1 });
 }
-
-
-window.onclick = function (event) {
