@@ -19,18 +19,15 @@
 
 
             if (trim($deckName) === "" || trim($deckClass) === "") {
-                header("Location: http://" . $_SERVER["SERVER_NAME"] . "?page=decksOverview&message=createDeckFail");
-                exit;
+                redirect("decksOverview", "message=createDeckFail");
             }
 
             
             $deck = $dbService->addDeck($userId, $deckName, $deckDescription, $deckClass);
 
-            header("Location: http://" . $_SERVER["SERVER_NAME"] . "?page=deckEditor&deckId=" . $deck->Id);
-            exit;
+            redirect("deckEditor", "deckId=" . $deck->Id);
         }
         
-        header("Location: http://" . $_SERVER["SERVER_NAME"] . "?page=decksOverview&message=createDeckFail");
-        exit;
+        redirect("decksOverview", "message=createDeckFail");
     }
 ?>

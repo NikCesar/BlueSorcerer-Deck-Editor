@@ -27,4 +27,14 @@
             exit;
         }
     }
+
+    function redirect($page = "home", $params = "") {
+        if ($params !== "") {
+            header("Location: http://{$_SERVER["SERVER_NAME"]}?page={$page}&{$params}");
+            exit;
+        }
+
+        header("Location: http://{$_SERVER["SERVER_NAME"]}?page={$page}");
+        exit;
+    }
 ?>

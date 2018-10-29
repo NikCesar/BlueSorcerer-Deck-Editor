@@ -14,16 +14,12 @@
             $_SESSION["isLoggedIn"] = true;
 
             if (isset($_GET["redirect"])) {
-                header("Location: http://" . $_SERVER["SERVER_NAME"] . "?page=" . $_GET["redirect"]);
-                exit;
+                redirect($_GET["redirect"]);
             }
 
-            // Redirect to Home.
-            header("Location: http://" . $_SERVER["SERVER_NAME"] . "?message=loginSuccess");
-            exit;
+            redirect("home", "message=loginSuccess");
         } else {
-            header("Location: http://" . $_SERVER["SERVER_NAME"] . "?page=login&message=loginFail");
-            exit;
+            redirect("login", "message=loginFail");
         }
     }
 
