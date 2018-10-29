@@ -30,4 +30,26 @@
         
         redirect("decksOverview", "message=createDeckFail");
     }
+
+    if(isset($_POST['functionname']) && $_POST['functionname'] == "saveDeck") {
+        if(isset($_GET['deckId']) && isset($_POST['deckName']) && isset($_POST["deckClass"])) {
+            $userId = $_SESSION["user"]->Id;
+            $deckId = strip_tags($_GET["deckId"]);
+            $deckName = strip_tags($_POST["deckName"]);
+            $deckDescription = isset($_POST["deckDescription"]) ? strip_tags($_POST["deckDescription"]) : null;
+            $deckClass = strip_tags($_POST["deckClass"]);
+
+
+            if (trim($deckName) === "" || trim($deckClass) === "") {
+                redirect("deckEditor", "deckId={$deckId}&message=updateDeckFail");
+            }
+
+            
+            $dbService->updateDeck($deckId, $deckName, $deckDescription, $deckClass);
+
+            redirect("deckEditor", "deckId=" . $deckId);
+        }
+        
+        redirect("deckEditor", "deckId={$deckId}&message=updateDeckFail");
+    }
 ?>

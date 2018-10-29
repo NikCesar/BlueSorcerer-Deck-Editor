@@ -32,9 +32,8 @@
     <section id="deckEditor">
         <h1><?php echo text("EditDeck"); ?></h1>
 
-        <form id="editDeckForm" action="" method="POST">
-            <input type="text" name="functionname" value="addDeck" class="hidden">
-            <input type="text" name="page" value="deckEditor" class="hidden">
+        <form id="editDeckForm" action="/?page=deckEditor&deckId=<?php echo $deck->Id ?>" method="POST">
+            <input type="text" name="functionname" value="saveDeck" class="hidden">
 
             <div>
                 <label><?php echo text("DeckName"); ?></label>

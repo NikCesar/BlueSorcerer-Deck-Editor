@@ -45,6 +45,17 @@
             return $this->getDeckById($query->insert_id);
         }
 
+        public function updateDeck($deckId, $deckName, $deckDescription, $deckClass) {
+            $query = $this->sqlClient->prepare("UPDATE deck SET Name = ?, Description = ?, Class = ? WHERE Id = ?");
+            $query->bind_param("sssi", $deckName, $deckDescription, $deckClass, $deckId);
+            $query->execute();
+
+            if($query->affected_rows === 0) {
+                return null;
+            }
+            return $this->getDeckById($deckId);
+        }
+
         public function getDeckById($deckId) {
             $query = $this->sqlClient->prepare("SELECT Id, UserId, Name, Description, Class FROM deck WHERE Id = ?");
             $query->bind_param("i", $deckId);
