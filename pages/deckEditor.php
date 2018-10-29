@@ -26,7 +26,6 @@
         }
 
         $deckList = $dbService->getCardsByDeckId($deck->Id);
-        $cards = $cardService->getCardsByDecklist($deckList);
     ?>    
 
     <section id="deckEditor">
@@ -63,9 +62,9 @@
     </section>
 
     <section id="deckList">
-        <?php foreach ($cards as $card): ?>
+        <?php foreach ($deckList as $card): ?>
             <div class="displayedCard">
-                <img src="<?php echo $card->imgLink; ?>" title="<?php echo $card->name; ?>" />
+                <img src="<?php echo getCardImgLink($card->CardId); ?>" />
             </div>
         <?php endforeach; ?>
     </section>
@@ -91,7 +90,7 @@
                         <input type="text" name="deckId" value="<?php echo $deck->Id ?>" class="hidden" />
                         <input type="submit" value="+" onclick="maintainScrollPos();" class="add-card" />
                     </form>
-                    <img src="<?php echo $card->imgLink; ?>" alt="<?php echo $card->name; ?>" />
+                    <img src="<?php echo getCardImgLink($card->id); ?>" />
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>

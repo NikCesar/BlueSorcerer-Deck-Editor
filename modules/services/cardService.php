@@ -3,7 +3,6 @@
 class CardService
 {
     private $baseUrl = 'https://api.hearthstonejson.com/v1/latest/enUS/cards.collectible.json';
-    private $imageUrlFormat = "https://art.hearthstonejson.com/v1/render/latest/enUS/256x/{id}.png";
     private $cardsMap = array();
 
     function __construct()
@@ -14,8 +13,19 @@ class CardService
         $allCards = json_decode($json);
 
         foreach ($allCards as $row) {
-            $row->imgLink = str_replace("{id}", $row->id, $this->imageUrlFormat);
-            $this->cardsMap[$row->id][] = $row;
+            $cardObject = array(
+                "id" => $row->id,
+                "name" => $row->name,
+                "cardClass" => $row->cardClass,
+                "collectible" => $row->collectible,
+                "set" => $row->set
+            );
+
+            if (property_exists($row, "cost")) {
+                $cardObject["cost"] = $row->cost;
+            }
+
+            $this->cardsMap[$row->id] = (object) $cardObject;
         }
     }
 
@@ -27,8 +37,8 @@ class CardService
             return $foundCards;
 
         foreach ($this->cardsMap as $card) {
-            if (strpos(strtolower($card[0]->name), strtolower($query)) !== false) {
-                array_push($foundCards, $card[0]);
+            if (strpos(strtolower($card->name), strtolower($query)) !== false) {
+                array_push($foundCards, $card);
             }
         }
 
@@ -46,16 +56,16 @@ class CardService
         foreach ($this->cardsMap as $card) {
             $cardIsMatch = true;
             foreach ($queries as $key => $value) {
-                if (property_exists($card[0], $key)) {
+                if (property_exists($card, $key)) {
                     if ($key === "name" || $key === "text") {
                         if ($value === "") {
                             $cardIsMatch = true;
-                        } else if (strpos(strtolower($card[0]->$key), strtolower($value)) === false) {
+                        } else if (strpos(strtolower($card->$key), strtolower($value)) === false) {
                             $cardIsMatch = false;
                             break;
                         }
                     } else {
-                        if (strtolower($card[0]->$key) !== strtolower($value)) {
+                        if (strtolower($card->$key) !== strtolower($value)) {
                             $cardIsMatch = false;
                         }
                     }
@@ -64,7 +74,7 @@ class CardService
                 }
             }
             if ($cardIsMatch) {
-                array_push($foundCards, $card[0]);
+                array_push($foundCards, $card);
             }
         }
         usort($foundCards, function($a, $b) {
@@ -82,7 +92,7 @@ class CardService
 
         foreach ($deckList as $deckCard) {
             for ($i = 0; $i < $deckCard->Count; $i++) {
-                array_push($foundCards, $this->cardsMap[$deckCard->CardId][0]);
+                array_push($foundCards, $this->cardsMap[$deckCard->CardId]);
             }
         }
 
