@@ -1,21 +1,30 @@
 <?php
     redirectToLoginIfNotLoggedIn("deckEditor");
-
     $dbService = new DbService();
-
-    if (!isset($_GET["deckId"])) {
-        echo "<span class='no-deck'>" . text("NoDeck") . "</span>";
-    }
-
-    $deck = $dbService->getDeckById($_GET["deckId"]);
-
-    if ($deck->UserId !== $_SESSION["user"]->Id) {
-        echo "<span class='not-your-deck'>" . text("NotYourDeck") . "</span>";
-    }
 ?>
+
 <div class="content">
     <div id="content-header"></div>
+
+    <?php
+        if (!isset($_GET["deckId"])) {
+            echo "<span class='validation-error'>" . text("NoDeckSpecified") . "</span>";
+            exit;
+        }
     
+        $deck = $dbService->getDeckById($_GET["deckId"]);
+    
+        if ($deck === null) {
+            echo "<span class='validation-error'>" . text("NoDeckFound") . "</span>";
+            exit;
+        }
+    
+        if ($deck->UserId !== $_SESSION["user"]->Id) {
+            echo "<span class='validation-error'>" . text("NotYourDeck") . "</span>";
+            exit;
+        }
+    ?>    
+
     <section id="deckEditor">
         <h1><?php echo text("EditDeck"); ?></h1>
 
