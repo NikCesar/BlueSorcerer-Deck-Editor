@@ -72,6 +72,8 @@
         "SearchForCards" => array("en" => "Search for cards", "de" => "Suche nach Karten"),
         "Save" => array("en" => "Save", "de" => "Speichern"),
         "Cancel" => array("en" => "Cancel", "de" => "Abbrechen"),
+        "ClickCardToAdd" => array("en" => "Click on a card to add it to your deck...", "de" => "Klicken Sie auf eine Karte um sie zu Ihrem Deck hinzuzufügen..."),
+        "MyDecks" => array("en" => "My decks", "de" => "Meine Decks"),
     );
 
     function text($key){
