@@ -60,5 +60,3 @@ function setCardSearchTooltips(cardNameTooltip, cardRuleTooltip, cardCostTooltip
 
 }
 
-
-window.onclick = function (event) {
