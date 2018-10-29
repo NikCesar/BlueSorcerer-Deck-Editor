@@ -80,6 +80,7 @@
         "NoDeckSpecified" => array("en" => "Invalid URL. No deck id found.", "de" => "Ungültige URL. Es wurde keine Deck-Id angegeben."),
         "NoDeckFound" => array("en" => "No deck found with this id.", "de" => "Es wurde kein Deck mit dieser Id gefunden."),
         "NotYourDeck" => array("en" => "You do not have permission to edit this deck.", "de" => "Sie haben keine Berechtigung, dieses Deck zu bearbeiten."),
+        "createDeckFail" => array("en" => "Failed to create a new deck. Ensure that both name and class are set.", "de" => "Erstellen des Decks ist fehlgeschlagen. Stellen Sie sicher, dass Name und Klasse ausgefüllt sind."),
     );
 
     function text($key){

@@ -10,10 +10,25 @@
         }
     }
 
-    if(isset($_POST['functionname']) && $_POST['functionname'] == "addDeck") {
-        if(isset($_POST['cardId']) && isset($_POST["deckId"])) {
-        }
+    if(isset($_POST['functionname']) && $_POST['functionname'] == "createDeck") {
+        if(isset($_POST['deckName']) && isset($_POST["deckClass"])) {
+            $userId = $_SESSION["user"]->Id;
+            $deckName = strip_tags($_POST["deckName"]);
+            $deckDescription = isset($_POST["deckDescription"]) ? strip_tags($_POST["deckDescription"]) : null;
+            $deckClass = strip_tags($_POST["deckClass"]);
 
-        $dbService->addDeck($_SESSION["user"]->Id, $_POST['deckName'], $_POST['deckDescription'], $_POST['deckClass']);
+
+            if (trim($deckName) === "" || trim($deckClass) === "") {
+                header("Location: http://" . $_SERVER["SERVER_NAME"] . "?page=decksOverview&message=createDeckFail");
+                exit;
+            }
+
+            
+            $dbService->addDeck($userId, $deckName, $deckDescription, $deckClass);
+            exit;
+        }
+        
+        header("Location: http://" . $_SERVER["SERVER_NAME"] . "?page=decksOverview&message=createDeckFail");
+        exit;
     }
 ?>
