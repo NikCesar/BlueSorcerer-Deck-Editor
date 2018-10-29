@@ -34,6 +34,40 @@
 #endregion
 
 #region Decks
+        public function getCardCount($deckId, $cardId) {
+            $query = $this->sqlClient->prepare("SELECT Count FROM deckcard WHERE DeckId = ? AND CardId = ?");
+            $query->bind_param("is", $deckId, $cardId);
+            $query->execute();
+
+            $deckCard = $query->get_result()->fetch_all(MYSQLI_ASSOC);
+
+            if (sizeof($deckCard) === 1) {
+                return ((object)$deckCard[0])->Count;
+            }
+            return null;
+        }
+
+        public function addCard($deckId, $cardId, $count = 1) {
+            $currentCount = $this->getCardCount($deckId, $cardId);
+
+            if ($currentCount === null) {
+                $query = $this->sqlClient->prepare("INSERT INTO deckcard (DeckId, CardId, Count) VALUES (?, ?, ?)");
+                $query->bind_param("isi", $deckId, $cardId, $count);
+                $query->execute();
+            } else {
+                $newCount = $currentCount + $count;
+
+                $query = $this->sqlClient->prepare("UPDATE deckcard SET Count = ? WHERE DeckId = ? AND CardId = ?");
+                $query->bind_param("iis", $newCount, $deckId, $cardId);
+                $query->execute();
+            }
+
+            if($query->affected_rows === 0) {
+                return false;
+            }
+            return true;
+        }
+
         public function addDeck($userId, $deckName, $deckDescription, $deckClass) {
             $query = $this->sqlClient->prepare("INSERT INTO deck (UserId, Name, Description, Class) VALUES (?, ?, ?, ?)");
             $query->bind_param("isss", $userId, $deckName, $deckDescription, $deckClass);

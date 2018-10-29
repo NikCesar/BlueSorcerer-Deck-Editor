@@ -7,7 +7,21 @@
 
     if(isset($_POST['functionname']) && $_POST['functionname'] == "addCard") {
         if(isset($_POST['cardId']) && isset($_POST["deckId"])) {
+            
+            $deckId = strip_tags($_POST["deckId"]);
+            $cardId = strip_tags($_POST["cardId"]);
+
+            $success = $dbService->addCard($deckId, $cardId, 1);
+
+            if ($success) {
+                redirect("deckEditor", "deckId={$deckId}");
+            }
+            else {
+                redirect("deckEditor", "deckId={$deckId}&message=cardAddFail");
+            }
         }
+
+        redirect("deckEditor", "deckId={$deckId}&message=cardAddFail");
     }
 
     if(isset($_POST['functionname']) && $_POST['functionname'] == "createDeck") {
