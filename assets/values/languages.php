@@ -66,7 +66,7 @@
         "cardClassTooltip" => array("en" => "Choose which Heroclass the card belongs to", "de" => "Wählen Sie die Heldenklasse zu der die Karte gehört"),
         "cardTypeTooltip" => array("en" => "Choose the type of the card", "de" => "Wählen Sie den gewünschten Typ der Karte"),
         "cardRaceTooltip" => array("en" => "Choose the race of the card", "de" => "Wählen Sie die gewünschte Rasse der Karte"),
-        "cardSetTooltip" => array("en" => "Choose the set in which the card was released", "de" => "Wählen Sie das Kartenset in welchem die Karte veröffentlicht wurde")
+        "cardSetTooltip" => array("en" => "Choose the set in which the card was released", "de" => "Wählen Sie das Kartenset in welchem die Karte veröffentlicht wurde"),
         "DeckClass" => array("en" => "Deck class", "de" => "Deck Klasse"),
         "EditDeck" => array("en" => "Edit your deck", "de" => "Bearbeite dein Deck"),
         "SearchForCards" => array("en" => "Search for cards", "de" => "Suche nach Karten"),
