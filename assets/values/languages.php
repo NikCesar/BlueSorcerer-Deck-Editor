@@ -68,6 +68,19 @@
 
     function text($key){
         $language = $_SESSION["language"];
+
+        if ($language === "" || $language === null) {
+            return "[" . $key . "]";
+        }
+
+        if (!array_key_exists($key, $GLOBALS["texts"])) {
+            return "[" . $key . "]";
+        }
+
+        if (!array_key_exists($language, $GLOBALS["texts"][$key])) {
+            return "[" . $key . "]";
+        }
+
         return $GLOBALS["texts"][$key][$language];
     };
 ?>
