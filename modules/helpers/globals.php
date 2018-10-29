@@ -18,4 +18,23 @@
                  "</section>";
         }        
     }
+
+    function redirectToLoginIfNotLoggedIn($redirectTo = "") {
+        if (!isLoggedIn()) {    
+            $redirect = $redirectTo !== "" && $redirectTo !== null ? "&redirect=" . $redirectTo : "";
+            $url = "http://" . $_SERVER["SERVER_NAME"] . "?page=login" . $redirect;
+            echo "<script type='text/javascript'>document.location.href='{$url}';</script>";
+            exit;
+        }
+    }
+
+    function redirect($page = "home", $params = "") {
+        if ($params !== "") {
+            header("Location: http://{$_SERVER["SERVER_NAME"]}?page={$page}&{$params}");
+            exit;
+        }
+
+        header("Location: http://{$_SERVER["SERVER_NAME"]}?page={$page}");
+        exit;
+    }
 ?>

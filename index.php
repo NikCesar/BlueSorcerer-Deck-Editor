@@ -21,11 +21,11 @@
 <!doctype html>
 <html>
     <head>
-        <?php include "pages/partials/_scripts.php"; ?>
+        <?php require "pages/partials/_scripts.php"; ?>
     </head>
 
     <body>
-        <?php include "pages/partials/_topBar.php"; ?>
+        <?php require "pages/partials/_topBar.php"; ?>
 
        <?php renderContent($pageId); ?>
 

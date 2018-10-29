@@ -6,6 +6,7 @@
         "NewestDecks"  => array("en" => "Newest Decks", "de" => "Neuste Decks"),
         "TopDecks" => array("en" => "Top Decks", "de" => "Top Decks"),
         "CardSearch" => array("en" => "Card Search", "de" => "Kartensuche"),
+        "DeckEditor" => array("en" => "Deck Editor", "de" => "Deck Editor"),
         "CardSearchName" => array("en" => "Card name contains ", "de" => "Kartenname enthält "),
         "CardSearchRule" => array("en" => "Rule text contains ", "de" => "Kartenregel enthält "),
         "CardSearchCost" => array("en" => "Manacost ", "de" => "Manakosten "),
@@ -66,10 +67,37 @@
         "cardTypeTooltip" => array("en" => "Choose the type of the card", "de" => "Wählen Sie den gewünschten Typ der Karte"),
         "cardRaceTooltip" => array("en" => "Choose the race of the card", "de" => "Wählen Sie die gewünschte Rasse der Karte"),
         "cardSetTooltip" => array("en" => "Choose the set in which the card was released", "de" => "Wählen Sie das Kartenset in welchem die Karte veröffentlicht wurde")
+        "DeckClass" => array("en" => "Deck class", "de" => "Deck Klasse"),
+        "EditDeck" => array("en" => "Edit your deck", "de" => "Bearbeite dein Deck"),
+        "SearchForCards" => array("en" => "Search for cards", "de" => "Suche nach Karten"),
+        "Save" => array("en" => "Save", "de" => "Speichern"),
+        "Cancel" => array("en" => "Cancel", "de" => "Abbrechen"),
+        "Edit" => array("en" => "Edit", "de" => "Bearbeiten"),
+        "Create" => array("en" => "Create", "de" => "Erstellen"),
+        "CreateDeck" => array("en" => "Create a new deck", "de" => "Neues Deck erstellen"),
+        "ClickCardToAdd" => array("en" => "Click on a card to add it to your deck...", "de" => "Klicken Sie auf eine Karte um sie zu Ihrem Deck hinzuzufügen..."),
+        "MyDecks" => array("en" => "My decks", "de" => "Meine Decks"),
+        "NoDeckSpecified" => array("en" => "Invalid URL. No deck id found.", "de" => "Ungültige URL. Es wurde keine Deck-Id angegeben."),
+        "NoDeckFound" => array("en" => "No deck found with this id.", "de" => "Es wurde kein Deck mit dieser Id gefunden."),
+        "NotYourDeck" => array("en" => "You do not have permission to edit this deck.", "de" => "Sie haben keine Berechtigung, dieses Deck zu bearbeiten."),
+        "createDeckFail" => array("en" => "Failed to create a new deck. Ensure that both name and class are set.", "de" => "Erstellen des Decks ist fehlgeschlagen. Stellen Sie sicher, dass Name und Klasse ausgefüllt sind."),
     );
 
     function text($key){
         $language = $_SESSION["language"];
+
+        if ($language === "" || $language === null) {
+            return "[" . $key . "]";
+        }
+
+        if (!array_key_exists($key, $GLOBALS["texts"])) {
+            return "[" . $key . "]";
+        }
+
+        if (!array_key_exists($language, $GLOBALS["texts"][$key])) {
+            return "[" . $key . "]";
+        }
+
         return $GLOBALS["texts"][$key][$language];
     };
 ?>

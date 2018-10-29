@@ -9,8 +9,8 @@
         
     <nav>
         <ul>
-            <li id="cardSearch"><a href="/?page=cardSearch"><?php echo text("CardSearch")?></a></li>
-            <li><a href="#">Link 2</a></li>
+            <li><a href="/?page=cardSearch"><?php echo text("CardSearch")?></a></li>
+            <li><a href="/?page=decksOverview"><?php echo text("DeckEditor")?></a></li>
             <li><a href="#">Link 3</a></li>
             <li><a href="#">Link 4</a></li>
             <?php if (isLoggedIn()) {

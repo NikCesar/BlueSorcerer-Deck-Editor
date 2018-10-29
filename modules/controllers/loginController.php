@@ -13,12 +13,14 @@
             $_SESSION["user"] = $dbUser;
             $_SESSION["isLoggedIn"] = true;
 
-            // Redirect to Home.
-            header("Location: http://" . $_SERVER["SERVER_NAME"] . "?message=loginSuccess");
+            if (isset($_GET["redirect"])) {
+                redirect($_GET["redirect"]);
+            }
+
+            redirect("home", "message=loginSuccess");
         } else {
-            header("Location: http://" . $_SERVER["SERVER_NAME"] . "?page=login&message=loginFail");
+            redirect("login", "message=loginFail");
         }
-        exit;
     }
 
     function verifyLogin($username, $password, $dbUser) {

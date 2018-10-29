@@ -76,12 +76,14 @@ class CardService
         return $foundCards;
     }
 
-    public function getCardsByDecklist($ids)
+    public function getCardsByDecklist($deckList)
     {
         $foundCards = array();
 
-        foreach ($ids as $cardId) {
-            array_push($foundCards, $this->cardsMap[$cardId][0]);
+        foreach ($deckList as $deckCard) {
+            for ($i = 0; $i < $deckCard->Count; $i++) {
+                array_push($foundCards, $this->cardsMap[$deckCard->CardId][0]);
+            }
         }
 
         return $foundCards;

@@ -6,9 +6,7 @@
             $_SESSION["user"] = null;
             $_SESSION["isLoggedIn"] = false;
 
-            // Redirect to Home.
-            header("Location: http://" . $_SERVER["SERVER_NAME"] . "?message=logoutSuccess");
-            exit;
+            redirect("home", "message=logoutSuccess");
         }
     }
 
