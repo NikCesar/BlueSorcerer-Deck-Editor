@@ -72,6 +72,20 @@
             }
             return $result;
         }
+
+        public function getCardsByDeckId($deckId) {
+            $query = $this->sqlClient->prepare("SELECT CardId, Count FROM deckcard WHERE DeckId = ?");
+            $query->bind_param("i", $deckId);
+            $query->execute();
+
+            $decks = $query->get_result()->fetch_all(MYSQLI_ASSOC);
+
+            $result = array();
+            foreach ($decks as $deck) {
+                array_push($result, (object) $deck);
+            }
+            return $result;
+        }
 #endregion
     }
 

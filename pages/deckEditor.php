@@ -1,6 +1,7 @@
 <?php
     redirectToLoginIfNotLoggedIn("deckEditor");
     $dbService = new DbService();
+    $cardService = new CardService();
 ?>
 
 <div class="content">
@@ -23,6 +24,9 @@
             echo "<span class='validation-error'>" . text("NotYourDeck") . "</span>";
             exit;
         }
+
+        $deckList = $dbService->getCardsByDeckId($deck->Id);
+        $cards = $cardService->getCardsByDecklist($deckList);
     ?>    
 
     <section id="deckEditor">
@@ -60,14 +64,11 @@
     </section>
 
     <section id="deckList">
-        <?php if (isset($_SESSION["deckList"])): ?>
-            <?php $searchResult = $_SESSION["deckList"];
-            foreach ($searchResult as $card): ?>
-                <div class="deckList">
-                    <img src="<?php echo $card->imgLink; ?>" title="<?php echo $card->name; ?>" />
-                </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
+        <?php foreach ($cards as $card): ?>
+            <div class="displayedCard">
+                <img src="<?php echo $card->imgLink; ?>" title="<?php echo $card->name; ?>" />
+            </div>
+        <?php endforeach; ?>
     </section>
 
     <hr/>
