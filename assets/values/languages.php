@@ -73,8 +73,13 @@
         "Save" => array("en" => "Save", "de" => "Speichern"),
         "Cancel" => array("en" => "Cancel", "de" => "Abbrechen"),
         "Edit" => array("en" => "Edit", "de" => "Bearbeiten"),
+        "Create" => array("en" => "Create", "de" => "Erstellen"),
+        "CreateDeck" => array("en" => "Create a new deck", "de" => "Neues Deck erstellen"),
         "ClickCardToAdd" => array("en" => "Click on a card to add it to your deck...", "de" => "Klicken Sie auf eine Karte um sie zu Ihrem Deck hinzuzufügen..."),
         "MyDecks" => array("en" => "My decks", "de" => "Meine Decks"),
+        "NoDeckSpecified" => array("en" => "Invalid URL. No deck id found.", "de" => "Ungültige URL. Es wurde keine Deck-Id angegeben."),
+        "NoDeckFound" => array("en" => "No deck found with this id.", "de" => "Es wurde kein Deck mit dieser Id gefunden."),
+        "NotYourDeck" => array("en" => "You do not have permission to edit this deck.", "de" => "Sie haben keine Berechtigung, dieses Deck zu bearbeiten."),
     );
 
     function text($key){
