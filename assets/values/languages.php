@@ -68,7 +68,10 @@
         "DeckName" => array("en" => "Deck name", "de" => "Deck Name"),
         "DeckDescription" => array("en" => "Deck description", "de" => "Deck Beschreibung"),
         "DeckClass" => array("en" => "Deck class", "de" => "Deck Klasse"),
+        "EditDeck" => array("en" => "Edit your deck", "de" => "Bearbeite dein Deck"),
         "SearchForCards" => array("en" => "Search for cards", "de" => "Suche nach Karten"),
+        "Save" => array("en" => "Save", "de" => "Speichern"),
+        "Cancel" => array("en" => "Cancel", "de" => "Abbrechen"),
     );
 
     function text($key){
