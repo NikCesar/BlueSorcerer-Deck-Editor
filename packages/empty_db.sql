@@ -44,7 +44,7 @@ CREATE TABLE `deck` (
 
 CREATE TABLE `deckcard` (
   `DeckId` int(11) NOT NULL,
-  `CardId` int(11) NOT NULL,
+  `CardId` varchar(10) NOT NULL,
   `Count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
