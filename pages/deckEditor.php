@@ -1,3 +1,6 @@
+<?php 
+    redirectToLoginIfNotLoggedIn("deckEditor");
+?>
 <div class="content">
     <div id="content-header"></div>
     

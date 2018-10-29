@@ -1,8 +1,5 @@
 <?php
-    if (!(isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"] == true)) {
-        header("Location: http://" . $_SERVER["SERVER_NAME"] . "?page=login");
-        exit;
-    }
+    redirectToLoginIfNotLoggedIn("userProfile");
 ?>
 
 <div class="content">
