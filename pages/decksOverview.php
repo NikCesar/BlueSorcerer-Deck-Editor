@@ -36,7 +36,6 @@
 
         <form id="createDeckForm" action="" method="POST">
             <input type="text" name="functionname" value="createDeck" class="hidden">
-            <input type="text" name="page" value="deckEditor" class="hidden">
 
             <div>
                 <label><?php echo text("DeckName"); ?></label>

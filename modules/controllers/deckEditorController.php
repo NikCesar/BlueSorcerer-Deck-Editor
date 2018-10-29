@@ -24,7 +24,9 @@
             }
 
             
-            $dbService->addDeck($userId, $deckName, $deckDescription, $deckClass);
+            $deck = $dbService->addDeck($userId, $deckName, $deckDescription, $deckClass);
+
+            header("Location: http://" . $_SERVER["SERVER_NAME"] . "?page=deckEditor&deckId=" . $deck->Id);
             exit;
         }
         
