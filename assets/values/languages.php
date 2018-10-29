@@ -6,6 +6,7 @@
         "NewestDecks"  => array("en" => "Newest Decks", "de" => "Neuste Decks"),
         "TopDecks" => array("en" => "Top Decks", "de" => "Top Decks"),
         "CardSearch" => array("en" => "Card Search", "de" => "Kartensuche"),
+        "DeckEditor" => array("en" => "Deck Editor", "de" => "Deck Editor"),
         "CardSearchName" => array("en" => "Card name contains ", "de" => "Kartenname enthält "),
         "CardSearchRule" => array("en" => "Rule text contains ", "de" => "Kartenregel enthält "),
         "CardSearchCost" => array("en" => "Manacost ", "de" => "Manakosten "),
@@ -63,7 +64,11 @@
         "cardAttackTooltip" => array("en" => "Enter the attack value of the card", "de" => "Geben Sie die gewüschte Angriffsstärke der Karte ein"),
         "cardHealthTooltip" => array("en" => "Enter the healthpoints of the card", "de" => "Geben Sie die gewünschten Lebenspunkte der Karte ein"),
         "cardClassTooltip" => array("en" => "Choose which Heroclass the card belongs to", "de" => "Wählen Sie die Heldenklasse zu der die Karte gehört"),
-        "cardTypeTooltip" => array("en" => "Choose the type of the card", "de" => "Wählen Sie den gewünschten Typ der Karte")
+        "cardTypeTooltip" => array("en" => "Choose the type of the card", "de" => "Wählen Sie den gewünschten Typ der Karte"),
+        "DeckName" => array("en" => "Deck name", "de" => "Deck Name"),
+        "DeckDescription" => array("en" => "Deck description", "de" => "Deck Beschreibung"),
+        "DeckClass" => array("en" => "Deck class", "de" => "Deck Klasse"),
+        "SearchForCards" => array("en" => "Search for cards", "de" => "Suche nach Karten"),
     );
 
     function text($key){
