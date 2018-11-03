@@ -1,3 +1,5 @@
+var cardBasket = new CardBasket();
+
 function searchForCards(query) {
     delay(function () {
         callPhpFunction("searchForCards", "query=" + query, function (result) {
@@ -56,3 +58,25 @@ function setCardSearchTooltips(cardNameTooltip, cardRuleTooltip, cardCostTooltip
     $("#raceSelect").opentip(cardRaceTooltip, {delay: 1 });
     $("#setSelect").opentip(cardSetTooltip, {delay: 1 });
 }
+
+// #region deckEditorBasket
+$(document).ready(function() {
+    // overwrite "add card to deck" button with JS card-basket.
+    var $addButtons = $(".add-card");
+    $addButtons.each(function(i, element) {
+        $(element).on("click", function(event) { addToBasketInsteadOfPosting(event); });
+    });
+});
+
+function addToBasketInsteadOfPosting(event) {
+    var cardId = $(event.target).parent()[0].cardId.value;
+    add(cardId);
+
+    event.preventDefault();
+}
+
+function add(cardId) {
+    cardBasket.addToBasket(cardId);
+}
+
+// #endregion
