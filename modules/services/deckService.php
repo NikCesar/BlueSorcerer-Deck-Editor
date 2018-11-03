@@ -2,12 +2,6 @@
 
 class DeckService
 {
-
-    function __construct()
-    {
-
-    }
-
     function mapSideBarDeck($deckList, $deckListCards) {
         $cardCountMap = array();
         foreach ($deckList as $deckCard) {

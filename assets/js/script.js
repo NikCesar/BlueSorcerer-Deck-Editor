@@ -60,7 +60,7 @@ function setCardSearchTooltips(cardNameTooltip, cardRuleTooltip, cardCostTooltip
 }
 
 // #region deck manager
-$(document).ready(function() {
+$(document).ready(function() {  
     // overwrite "add card to deck" button with JS deckManager.
     var $addButtons = $(".add-card");
     $addButtons.each(function(i, element) {

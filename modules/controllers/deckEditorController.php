@@ -2,6 +2,8 @@
     include_once "$_SERVER[DOCUMENT_ROOT]/modules/helpers/globals.php";
 
     $dbService = new DbService();
+    $cardService = new CardService();
+    $deckService = new DeckService();
 
     if (!isLoggedIn()) {
         return;
@@ -84,5 +86,22 @@
         }
         
         redirect("deckEditor", "deckId={$deckId}&message=updateDeckFail");
+    }
+
+    if(isset($_GET['functionname']) && $_GET['functionname'] == "getSidebarDeck") {
+        if(isset($_GET['deckId'])) {
+            $deckList = $dbService->getCardsByDeckId($_GET["deckId"]);
+            $deckListCards = $cardService->getCardsByDecklist($deckList);
+
+            $sidebarDeck = $deckService->mapSideBarDeck($deckList, $deckListCards);
+
+            $jsonDeck = array();
+
+            foreach ($sidebarDeck as $card) {
+                $jsonDeck["{$card->Id}"] = $card->Count;
+            }
+
+            echo json_encode($jsonDeck);
+        }
     }
 ?>
