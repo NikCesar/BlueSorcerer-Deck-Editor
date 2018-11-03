@@ -25,7 +25,7 @@ class CardService
                 $cardObject["cost"] = $row->cost;
             }
 
-            $this->cardsMap[$row->id] = (object) $cardObject;
+            $this->cardsMap[$row->id] = (object)$cardObject;
         }
     }
 
@@ -49,7 +49,7 @@ class CardService
     {
         $foundCards = array();
 
-        if (count($queries) == 0){
+        if (count($queries) == 0) {
             return $foundCards;
         }
 
@@ -77,7 +77,7 @@ class CardService
                 array_push($foundCards, $card);
             }
         }
-        usort($foundCards, function($a, $b) {
+        usort($foundCards, function ($a, $b) {
             $aCost = property_exists($a, "cost") ? $a->cost : 0;
             $bCost = property_exists($b, "cost") ? $b->cost : 0;
             $isBigger = $aCost > $bCost;
@@ -91,9 +91,7 @@ class CardService
         $foundCards = array();
 
         foreach ($deckList as $deckCard) {
-            for ($i = 0; $i < $deckCard->Count; $i++) {
-                array_push($foundCards, $this->cardsMap[$deckCard->CardId]);
-            }
+            array_push($foundCards, $this->cardsMap[$deckCard->CardId]);
         }
 
         return $foundCards;
