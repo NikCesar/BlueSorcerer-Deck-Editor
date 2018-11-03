@@ -2,9 +2,11 @@
 
 @import "elements/forms";
 
-@import "components/nav";
+@import "components/_topBar.scss";
 
 @import "../opentip.css";
+
+@import "components/_sideBarDeckList.scss";
 
 html {
     height: calc(100% - 260px);
@@ -141,6 +143,10 @@ h3 {
             }
         }
     }
+}
+
+.editor-content {
+    padding-left: 15%;
 }
 
 #register {

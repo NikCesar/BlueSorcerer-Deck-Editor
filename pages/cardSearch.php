@@ -3,9 +3,6 @@
 
 
     <?php require "pages/partials/_cardSearchFilterPanel.php"; ?>
-            var cardRaceTooltip = <?php echo json_encode(text("cardRaceTooltip"))?>;
-            var cardSetTooltip = <?php echo json_encode(text("cardSetTooltip"))?>;
-            setCardSearchTooltips(cardNameTooltip, cardRuleTooltip, cardCostTooltip, cardAttackTooltip, cardHealthTooltip, cardClassTooltip, cardTypeTooltip, cardRaceTooltip, cardSetTooltip);
 
     <hr/>
 

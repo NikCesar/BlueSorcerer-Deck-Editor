@@ -68,6 +68,27 @@
             return true;
         }
 
+    public function removeCard($deckId, $cardId, $count = 1) {
+        $currentCount = $this->getCardCount($deckId, $cardId);
+
+        if ($currentCount <= 1) {
+            $query = $this->sqlClient->prepare("DELETE FROM deckcard WHERE DeckId = ? AND CardId = ?");
+            $query->bind_param("is", $deckId, $cardId);
+            $query->execute();
+        } else {
+            $newCount = $currentCount - $count;
+
+            $query = $this->sqlClient->prepare("UPDATE deckcard SET Count = ? WHERE DeckId = ? AND CardId = ?");
+            $query->bind_param("iis", $newCount, $deckId, $cardId);
+            $query->execute();
+        }
+
+        if($query->affected_rows === 0) {
+            return false;
+        }
+        return true;
+    }
+
         public function addDeck($userId, $deckName, $deckDescription, $deckClass) {
             $query = $this->sqlClient->prepare("INSERT INTO deck (UserId, Name, Description, Class) VALUES (?, ?, ?, ?)");
             $query->bind_param("isss", $userId, $deckName, $deckDescription, $deckClass);
