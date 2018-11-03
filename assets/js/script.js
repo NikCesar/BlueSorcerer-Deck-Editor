@@ -1,4 +1,4 @@
-var cardBasket = new CardBasket();
+var deckManager = new DeckManager();
 
 function searchForCards(query) {
     delay(function () {
@@ -64,7 +64,13 @@ $(document).ready(function() {
     // overwrite "add card to deck" button with JS deckManager.
     var $addButtons = $(".add-card");
     $addButtons.each(function(i, element) {
-        $(element).on("click", function(event) { addToBasketInsteadOfPosting(event); });
+        $(element).on("click", function(event) { addToDeckWithoutPosting(event); });
+    });
+
+    // overwrite "remove card from deck" button with JS deckManager.
+    var $removeButtons = $(".remove-card");
+    $removeButtons.each(function(i, element) {
+        $(element).on("click", function(event) { removeFromDeckWithoutPosting(event); });
     });
 });
 
@@ -75,8 +81,11 @@ function addToDeckWithoutPosting(event) {
     event.preventDefault();
 }
 
-function add(cardId) {
-    cardBasket.addToBasket(cardId);
+function removeFromDeckWithoutPosting(event) {
+    var cardId = $(event.target).parent()[0].cardId.value;
+    deckManager.removeFromDeck(cardId);
+
+    event.preventDefault();
 }
 
 // #endregion
