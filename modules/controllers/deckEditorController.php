@@ -1,4 +1,6 @@
 <?php
+    include_once "$_SERVER[DOCUMENT_ROOT]/modules/helpers/globals.php";
+
     $dbService = new DbService();
 
     if (!isLoggedIn()) {
