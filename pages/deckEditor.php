@@ -2,9 +2,10 @@
     redirectToLoginIfNotLoggedIn("deckEditor");
     $dbService = new DbService();
     $cardService = new CardService();
+    $deckService = new DeckService();
 ?>
 
-<div class="content">
+<div class="content editor-content">
     <div id="content-header"></div>
 
     <?php
@@ -61,13 +62,7 @@
         </form>
     </section>
 
-    <section id="deckList">
-        <?php foreach ($deckList as $card): ?>
-            <div class="displayedCard">
-                <img src="<?php echo getCardImgLink($card->CardId); ?>" />
-            </div>
-        <?php endforeach; ?>
-    </section>
+    <?php require "pages/partials/_sideBarDeckList.php"; ?>
 
     <hr/>
 
