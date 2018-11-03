@@ -59,18 +59,18 @@ function setCardSearchTooltips(cardNameTooltip, cardRuleTooltip, cardCostTooltip
     $("#setSelect").opentip(cardSetTooltip, {delay: 1 });
 }
 
-// #region deckEditorBasket
+// #region deck manager
 $(document).ready(function() {
-    // overwrite "add card to deck" button with JS card-basket.
+    // overwrite "add card to deck" button with JS deckManager.
     var $addButtons = $(".add-card");
     $addButtons.each(function(i, element) {
         $(element).on("click", function(event) { addToBasketInsteadOfPosting(event); });
     });
 });
 
-function addToBasketInsteadOfPosting(event) {
+function addToDeckWithoutPosting(event) {
     var cardId = $(event.target).parent()[0].cardId.value;
-    add(cardId);
+    deckManager.addToDeck(cardId);
 
     event.preventDefault();
 }

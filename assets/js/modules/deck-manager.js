@@ -1,15 +1,15 @@
 
-
-class CardBasket {
+class DeckManager {
     constructor() {
         this.deckList = JSON.parse(localStorage.deckList || "[]");
     
         this.deckId = location.search.split('deckId=')[1].split("&")[0];
     }
 
-    addToBasket(cardId) {
+    addToDeck(cardId) {
         if (this.deckList[cardId] !== undefined) {
             if (this.deckList[cardId] >= 2) {
+                console.log("already 2 in deck");
                 return;
             }
         } else {
@@ -37,8 +37,8 @@ class CardBasket {
                 deckId: this.deckId,
                 functionname: "addCard"
             },
-            success: function(a,b,c) { console.log("saved",a,b,c); },
-            error: function(a,b,c) { console.log("error",a,b,c); }
+            success: function() { console.log("saved"); },
+            error: function() { console.log("error"); }
         });
     }
 
