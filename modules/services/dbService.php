@@ -119,7 +119,9 @@
             $users = $query->get_result()->fetch_all(MYSQLI_ASSOC);
 
             if (sizeof($users) === 1) {
-                return (object) $users[0];
+                $deck = (object) $users[0];
+                $_SESSION['deckClass'] = $deck->Class;
+                return $deck;
             }
             // throw exception;
             return null;
