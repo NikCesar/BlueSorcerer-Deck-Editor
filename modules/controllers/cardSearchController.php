@@ -26,6 +26,9 @@
         if (isset($_POST['cardHealth']) && $_POST['cardHealth'] !== "") {
             $queries['health'] = strip_tags($_POST['cardHealth']);
         }
+        if (isset($_GET['page']) && $_GET['page'] === "deckEditor" && isset($_SESSION['deckClass']) && $_SESSION['deckClass'] !== "") {
+            $queries['deckClass'] = strip_tags($_SESSION['deckClass']);
+        };
         if (isset($_POST['classSelect']) && $_POST['classSelect'] !== "") {
             $queries['cardClass'] = strip_tags($_POST['classSelect']);
         }
