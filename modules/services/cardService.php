@@ -18,12 +18,27 @@ class CardService
                 "name" => $row->name,
                 "cardClass" => $row->cardClass,
                 "collectible" => $row->collectible,
-                "set" => $row->set
+                "set" => $row->set,
             );
-
+            if (property_exists($row, "text")) {
+                $cardObject["text"] = $row->text;
+            }
+            if (property_exists($row, "attack")) {
+                $cardObject["attack"] = $row->attack;
+            }
+            if (property_exists($row, "health")) {
+                $cardObject["health"] = $row->health;
+            }
             if (property_exists($row, "cost")) {
                 $cardObject["cost"] = $row->cost;
             }
+            if (property_exists($row, "race")) {
+                $cardObject["race"] = $row->race;
+            }
+            if (property_exists($row, "type")) {
+                $cardObject["type"] = $row->type;
+            }
+
 
             $this->cardsMap[$row->id] = (object)$cardObject;
         }
@@ -62,10 +77,14 @@ class CardService
                             $cardIsMatch = true;
                         } else if (strpos(strtolower($card->$key), strtolower($value)) === false) {
                             $cardIsMatch = false;
-                            break;
+                            continue;
                         }
-                    } else {
-                        if (strtolower($card->$key) !== strtolower($value)) {
+                    } else if (strtolower($card->$key) !== strtolower($value)) {
+                        $cardIsMatch = false;
+                    }
+                } else if ($key === 'deckClass') {
+                    if (property_exists($card, "cardClass")) {
+                        if (strtolower($card->cardClass) !== strtolower($queries['deckClass']) && $card->cardClass !== "NEUTRAL") {
                             $cardIsMatch = false;
                         }
                     }
