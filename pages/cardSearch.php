@@ -11,7 +11,7 @@
             <?php $searchResult = $_SESSION["searchResult"];
             foreach ($searchResult as $card): ?>
                 <div class="displayedCard">
-                    <img src="<?php echo $card->imgLink; ?>">
+                    <img src="<?php echo getCardImgLink($card->id); ?>">
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
