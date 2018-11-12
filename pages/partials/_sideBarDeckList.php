@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: Nik
- * Date: 03.11.2018
- * Time: 13:35
- */
 
 $deckListCards = $cardService -> getCardsByDecklist($deckList);
 

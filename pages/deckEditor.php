@@ -27,6 +27,8 @@
         }
 
         $deckList = $dbService->getCardsByDeckId($deck->Id);
+
+
     ?>    
 
     <section id="deckEditor">

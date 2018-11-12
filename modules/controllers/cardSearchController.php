@@ -42,6 +42,6 @@
             $queries['set'] = strip_tags($_POST['setSelect']);
         }
         $queries['collectible'] = true;
-        $_SESSION["searchResult"] = $cardService->searchForCardsByQueries($queries);
+        $searchResult = new CardSearchResult($cardService->searchForCardsByQueries($queries));
     }
 ?>
