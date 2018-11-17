@@ -77,20 +77,9 @@
     </section>
 
     <section id="searchedCards">
-        <?php if (isset($_SESSION["searchResult"])): ?>
-            <?php $searchResult = $_SESSION["searchResult"];
-            foreach ($searchResult as $card): ?>
-                <div class="displayedCard hover-plus">
-                    <form id="add_<?php echo $card->id ?>" action="" method="POST">
-                        <input type="text" name="functionname" value="addCard" class="hidden" />
-                        <input type="text" name="cardId" value="<?php echo $card->id ?>" class="hidden" />
-                        <input type="text" name="deckId" value="<?php echo $deck->Id ?>" class="hidden" />
-                        <input type="submit" value="+" onclick="maintainScrollPos();" class="add-card" />
-                    </form>
-                    <img src="<?php echo getCardImgLink($card->id); ?>" />
-                </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
+        <?php if (isset($GLOBALS['cardSearchResult'])): ?>
+            <?php $GLOBALS['cardSearchResult']->renderWithAddLink($deck); ?>
+        <?php endif?>
     </section>
 
 </div>
