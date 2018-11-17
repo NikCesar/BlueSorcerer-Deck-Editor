@@ -7,8 +7,8 @@
     <hr/>
 
     <section id="searchedCards">
-        <?php if (isset($searchResult)): ?>
-            <?php $searchResult->render(); ?>
+        <?php if (isset($GLOBALS['cardSearchResult'])): ?>
+            <?php $GLOBALS['cardSearchResult']->render(); ?>
         <?php endif; ?>
     </section>
 </div>
