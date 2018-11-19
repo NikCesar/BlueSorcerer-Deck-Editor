@@ -6,6 +6,8 @@ $sideBarDeck = $deckService -> mapSideBarDeck($deckList, $deckListCards);
 ?>
 
 <div id="sideBarDeckList">
+<div class="load-container"><div class="loader">Loading...</div></div>
+
     <section id="deckList">
         <ul>
             <?php foreach ($sideBarDeck as $deckEntry): ?>

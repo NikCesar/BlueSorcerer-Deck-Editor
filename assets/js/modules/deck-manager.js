@@ -3,6 +3,8 @@ class DeckManager {
         DeckManager.deckId = location.search.split('deckId=')[1].split("&")[0];
         DeckManager.deckList = [];
 
+        startLoading();
+
         $.get({
             url: "/modules/requestHandler.php",
             data: { 
@@ -15,9 +17,8 @@ class DeckManager {
 
                 localStorage.deckList = JSON.stringify(DeckManager.deckList);
              },
-            error: function() {
-                console.log("error");
-            }
+            error: function() { console.log("error"); },
+            complete: function() { stopLoading(); }
         });
     }
 
@@ -90,11 +91,13 @@ class DeckManager {
         if (removeCompletely) {
             $("form#remove_" + cardId).parent().remove();
         } else {
-            $("form#remove_" + cardId).parent().find(".cardAmount").html(count);
+            $("form#remove_" + cardId).parent().find(".cardAmount").val(count);
         }
     }
 
     _saveCardToDeck(cardId, deckId) {
+        startLoading();
+
         $.post({
             url: "/modules/requestHandler.php",
             data: { 
@@ -103,11 +106,14 @@ class DeckManager {
                 functionname: "addCard"
             },
             success: function() { console.log("saved"); },
-            error: function() { console.log("error"); }
+            error: function() { console.log("error"); },
+            complete: function() { stopLoading(); }
         });
     }
 
     _deleteCardFromDeck(cardId, deckId) {
+        startLoading();
+
         $.post({
             url: "/modules/requestHandler.php",
             data: { 
@@ -116,10 +122,19 @@ class DeckManager {
                 functionname: "removeCard"
             },
             success: function() { console.log("removed"); },
-            error: function() { console.log("error"); }
+            error: function() { console.log("error"); },
+            complete: function() { stopLoading(); }
         });
     }
 
 // #endregion
+}
+
+function startLoading() {
+    $("#sideBarDeckList").addClass("loading");
+}
+
+function stopLoading() {
+    $("#sideBarDeckList").removeClass("loading");
 }
 

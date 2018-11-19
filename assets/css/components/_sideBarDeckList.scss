@@ -9,5 +9,21 @@
   background-color: #B86500;
   overflow-x: hidden;
   padding-top: 20px;
+
+  transition: filter 0.2s ease-in-out;
+  filter: brightness(100%);
+
+  .load-container {
+    transition: opacity 0.2s ease-in-out;   
+    opacity: 0;
+  }
+
+  &.loading {
+    filter: brightness(80%);
+
+    .load-container {
+      opacity: 1;
+    }
+  }
 }
 
