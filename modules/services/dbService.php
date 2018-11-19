@@ -53,9 +53,27 @@ class DbService
         return null;
     }
 
+    public function getCardCountInDeck($deckId) {
+        $query = $this->sqlClient->prepare("SELECT sum(Count) as Sum FROM deckcard WHERE DeckId = ?");
+        $query->bind_param("i", $deckId);
+        $query->execute();
+
+        $deckCount = $query->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        if (sizeof($deckCount) === 1) {
+            return ((object)$deckCount[0])->Sum;
+        }
+        return null;
+    }
+
     public function addCard($deckId, $cardId, $count = 1, $isLegendary)
     {
         $currentCount = $this->getCardCount($deckId, $cardId);
+        $deckSize = $this->getCardCountInDeck($deckId);
+
+        if ($deckSize !== null && $deckSize === 30) {
+            return false;
+        }
 
         if ($currentCount === null) {
             $query = $this->sqlClient->prepare("INSERT INTO deckcard (DeckId, CardId, Count) VALUES (?, ?, ?)");
