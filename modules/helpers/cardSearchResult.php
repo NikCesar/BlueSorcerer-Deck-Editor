@@ -35,6 +35,9 @@ class CardSearchResult
             echo "        <input type=\"text\" name=\"functionname\" value=\"addCard\" class=\"hidden\" />";
             echo "        <input type=\"text\" name=\"cardId\" value=\"$card->id\" class=\"hidden\" />";
             echo "        <input type=\"text\" name=\"deckId\" value=\"$deck->Id\" class=\"hidden\" />";
+            if (property_exists($card, "rarity")) {
+                echo "    <input type=\"text\" name=\"isLegendary\" value=\"$card->rarity\" class=\"hidden\" />";
+            }
             echo "        <input type=\"submit\" value=\"+\" onclick=\"maintainScrollPos();\" class=\"add-card\" />";
             echo "    </form>";
             echo "    <img src=\"" . getCardImgLink($card->id) . "\">";

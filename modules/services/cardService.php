@@ -38,6 +38,9 @@ class CardService
             if (property_exists($row, "type")) {
                 $cardObject["type"] = $row->type;
             }
+            if (property_exists($row, "rarity")) {
+                $cardObject["rarity"] = $row->rarity;
+            }
 
 
             $this->cardsMap[$row->id] = (object)$cardObject;

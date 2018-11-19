@@ -28,11 +28,17 @@
 
     if(isset($_POST['functionname']) && $_POST['functionname'] == "addCard") {
         if(isset($_POST['cardId']) && isset($_POST["deckId"])) {
-            
+
+            $isLegendary = false;
+
+            if (isset($_POST['isLegendary']) && $_POST['isLegendary'] == "LEGENDARY"){
+                $isLegendary = true;
+            }
+
             $deckId = strip_tags($_POST["deckId"]);
             $cardId = strip_tags($_POST["cardId"]);
 
-            $success = $dbService->addCard($deckId, $cardId, 1);
+            $success = $dbService->addCard($deckId, $cardId, 1, $isLegendary);
 
             if ($success) {
                 redirect("deckEditor", "deckId={$deckId}");
