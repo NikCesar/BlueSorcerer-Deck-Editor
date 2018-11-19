@@ -67,7 +67,7 @@ class CardService
     {
         $foundCards = array();
 
-        if (count($queries) == 0) {
+        if (count($queries) == 1 || (count($queries) == 2 && array_key_exists("deckClass", $queries))) {
             return $foundCards;
         }
 
