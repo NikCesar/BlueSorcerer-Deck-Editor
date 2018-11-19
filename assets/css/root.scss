@@ -4,9 +4,11 @@
 
 @import "components/_topBar.scss";
 
-@import "../opentip.css";
+@import "components/_loader.scss";
 
 @import "components/_sideBarDeckList.scss";
+
+@import "../opentip.css";
 
 html {
     height: calc(100% - 260px);
