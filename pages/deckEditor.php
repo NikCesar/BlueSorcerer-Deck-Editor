@@ -82,6 +82,7 @@
                     <form id="add_<?php echo $card->id ?>" action="" method="POST">
                         <input type="text" name="functionname" value="addCard" class="hidden" />
                         <input type="text" name="cardId" value="<?php echo $card->id ?>" class="hidden" />
+                        <input type="text" name="cardName" value="<?php echo $card->name ?>" class="hidden" />
                         <input type="text" name="deckId" value="<?php echo $deck->Id ?>" class="hidden" />
                         <input type="submit" value="+" onclick="maintainScrollPos();" class="add-card" />
                     </form>
