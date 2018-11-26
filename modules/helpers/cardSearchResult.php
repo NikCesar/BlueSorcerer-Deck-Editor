@@ -20,9 +20,9 @@ class CardSearchResult
     function render()
     {
         foreach ($this->searchResult as $card) {
-            echo "<div class=\"displayedCard\">";
-            echo "  <img src=\"" . getCardImgLink($card->id) . "\">";
-            echo "</div>";
+            echo "<div class=\"displayedCard\">".
+                 "  <img src=\"" . getCardImgLink($card->id) . "\">".
+                 "</div>";
         }
 
     }
@@ -30,20 +30,19 @@ class CardSearchResult
     function renderWithAddLink($deck)
     {
         foreach ($this->searchResult as $card) {
-            echo "<div class=\"displayedCard hover-plus\">";
-            echo "    <form id=\"add_<?php echo $card->id ?>\" action=\"\" method=\"POST\">";
-            echo "        <input type=\"text\" name=\"functionname\" value=\"addCard\" class=\"hidden\" />";
-            echo "        <input type=\"text\" name=\"cardId\" value=\"$card->id\" class=\"hidden\" />";
-            echo "        <input type=\"text\" name=\"cardName\" value=\"$card->name\" class=\"hidden\" />";
-            echo "        <input type=\"text\" name=\"deckId\" value=\"$deck->Id\" class=\"hidden\" />";
+            echo "<div class=\"displayedCard hover-plus\">".
+                 "    <form id=\"add_<?php echo $card->id ?>\" action=\"\" method=\"POST\">".
+                 "        <input type=\"text\" name=\"functionname\" value=\"addCard\" class=\"hidden\" />".
+                 "        <input type=\"text\" name=\"cardId\" value=\"$card->id\" class=\"hidden\" />".
+                 "        <input type=\"text\" name=\"cardName\" value=\"$card->name\" class=\"hidden\" />".
+                 "        <input type=\"text\" name=\"deckId\" value=\"$deck->Id\" class=\"hidden\" />";
             if (property_exists($card, "rarity")) {
                 echo "    <input type=\"text\" name=\"isLegendary\" value=\"$card->rarity\" class=\"hidden\" />";
             }
-
-            echo "        <input type=\"submit\" value=\"+\" onclick=\"maintainScrollPos();\" class=\"add-card\" />";
-            echo "    </form>";
-            echo "    <img src=\"" . getCardImgLink($card->id) . "\">";
-            echo "</div>";
+            echo "        <input type=\"submit\" value=\"+\" onclick=\"maintainScrollPos();\" class=\"add-card\" />".
+                 "    </form>".
+                 "    <img src=\"" . getCardImgLink($card->id) . "\">".
+                 "</div>";
         }
     }
 

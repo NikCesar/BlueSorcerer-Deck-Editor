@@ -4,6 +4,8 @@
     include "modules/requestHandler.php";
     include "modules/helpers/contentRenderer.php";
 
+    $cardSearchController = new CardSearchController();
+
     if (!isset($_SESSION))
     {
         session_start();
@@ -13,6 +15,12 @@
         $pageId = urldecode($_GET["page"]);
     } else {
         $pageId = "home";
+    }
+
+    if (isset($_GET["action"])){
+        if ($_GET["action"] === "searchForCardsByQueries") {
+            $cardSearchController->searchForCardsByQueries();
+        }
     }
 
     $_SESSION["language"] = "en";

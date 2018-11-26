@@ -1,15 +1,36 @@
 <?php
-    $cardService = new CardService();
+require_once ('../view/CardSearchResultView.php');
 
-    if(isset($_GET['functionname']) && $_GET['functionname'] == "searchForCards"){
-        $query = $_GET['query'];
-        echo json_encode($cardService->searchForCards($query));
+class CardSearchController {
+
+    private $cardModel;
+    private $cardSearchResultView;
+
+    function __construct()
+    {
+        $this->cardModel = new CardService();
     }
-//    if (isset($_GET['functionname']) && $_GET['functionname'] == "searchForCardsByQueries"){
-//        $queries = $_GET['queries'];
-//        echo json_encode($cardService->searchForCardsByQueries($queries));
-//    }
-    if (isset($_POST['functionname']) && $_POST['functionname'] == "searchForCardsByQueries") {
+
+    public function searchForCards() {
+        $query = $_GET['query'];
+
+        $foundCards = array();
+
+        if (trim($query) == '') {
+            echo json_encode($foundCards);
+            return;
+        }
+
+        foreach ($this->cardModel->getCardsMap() as $card) {
+            if (strpos(strtolower($card->name), strtolower($query)) !== false) {
+                array_push($foundCards, $card);
+            }
+        }
+
+        echo json_encode($foundCards);
+    }
+
+    public function searchForCardsByQueries() {
         $queries = array();
         if (isset($_POST['cardName']) && $_POST['cardName'] !== "") {
             $queries['name'] = strip_tags($_POST['cardName']);
@@ -42,6 +63,52 @@
             $queries['set'] = strip_tags($_POST['setSelect']);
         }
         $queries['collectible'] = true;
-        $GLOBALS['cardSearchResult'] = new CardSearchResult($cardService->searchForCardsByQueries($queries));
+
+        $foundCards = array();
+
+        if (count($queries) == 1 || (count($queries) == 2 && array_key_exists("deckClass", $queries))) {
+            $GLOBALS['cardSearchResult'] = new CardSearchResult($foundCards);
+            return;
+        }
+
+        foreach ($this->cardModel->getCardsMap() as $card) {
+            $cardIsMatch = true;
+            foreach ($queries as $key => $value) {
+                if (property_exists($card, $key)) {
+                    if ($key === "name" || $key === "text") {
+                        if ($value === "") {
+                            $cardIsMatch = true;
+                        } else if (strpos(strtolower($card->$key), strtolower($value)) === false) {
+                            $cardIsMatch = false;
+                            continue;
+                        }
+                    } else if (strtolower($card->$key) !== strtolower($value)) {
+                        $cardIsMatch = false;
+                    }
+                } else if ($key === 'deckClass') {
+                    if (property_exists($card, "cardClass")) {
+                        if (strtolower($card->cardClass) !== strtolower($queries['deckClass']) && $card->cardClass !== "NEUTRAL") {
+                            $cardIsMatch = false;
+                        }
+                    }
+                } else {
+                    $cardIsMatch = false;
+                }
+            }
+            if ($cardIsMatch) {
+                array_push($foundCards, $card);
+            }
+        }
+        usort($foundCards, function ($a, $b) {
+            $aCost = property_exists($a, "cost") ? $a->cost : 0;
+            $bCost = property_exists($b, "cost") ? $b->cost : 0;
+            $isBigger = $aCost > $bCost;
+            return $isBigger;
+        });
+
+        $this->cardSearchResultView = new CardSearchResultView($foundCards);
+        $this->cardSearchResultView->render();
     }
+
+}
 ?>
