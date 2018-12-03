@@ -4,7 +4,7 @@
     include "modules/requestHandler.php";
     include "modules/helpers/contentRenderer.php";
 
-    $cardSearchController = new CardSearchController();
+    $controllerInstance = new CardSearchController();
 
     if (!isset($_SESSION))
     {
@@ -17,11 +17,11 @@
         $pageId = "home";
     }
 
-    if (isset($_GET["action"])){
-        if ($_GET["action"] === "searchForCardsByQueries") {
-            $cardSearchController->searchForCardsByQueries();
-        }
-    }
+    $path = parse_url($_SERVER['REQUEST_URI'],
+        PHP_URL_PATH);
+    $components = explode('/', $path);
+    $controller = $components[1];
+    $action = $components[2];
 
     $_SESSION["language"] = "en";
 ?>
@@ -35,8 +35,17 @@
     <body>
         <?php require "pages/partials/_topBar.php"; ?>
 
-       <?php renderContent($pageId); ?>
+        <div class="content">
+            <div id="content-header"></div>
+       <?php
 
+       $controllerInstance = new $controller();
+       if (isset($action)){
+           $controllerInstance->{$action}();
+       }
+       ?>
+            </div>
+        </div>
         <footer></footer>
     </body>
 </html>

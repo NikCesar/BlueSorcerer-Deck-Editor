@@ -1,10 +1,11 @@
 <?php
-require_once ('../view/CardSearchResultView.php');
+
+require_once "$_SERVER[DOCUMENT_ROOT]/modules/view/CardSearchView.php";
 
 class CardSearchController {
 
     private $cardModel;
-    private $cardSearchResultView;
+    private $cardSearchView;
 
     function __construct()
     {
@@ -28,6 +29,14 @@ class CardSearchController {
         }
 
         echo json_encode($foundCards);
+    }
+
+    public function renderFilter() {
+        include("$_SERVER[DOCUMENT_ROOT]/pages/partials/_cardSearchFilterPanel.php");
+    }
+
+    public function renderResult() {
+        
     }
 
     public function searchForCardsByQueries() {
@@ -106,8 +115,9 @@ class CardSearchController {
             return $isBigger;
         });
 
-        $this->cardSearchResultView = new CardSearchResultView($foundCards);
-        $this->cardSearchResultView->render();
+        include("$_SERVER[DOCUMENT_ROOT]/pages/partials/_cardSearchFilterPanel.php");
+        $this->cardSearchView = new CardSearchView($foundCards);
+        $this->cardSearchView->render();
     }
 
 }
