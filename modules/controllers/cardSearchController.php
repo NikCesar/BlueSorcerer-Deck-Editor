@@ -10,6 +10,7 @@ class CardSearchController {
     function __construct()
     {
         $this->cardModel = new CardService();
+        $this->cardSearchView = new CardSearchView();
     }
 
     public function searchForCards() {
@@ -31,12 +32,13 @@ class CardSearchController {
         echo json_encode($foundCards);
     }
 
-    public function renderFilter() {
-        include("$_SERVER[DOCUMENT_ROOT]/pages/partials/_cardSearchFilterPanel.php");
+    public function renderFilterPanel() {
+        $this->cardSearchView->renderFilterPanel();
     }
 
-    public function renderResult() {
-        
+    public function renderFilterPanelWithResult() {
+        $cardSearchResult = $this->searchForCardsByQueries();
+        $this->cardSearchView->renderWithoutAddLink($cardSearchResult);
     }
 
     public function searchForCardsByQueries() {
@@ -77,7 +79,7 @@ class CardSearchController {
 
         if (count($queries) == 1 || (count($queries) == 2 && array_key_exists("deckClass", $queries))) {
             $GLOBALS['cardSearchResult'] = new CardSearchResult($foundCards);
-            return;
+            return $foundCards;
         }
 
         foreach ($this->cardModel->getCardsMap() as $card) {
@@ -114,10 +116,7 @@ class CardSearchController {
             $isBigger = $aCost > $bCost;
             return $isBigger;
         });
-
-        include("$_SERVER[DOCUMENT_ROOT]/pages/partials/_cardSearchFilterPanel.php");
-        $this->cardSearchView = new CardSearchView($foundCards);
-        $this->cardSearchView->render();
+        return $foundCards;
     }
 
 }
