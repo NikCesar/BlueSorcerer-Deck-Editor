@@ -9,7 +9,7 @@
         
     <nav>
         <ul>
-            <li><a href="/?page=cardSearch"><?php echo text("CardSearch")?></a></li>
+            <li><a href="/CardSearchController/renderFilterPanel"><?php echo text("CardSearch")?></a></li>
             <li><a href="/?page=decksOverview"><?php echo text("DeckEditor")?></a></li>
             <?php if (isLoggedIn()) {
                     echo '<li id="loginItem"><a href="/?page=userProfile">User profile</a></li>';
