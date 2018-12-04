@@ -38,7 +38,6 @@
         <div class="content">
             <div id="content-header"></div>
        <?php
-
        $controllerInstance = new $controller();
        if (isset($action)){
            $controllerInstance->{$action}();
