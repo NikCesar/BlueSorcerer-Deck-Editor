@@ -7,25 +7,31 @@
  */
 class CardSearchView {
 
-    private $cardSearchResult;
-
-    public function __construct($searchResult)
+    public function __construct()
     {
-        $this->cardSearchResult = $searchResult;
     }
 
-    function render()
+    public function renderFilterPanel() {
+        include("$_SERVER[DOCUMENT_ROOT]/pages/partials/_cardSearchFilterPanel.php");
+    }
+
+    function renderWithoutAddLink($cardSearchResult)
     {
-        foreach ($this->cardSearchResult as $card) {
+        include("$_SERVER[DOCUMENT_ROOT]/pages/partials/_cardSearchFilterPanel.php");
+        echo "<section id=\"searchedCards\">";
+        foreach ($cardSearchResult as $card) {
             echo "<div class=\"displayedCard\">".
-                "  <img src=\"" . getCardImgLink($card->id) . "\">".
-                "</div>";
+                     "    <img src=\"" . getCardImgLink($card->id) . "\">".
+                 "</div>";
         }
+        echo "</section>";
     }
 
-    function renderWithAddLink($deck)
+    function renderWithAddLink($cardSearchResult ,$deck)
     {
-        foreach ($this->cardSearchResult as $card) {
+        include("$_SERVER[DOCUMENT_ROOT]/pages/partials/_cardSearchFilterPanel.php");
+        echo "<section id=\"searchedCards\">";
+        foreach ($cardSearchResult as $card) {
             echo "<div class=\"displayedCard hover-plus\">".
                 "    <form id=\"add_<?php echo $card->id ?>\" action=\"\" method=\"POST\">".
                 "        <input type=\"text\" name=\"functionname\" value=\"addCard\" class=\"hidden\" />".
@@ -40,6 +46,7 @@ class CardSearchView {
                 "    <img src=\"" . getCardImgLink($card->id) . "\">".
                 "</div>";
         }
+        echo "</section>";
     }
 
 
