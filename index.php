@@ -17,14 +17,14 @@
 
     if (count($components) == 2) {
         if (empty($components[1])) {
-            $components[1] = "Default";
+            $components[1] = "Home";
         }
         $controller = $components[1] . "Controller";
     } else if (count($components) == 3) {
         $controller = $components[1] . "Controller";
         $action = $components[2];
     } else {
-        $controller = "DefaultController";
+        $controller = "HomeController";
         $action = "index";
     }
 
