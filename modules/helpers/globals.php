@@ -41,4 +41,8 @@
     function getCardImgLink($cardId) {
         return "https://art.hearthstonejson.com/v1/render/latest/enUS/256x/{$cardId}.png";
     }
+
+    function setPageTitle($pageTitle) {
+        echo "<script type=\"text/javascript\">document.title='$pageTitle';</script>";
+    }
 ?>

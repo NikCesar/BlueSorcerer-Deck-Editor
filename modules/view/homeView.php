@@ -34,6 +34,8 @@ class HomeView {
 
     function render404()
     {
+        setPageTitle("404 - page not found");
+        
         $page = isset($_GET["page"]) ? $_GET["page"] : "";
         echo "<div  class=\"not-found\">";
         echo "  <h1>The page '$page' was not found.</h1>";
