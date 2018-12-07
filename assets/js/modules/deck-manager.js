@@ -1,5 +1,9 @@
 class DeckManager {
     constructor() {
+        if (location.search.indexOf('deckId') <= 0) {
+            return;
+        }
+
         DeckManager.deckId = location.search.split('deckId=')[1].split("&")[0];
         DeckManager.deckList = [];
 
