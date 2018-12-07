@@ -4,26 +4,41 @@
     include "modules/requestHandler.php";
     include "modules/helpers/contentRenderer.php";
 
-    $controllerInstance = new CardSearchController();
-
     if (!isset($_SESSION))
     {
         session_start();
+
+        $_SESSION["language"] = "en";
     }
 
-    if (isset($_GET["page"])) {
-        $pageId = urldecode($_GET["page"]);
-    } else {
-        $pageId = "home";
-    }
-
-    $path = parse_url($_SERVER['REQUEST_URI'],
-        PHP_URL_PATH);
+    // redirect to controller and action.
+    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $components = explode('/', $path);
-    $controller = $components[1];
-    $action = $components[2];
 
-    $_SESSION["language"] = "en";
+    if (count($components) == 2) {
+        if (empty($components[1])) {
+            $components[1] = "Default";
+        }
+        $controller = $components[1] . "Controller";
+    } else if (count($components) == 3) {
+        $controller = $components[1] . "Controller";
+        $action = $components[2];
+    } else {
+        $controller = "DefaultController";
+        $action = "index";
+    }
+
+    try {
+        $controllerInstance = new $controller();
+    } catch (\Throwable $th) {
+        redirect("home", "notFound", "page=" . $components[1]);
+    }
+
+    if (!isset($action) || empty($action) || !method_exists($controllerInstance, $action)) {
+        if (property_exists($controllerInstance, "defaultAction")) {
+            $action = $controllerInstance->defaultAction;
+        }
+    }
 ?>
 
 <!doctype html>
@@ -37,12 +52,7 @@
 
         <div class="content">
             <div id="content-header"></div>
-       <?php
-       $controllerInstance = new $controller();
-       if (isset($action)){
-           $controllerInstance->{$action}();
-       }
-       ?>
+                <?php $controllerInstance->{$action}(); ?>
             </div>
         </div>
         <footer></footer>
