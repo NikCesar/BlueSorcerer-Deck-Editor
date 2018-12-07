@@ -35,7 +35,12 @@ class HomeView {
     function render404()
     {
         $page = isset($_GET["page"]) ? $_GET["page"] : "";
-        echo "<p>The page '{$page}' was not found.</p>";
+        echo "<div  class=\"not-found\">";
+        echo "  <h1>The page '$page' was not found.</h1>";
+        echo "  <img src=\"http://" . $_SERVER["SERVER_NAME"] . "/assets/img/404.png\" />";
+        echo "  <span class=\"name\">$page</span>";
+        echo "  <span class=\"four-oh-four\">404</span>";
+        echo "</div>";
     }
 
     
