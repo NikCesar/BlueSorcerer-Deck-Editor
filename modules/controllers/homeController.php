@@ -12,10 +12,12 @@ class HomeController {
         $this->homeView = new HomeView();
     }
 
+    /** @view method */
     public function index() {
         $this->homeView->renderIndex($this->homeModel);
     }
 
+    /** @view method */
     public function notFound() {
         $this->homeView->render404();
     }

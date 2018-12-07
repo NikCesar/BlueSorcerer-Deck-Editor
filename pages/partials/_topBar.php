@@ -9,12 +9,12 @@
         
     <nav>
         <ul>
-            <li><a href="/CardSearchController/renderFilterPanel"><?php echo text("CardSearch")?></a></li>
-            <li><a href="/?page=decksOverview"><?php echo text("DeckEditor")?></a></li>
+            <li><a href="/cardSearch"><?php echo text("CardSearch")?></a></li>
+            <li><a href="/deckOverview"><?php echo text("DeckEditor")?></a></li>
             <?php if (isLoggedIn()) {
-                    echo '<li id="loginItem"><a href="/?page=userProfile">User profile</a></li>';
+                    echo '<li id="loginItem"><a href="/userProfile">User profile</a></li>';
                 } else {
-                    echo '<li id="loginItem"><a href="/?page=login">Login</a></li>';
+                    echo '<li id="loginItem"><a href="/login">Login</a></li>';
                 }
             ?>
         </ul>
