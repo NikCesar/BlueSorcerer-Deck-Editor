@@ -1,5 +1,6 @@
 <?php
 require_once "$_SERVER[DOCUMENT_ROOT]/modules/view/homeView.php";
+require_once "$_SERVER[DOCUMENT_ROOT]/modules/models/homeModel.php";
 
 class HomeController {
 
@@ -7,11 +8,12 @@ class HomeController {
 
     function __construct()
     {
+        $this->homeModel = new HomeModel();
         $this->homeView = new HomeView();
     }
 
     public function index() {
-        $this->homeView->renderIndex();
+        $this->homeView->renderIndex($this->homeModel);
     }
 
     public function notFound() {
