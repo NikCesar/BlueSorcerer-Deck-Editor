@@ -1,7 +1,7 @@
 <section id="cardFilter">
     <h1><?php echo text("SearchForCards"); ?></h1>
 
-    <form action="/CardSearchController/renderFilterPanelWithResult" method="POST">
+    <form action="/cardSearch/results" method="POST">
         <input type="text" name="page" value="cardSearch" style="display: none">
 
         <div>

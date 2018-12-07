@@ -18,6 +18,7 @@ class CardSearchView {
     function renderWithoutAddLink($cardSearchResult)
     {
         include("$_SERVER[DOCUMENT_ROOT]/pages/partials/_cardSearchFilterPanel.php");
+
         echo "<section id=\"searchedCards\">";
         foreach ($cardSearchResult as $card) {
             echo "<div class=\"displayedCard\">".
@@ -33,7 +34,7 @@ class CardSearchView {
         echo "<section id=\"searchedCards\">";
         foreach ($cardSearchResult as $card) {
             echo "<div class=\"displayedCard hover-plus\">".
-                "    <form id=\"add_<?php echo $card->id ?>\" action=\"\" method=\"POST\">".
+                "    <form id=\"add_$card->id\" action=\"\" method=\"POST\">".
                 "        <input type=\"text\" name=\"functionname\" value=\"addCard\" class=\"hidden\" />".
                 "        <input type=\"text\" name=\"cardId\" value=\"$card->id\" class=\"hidden\" />".
                 "        <input type=\"text\" name=\"cardName\" value=\"$card->name\" class=\"hidden\" />".
