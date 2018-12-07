@@ -28,13 +28,13 @@
         }
     }
 
-    function redirect($page = "home", $params = "") {
-        if ($params !== "") {
-            header("Location: http://{$_SERVER["SERVER_NAME"]}?page={$page}&{$params}");
+    function redirect($controller = "home", $action = "", $params = "") {
+        if (!empty($params)) {
+            header("Location: http://{$_SERVER["SERVER_NAME"]}/{$controller}/{$action}?{$params}");
             exit;
         }
 
-        header("Location: http://{$_SERVER["SERVER_NAME"]}?page={$page}");
+        header("Location: http://{$_SERVER["SERVER_NAME"]}/{$controller}/{$action}");
         exit;
     }
 
