@@ -8,6 +8,7 @@
     
     include "controllers/cardSearchController.php";
     include "controllers/loginController.php";
+    include "controllers/homeController.php";
     include "controllers/userProfileController.php";
     include "controllers/deckEditorController.php";
 ?>
