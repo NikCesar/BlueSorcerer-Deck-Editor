@@ -7,6 +7,8 @@ class CardSearchController {
     private $cardModel;
     private $cardSearchView;
 
+    public $defaultAction = "renderFilterPanel";
+
     function __construct()
     {
         $this->cardModel = new CardService();
