@@ -5,6 +5,9 @@
             <h3><?php echo text("DeckEditor"); ?></h3>
             <img id="headerImage" src="http://<?php echo $_SERVER['SERVER_NAME']; ?>/assets/img/sorcerer_header.png" />
         </a>
+        <form action="/home/changeLanguage" method="POST">
+            <input id="changeLanguage" type="submit" value="<?php echo text("ChangeLanguage"); ?>"/>
+        </form>
     </header>
         
     <nav>
