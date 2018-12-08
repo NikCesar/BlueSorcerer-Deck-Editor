@@ -1,7 +1,7 @@
 <?php
     global $texts;
     $texts = array(
-        "DeckEditor" => array("en" => "Deck Editor", "de"=> "Deck Editierer"),
+        "ChangeLanguage" => array("en" => "DE", "de" => "EN"),
         "Deck" => array("en" => "Deck", "de" => "Deck"),
         "NewestDecks"  => array("en" => "Newest Decks", "de" => "Neuste Decks"),
         "TopDecks" => array("en" => "Top Decks", "de" => "Top Decks"),
