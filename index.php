@@ -9,6 +9,8 @@
         session_start();
 
         $_SESSION["language"] = "en";
+    } else if (!array_key_exists("language", $_SESSION)) {
+        $_SESSION["language"] = "en";
     }
 
     // redirect to controller and action.
