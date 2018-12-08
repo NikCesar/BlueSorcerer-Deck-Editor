@@ -21,5 +21,14 @@ class HomeController {
     public function notFound() {
         $this->homeView->render404();
     }
+
+    function changeLanguage() {
+        if($_SESSION["language"] === "en") {
+            $_SESSION["language"] = "de";
+        } else {
+            $_SESSION["language"] = "en";
+        }
+        redirectToLoginIfNotLoggedIn("home");
+    }
 }
 ?>
