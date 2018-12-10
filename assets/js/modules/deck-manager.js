@@ -10,10 +10,9 @@ class DeckManager {
         startLoading();
 
         $.get({
-            url: "/modules/requestHandler.php",
+            url: "/deckEditor/getJsDeck",
             data: { 
-                deckId: DeckManager.deckId,
-                functionname: "getSidebarDeck"
+                deckId: DeckManager.deckId
             },
             success: function(response) { 
                 console.log("received deck..", response);

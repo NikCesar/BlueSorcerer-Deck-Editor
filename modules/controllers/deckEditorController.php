@@ -118,21 +118,19 @@ class DeckEditorController {
         redirect("deckEditor", "deckId={$deckId}&message=updateDeckFail");
     }
 
-    function getSidebarDeck() {
-        redirectToLoginIfNotLoggedIn();
-
-        if(isset($_GET['deckId'])) {
-
-            $sidebarDeck = $this->deckEditorModel->getSidebarDeck($_GET["deckId"]);
-
-            $jsonDeck = array();
-
-            foreach ($sidebarDeck as $card) {
-                $jsonDeck["{$card->Id}"] = $card->Count;
-            }
-
-            echo json_encode($jsonDeck);
+    function getJsDeck() {
+        if (!isLoggedIn() || !isset($_GET["deckId"])) {
+            return "[]";
         }
+        
+        $sidebarDeck = $this->deckEditorModel->getSidebarDeck($_GET["deckId"]);
+        $jsonDeck = array();
+
+        foreach ($sidebarDeck as $card) {
+            $jsonDeck["{$card->Id}"] = $card->Count;
+        }
+
+        return json_encode($jsonDeck);
     }
 }
 ?>
