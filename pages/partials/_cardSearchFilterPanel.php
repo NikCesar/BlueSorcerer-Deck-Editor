@@ -1,7 +1,15 @@
+<?php 
+    if (isset($GLOBALS["cardSearchUrl"])) {
+        $url = $GLOBALS["cardSearchUrl"];
+    } else {
+        $url = "/cardSearch/results";
+    }
+?>
+
 <section id="cardFilter">
     <h1><?php echo text("SearchForCards"); ?></h1>
 
-    <form action="/cardSearch/results" method="POST">
+    <form action="<?php echo $url ?>" method="POST">
         <input type="text" name="page" value="cardSearch" style="display: none">
 
         <div>

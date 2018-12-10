@@ -5,7 +5,7 @@ class DeckEditorView {
     {
     }
 
-    public function renderDeckEditor($deck, $deckList, $sideBarDeck) {
+    public function renderDeckEditor($deck, $deckList, $sideBarDeck, $cardSearchResults = null) {
         echo "<section id=\"deckEditor\">";
         echo "    <h1>" . text("EditDeck") . "</h1>";
 
@@ -40,6 +40,7 @@ class DeckEditorView {
 
         echo "<hr/>";
 
+        $GLOBALS["cardSearchUrl"] = "/deckEditor/results?deckId=" . $deck->Id;
         require "pages/partials/_cardSearchFilterPanel.php";
 
         echo "<hr/>";
@@ -48,12 +49,7 @@ class DeckEditorView {
         echo "    <h3>" . text("ClickCardToAdd") . "</h3>";
         echo "</section>";
 
-        echo "<section id=\"searchedCards\">";
-        if (isset($GLOBALS['cardSearchResult']))
-        {
-            $GLOBALS['cardSearchResult']->renderWithAddLink($deck);
-        }
-        echo "</section>";
+        $this->renderWithAddLink($cardSearchResults, $deck);
     }
 
     private function renderSideBarDeckList($deck, $sideBarDeck) {
@@ -76,5 +72,27 @@ class DeckEditorView {
         echo "        </ul>";
         echo "    </section>";
         echo "</div>";
+    }
+
+    private function renderWithAddLink($cardSearchResults, $deck)
+    {
+        if (!isset($cardSearchResults)) return;
+
+        echo "<section id=\"searchedCards\">";
+        foreach ($cardSearchResults as $card) {
+            echo "<div class=\"displayedCard hover-plus\">".
+                "    <form id=\"add_$card->id\" action=\"/deckEditor/addCard\" method=\"POST\">".
+                "        <input type=\"text\" name=\"cardId\" value=\"$card->id\" class=\"hidden\" />".
+                "        <input type=\"text\" name=\"cardName\" value=\"$card->name\" class=\"hidden\" />".
+                "        <input type=\"text\" name=\"deckId\" value=\"$deck->Id\" class=\"hidden\" />";
+            if (property_exists($card, "rarity")) {
+                echo "    <input type=\"text\" name=\"isLegendary\" value=\"$card->rarity\" class=\"hidden\" />";
+            }
+            echo "        <input type=\"submit\" value=\"+\" class=\"add-card\" />".
+                "    </form>".
+                "    <img src=\"" . getCardImgLink($card->id) . "\">".
+                "</div>";
+        }
+        echo "</section>";
     }
 }

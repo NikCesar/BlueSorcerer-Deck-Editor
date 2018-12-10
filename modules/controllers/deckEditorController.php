@@ -4,6 +4,7 @@ require_once "$_SERVER[DOCUMENT_ROOT]/modules/view/deckEditorView.php";
 
 class DeckEditorController {
 
+    private $cardSearchModel;
     private $deckEditorModel;
     private $deckEditorView;
 
@@ -11,6 +12,7 @@ class DeckEditorController {
 
     function __construct()
     {
+        $this->cardSearchModel = new CardSearchModel(); //TODO: Do not use CardSearchModel in DeckEditorController.
         $this->deckEditorModel = new DeckEditorModel();
         $this->deckEditorView = new DeckEditorView();
     }
@@ -24,6 +26,20 @@ class DeckEditorController {
             $sideBarDeck = $this->deckEditorModel->getSideBarDeck($deck->Id);
 
             $this->deckEditorView->renderDeckEditor($deck, $deckList, $sideBarDeck);
+        }
+    }
+
+    /** @view method */
+    public function results() {
+        if (isset($_GET["deckId"]))
+        {
+            $deck = $this->deckEditorModel->getDeck($_GET["deckId"]);
+            $deckList = $this->deckEditorModel->getDeckList($deck);   
+            $sideBarDeck = $this->deckEditorModel->getSideBarDeck($deck->Id);
+
+            $cardSearchResult = $this->cardSearchModel->searchForCardsByQueries();
+
+            $this->deckEditorView->renderDeckEditor($deck, $deckList, $sideBarDeck, $cardSearchResult);
         }
     }
 
