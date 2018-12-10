@@ -27,6 +27,7 @@ class CardSearchController {
         $this->cardSearchView->renderWithoutAddLink($cardSearchResult);
     }
 
+    /** @JSON ONLY method */
     public function searchForCards() {
         $query = $_GET['query'];
 

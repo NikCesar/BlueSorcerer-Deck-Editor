@@ -44,7 +44,6 @@ class CardSearchModel {
         $foundCards = array();
 
         if (count($queries) == 1 || (count($queries) == 2 && array_key_exists("deckClass", $queries))) {
-            $GLOBALS['cardSearchResult'] = new CardSearchResult($foundCards);
             return $foundCards;
         }
 
