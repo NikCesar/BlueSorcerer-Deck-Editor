@@ -1,21 +1,31 @@
 <?php
-    include_once "$_SERVER[DOCUMENT_ROOT]/modules/helpers/globals.php";
+class DeckEditorController {
 
-    $dbService = new DbService();
-    $cardService = new CardService();
-    $deckService = new DeckService();
+    private $deckEditorModel;
+    private $deckEditorView;
 
-    if (!isLoggedIn()) {
-        return;
+    public $defaultAction = "index";
+
+    function __construct()
+    {
+        $this->deckEditorModel = new DeckEditorModel();
+        $this->deckEditorView = new DeckEditorView();
     }
 
-    if(isset($_POST['functionname']) && $_POST['functionname'] == "removeCard") {
+    /** @view method */
+    public function index() {
+        //TODO
+    }
+
+    public function removeCard() {
+        redirectToLoginIfNotLoggedIn();
+
         if(isset($_POST['cardId']) && isset($_POST["deckId"])) {
 
             $deckId = strip_tags($_POST["deckId"]);
             $cardId = strip_tags($_POST["cardId"]);
 
-            $success = $dbService->removeCard($deckId, $cardId);
+            $success = $this->deckEditorModel->removeCard($deckId, $cardId);
 
             if ($success) {
                 redirect("deckEditor", "deckId={$deckId}");
@@ -26,7 +36,9 @@
         }
     }
 
-    if(isset($_POST['functionname']) && $_POST['functionname'] == "addCard") {
+    public function addCard() {
+        redirectToLoginIfNotLoggedIn();
+
         if(isset($_POST['cardId']) && isset($_POST["deckId"])) {
 
             $isLegendary = false;
@@ -38,7 +50,7 @@
             $deckId = strip_tags($_POST["deckId"]);
             $cardId = strip_tags($_POST["cardId"]);
 
-            $success = $dbService->addCard($deckId, $cardId, 1, $isLegendary);
+            $success = $this->deckEditorModel->addCard($deckId, $cardId, 1, $isLegendary);
 
             if ($success) {
                 redirect("deckEditor", "deckId={$deckId}");
@@ -51,7 +63,9 @@
         redirect("deckEditor", "deckId={$deckId}&message=cardAddFail");
     }
 
-    if(isset($_POST['functionname']) && $_POST['functionname'] == "createDeck") {
+    public function createDeck() {
+        redirectToLoginIfNotLoggedIn();
+
         if(isset($_POST['deckName']) && isset($_POST["deckClass"])) {
             $userId = $_SESSION["user"]->Id;
             $deckName = strip_tags($_POST["deckName"]);
@@ -63,8 +77,7 @@
                 redirect("decksOverview", "message=createDeckFail");
             }
 
-            
-            $deck = $dbService->addDeck($userId, $deckName, $deckDescription, $deckClass);
+            $deck = $this->deckEditorModel->addDeck($userId, $deckName, $deckDescription, $deckClass);
 
             redirect("deckEditor", "deckId=" . $deck->Id);
         }
@@ -72,7 +85,9 @@
         redirect("decksOverview", "message=createDeckFail");
     }
 
-    if(isset($_POST['functionname']) && $_POST['functionname'] == "saveDeck") {
+    function saveDeck() {
+        redirectToLoginIfNotLoggedIn();
+
         if(isset($_GET['deckId']) && isset($_POST['deckName']) && isset($_POST["deckClass"])) {
             $userId = $_SESSION["user"]->Id;
             $deckId = strip_tags($_GET["deckId"]);
@@ -85,8 +100,7 @@
                 redirect("deckEditor", "deckId={$deckId}&message=updateDeckFail");
             }
 
-            
-            $dbService->updateDeck($deckId, $deckName, $deckDescription, $deckClass);
+            $this->deckEditorModel->updateDeck($deckId, $deckName, $deckDescription, $deckClass);
 
             redirect("deckEditor", "deckId=" . $deckId);
         }
@@ -94,12 +108,12 @@
         redirect("deckEditor", "deckId={$deckId}&message=updateDeckFail");
     }
 
-    if(isset($_GET['functionname']) && $_GET['functionname'] == "getSidebarDeck") {
-        if(isset($_GET['deckId'])) {
-            $deckList = $dbService->getCardsByDeckId($_GET["deckId"]);
-            $deckListCards = $cardService->getCardsByDecklist($deckList);
+    function getSidebarDeck() {
+        redirectToLoginIfNotLoggedIn();
 
-            $sidebarDeck = $deckService->mapSideBarDeck($deckList, $deckListCards);
+        if(isset($_GET['deckId'])) {
+
+            $sidebarDeck = $this->deckEditorModel->getSidebarDeck($_GET["deckId"]);
 
             $jsonDeck = array();
 
@@ -110,4 +124,5 @@
             echo json_encode($jsonDeck);
         }
     }
+}
 ?>
