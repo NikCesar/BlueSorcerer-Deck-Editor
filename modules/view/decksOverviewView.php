@@ -15,8 +15,7 @@ class DecksOverviewView {
             echo "<h3>" . $deck->Name . "</h3>";
             echo "<div class=\"description\">" . $deck->Description . "</div>";
             echo "<div class=\"class\">" . $deck->Class . "</div>";
-            echo "    <form id=\"editDeck_" . $deck->Id . "\" action=\"\" method=\"GET\">";
-            echo "        <input type=\"text\" name=\"page\" value=\"deckEditor\" class=\"hidden\" />";
+            echo "    <form id=\"editDeck_" . $deck->Id . "\" action=\"/deckEditor\" method=\"GET\">";
             echo "        <input type=\"text\" name=\"deckId\" value=\"" . $deck->Id . "\" class=\"hidden\" />";
             echo "        <input type=\"submit\" value=\"" . text("Edit") . "\" />";
             echo "     </form>";
