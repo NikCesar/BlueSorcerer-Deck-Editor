@@ -1,4 +1,7 @@
 <?php
+require_once "$_SERVER[DOCUMENT_ROOT]/modules/models/deckEditorModel.php";
+require_once "$_SERVER[DOCUMENT_ROOT]/modules/view/deckEditorView.php";
+
 class DeckEditorController {
 
     private $deckEditorModel;
@@ -14,7 +17,14 @@ class DeckEditorController {
 
     /** @view method */
     public function index() {
-        //TODO
+        if (isset($_GET["deckId"]))
+        {
+            $deck = $this->deckEditorModel->getDeck($_GET["deckId"]);
+            $deckList = $this->deckEditorModel->getDeckList($deck);   
+            $sideBarDeck = $this->deckEditorModel->getSideBarDeck($deck->Id);
+
+            $this->deckEditorView->renderDeckEditor($deck, $deckList, $sideBarDeck);
+        }
     }
 
     public function removeCard() {
