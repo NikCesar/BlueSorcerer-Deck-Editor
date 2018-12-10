@@ -87,7 +87,7 @@ class DeckManager {
         if (removeCompletely) {
             $("form#remove_" + cardId).parent().remove();
         } else {
-            $("form#remove_" + cardId).parent().find(".cardAmount").val(count);
+            $("form#remove_" + cardId).parent().find(".cardAmount").html(count);
         }
     }
 

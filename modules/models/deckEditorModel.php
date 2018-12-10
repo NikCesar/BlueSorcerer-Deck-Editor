@@ -38,8 +38,8 @@ class DeckEditorModel {
         return $success;
     }
 
-    public function addCard($deckId, $cardId, $isLegendary) {
-        $success = $this->dbService->addCard($deckId, $cardId, 1, $isLegendary);
+    public function addCard($deckId, $cardId, $count, $isLegendary) {
+        $success = $this->dbService->addCard($deckId, $cardId, $count, $isLegendary);
         return $success;
     }
 
