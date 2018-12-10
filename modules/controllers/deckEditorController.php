@@ -130,7 +130,7 @@ class DeckEditorController {
             $jsonDeck["{$card->Id}"] = $card->Count;
         }
 
-        return json_encode($jsonDeck);
+        echo json_encode($jsonDeck);
     }
 }
 ?>
