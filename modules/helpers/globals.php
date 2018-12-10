@@ -20,21 +20,21 @@
     }
 
     function redirectToLoginIfNotLoggedIn($redirectTo = "") {
-        if (!isLoggedIn()) {    
-            $redirect = $redirectTo !== "" && $redirectTo !== null ? "?redirect=" . $redirectTo : "";
-            $url = "http://" . $_SERVER["SERVER_NAME"] . "/login" . $redirect;
-            echo "<script type='text/javascript'>document.location.href='{$url}';</script>";
-            exit;
+        if (!isLoggedIn()) {
+            $_SESSION["redirectTo"] = $redirectTo;
+            redirect("login");
         }
     }
 
     function redirect($controller = "home", $action = "", $params = "") {
         if (!empty($params)) {
-            header("Location: http://{$_SERVER["SERVER_NAME"]}/{$controller}/{$action}?{$params}");
+            echo "<script type=\"text/javascript\">location.href='http://{$_SERVER["SERVER_NAME"]}/{$controller}/{$action}?{$params}';</script>";
+            //header("Location: http://{$_SERVER["SERVER_NAME"]}/{$controller}/{$action}?{$params}");
             exit;
         }
 
-        header("Location: http://{$_SERVER["SERVER_NAME"]}/{$controller}/{$action}");
+        //header("Location: http://{$_SERVER["SERVER_NAME"]}/{$controller}/{$action}");
+        echo "<script type=\"text/javascript\">location.href='http://{$_SERVER["SERVER_NAME"]}/{$controller}/{$action}';</script>";
         exit;
     }
 
