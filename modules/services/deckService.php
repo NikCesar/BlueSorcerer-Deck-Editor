@@ -15,7 +15,6 @@ class DeckService
 
         return $sideBarDeck;
     }
-
 }
 
 ?>

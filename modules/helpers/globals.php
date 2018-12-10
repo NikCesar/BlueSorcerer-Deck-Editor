@@ -21,8 +21,8 @@
 
     function redirectToLoginIfNotLoggedIn($redirectTo = "") {
         if (!isLoggedIn()) {    
-            $redirect = $redirectTo !== "" && $redirectTo !== null ? "&redirect=" . $redirectTo : "";
-            $url = "http://" . $_SERVER["SERVER_NAME"] . "?page=login" . $redirect;
+            $redirect = $redirectTo !== "" && $redirectTo !== null ? "?redirect=" . $redirectTo : "";
+            $url = "http://" . $_SERVER["SERVER_NAME"] . "/login" . $redirect;
             echo "<script type='text/javascript'>document.location.href='{$url}';</script>";
             exit;
         }
