@@ -105,7 +105,7 @@ class DeckEditorController {
 
             $deck = $this->deckEditorModel->addDeck($userId, $deckName, $deckDescription, $deckClass);
 
-            redirect("deckEditor", "deckId=" . $deck->Id);
+            redirect("deckEditor", "", "deckId=" . $deck->Id);
         }
         
         redirect("decksOverview", "message=createDeckFail");
