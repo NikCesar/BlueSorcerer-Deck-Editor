@@ -28,15 +28,14 @@ class DecksOverviewView {
         echo "<section id=\"createDeck\">";
         echo "  <h1>" . text("CreateDeck") . "</h1>";
 
-        echo "  <form id=\"createDeckForm\" action=\"\" method=\"POST\">";
-        echo "      <input type=\"text\" name=\"functionname\" value=\"createDeck\" class=\"hidden\">";
+        echo "  <form id=\"createDeckForm\" action=\"/deckEditor/createDeck\" method=\"POST\">";
         echo "      <div>";
         echo "          <label>" . text("DeckName") . "</label>";
         echo "          <input type=\"text\" name=\"deckName\" />";
         echo "      </div>";
         echo "      <div>";
         echo "          <label>" . text("DeckDescription") . "</label>";
-        echo "          <textarea type=\"text\" name=\"deckDescription\" form=\"editDeckForm\"></textarea>";
+        echo "          <textarea type=\"text\" name=\"deckDescription\" form=\"createDeckForm\"></textarea>";
         echo "      </div>";
         echo "      <div>";
         echo "          <label>" . text("DeckClass") . "</label>";
