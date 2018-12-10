@@ -17,8 +17,6 @@ class DeckManager {
             success: function(response) { 
                 console.log("received deck..", response);
                 DeckManager.deckList = JSON.parse(response);
-
-                localStorage.deckList = JSON.stringify(DeckManager.deckList);
              },
             error: function() { console.log("error"); },
             complete: function() { stopLoading(); }
@@ -38,8 +36,6 @@ class DeckManager {
         DeckManager.deckList[cardId] = DeckManager.deckList[cardId] === undefined ? 1 : DeckManager.deckList[cardId] + 1;
         this._addCardToSidebar(cardId, DeckManager.deckList[cardId]);
         this._saveCardToDeck(cardId, DeckManager.deckId);
-
-        localStorage.deckList = JSON.stringify(DeckManager.deckList);
     }
 
     removeFromDeck(cardId) {
@@ -58,8 +54,6 @@ class DeckManager {
 
         this._removeCardFromSidebar(cardId, DeckManager.deckList[cardId], removeCompletely);
         this._deleteCardFromDeck(cardId, DeckManager.deckId);
-
-        localStorage.deckList = JSON.stringify(DeckManager.deckList);
     }
 
 // #region private methods
@@ -72,11 +66,10 @@ class DeckManager {
             var html = '<li class="deckListElement">' +
             '    <label class="cardAmount">{count}</label>' +
             '    <label class="cardName">{cardName}</label>' +
-            '    <form id="remove_{cardId}" action="" method="POST">' +
-            '        <input type="text" name="functionname" value="removeCard" class="hidden">' +
+            '    <form id="remove_{cardId}" action="/deckEditor/removeCard" method="POST">' +
             '        <input type="text" name="cardId" value="{cardId}" class="hidden">' +
             '        <input type="text" name="deckId" value="{deckId}" class="hidden">' +
-            '        <input type="submit" value=" - " onclick="maintainScrollPos();" class="remove-card">' +
+            '        <input type="submit" value=" - " class="remove-card">' +
             '    </form>' +
             '</li>';
 
@@ -102,11 +95,10 @@ class DeckManager {
         startLoading();
 
         $.post({
-            url: "/modules/requestHandler.php",
+            url: "/deckEditor/addCard",
             data: { 
                 cardId: cardId, 
                 deckId: deckId,
-                functionname: "addCard"
             },
             success: function() { console.log("saved"); },
             error: function() { console.log("error"); },
@@ -118,11 +110,10 @@ class DeckManager {
         startLoading();
 
         $.post({
-            url: "/modules/requestHandler.php",
+            url: "/deckEditor/removeCard",
             data: { 
                 cardId: cardId, 
-                deckId: deckId,
-                functionname: "removeCard"
+                deckId: deckId
             },
             success: function() { console.log("removed"); },
             error: function() { console.log("error"); },
