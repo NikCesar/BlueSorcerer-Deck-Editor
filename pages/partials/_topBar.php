@@ -13,7 +13,7 @@
     <nav>
         <ul>
             <li><a href="/cardSearch"><?php echo text("CardSearch")?></a></li>
-            <li><a href="/deckOverview"><?php echo text("DeckEditor")?></a></li>
+            <li><a href="/decksOverview"><?php echo text("DeckEditor")?></a></li>
             <?php if (isLoggedIn()) {
                     echo '<li id="loginItem"><a href="/userProfile">User profile</a></li>';
                 } else {
