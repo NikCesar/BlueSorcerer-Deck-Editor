@@ -5,6 +5,7 @@ class DeckEditorView {
     {
     }
 
+    /** @view method */
     public function renderDeckEditor($deck, $deckList, $sideBarDeck, $cardSearchResults = null) {
         echo "<section id=\"deckEditor\">";
         echo "    <h1>" . text("EditDeck") . "</h1>";
