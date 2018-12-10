@@ -1,9 +1,36 @@
 <?php
 class DeckEditorModel {
+    private $dbService;
+    private $cardService;
+    private $deckService;
+
     function __construct() {
         $this->dbService = new DbService();
         $this->cardService = new CardService();
         $this->deckService = new DeckService();
+    }
+
+    public function getDeck($deckId) 
+    {
+        if ($deckId == null || $deckId < 0) {
+            return null;
+        }
+
+        $deck = $this->dbService->getDeckById($deckId);
+        return $deck;
+    }
+
+    public function getDeckList($deck) {
+        if ($deck == null || $deck->Id < 0) {
+            return null;
+        }
+    
+        if ($deck->UserId != $_SESSION["user"]->Id) {
+            return null;
+        }
+
+        $deckList = $this->dbService->getCardsByDeckId($deck->Id);
+        return $deckList;
     }
 
     public function removeCard($deckId, $cardId) {
@@ -22,10 +49,10 @@ class DeckEditorModel {
     }
 
     public function getSidebarDeck($deckId) {
-        $deckList = $dbService->getCardsByDeckId($deckId);
-        $deckListCards = $cardService->getCardsByDecklist($deckList);
+        $deckList = $this->dbService->getCardsByDeckId($deckId);
+        $deckListCards = $this->cardService->getCardsByDecklist($deckList);
 
-        $sidebarDeck = $deckService->mapSideBarDeck($deckList, $deckListCards);
+        $sidebarDeck = $this->deckService->mapSideBarDeck($deckList, $deckListCards);
 
         return $sidebarDeck;
     }
