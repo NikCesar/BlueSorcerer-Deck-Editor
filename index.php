@@ -17,6 +17,8 @@
     $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $components = explode('/', $path);
 
+    if ($path == "/favicon.ico") return;
+
     if (count($components) == 2) {
         if (empty($components[1])) {
             $components[1] = "Home";
