@@ -1,5 +1,7 @@
 <?php 
 class Starter {
+    public $isResolved;
+
     public $controllerInstance;
     public $action;
 
@@ -8,16 +10,22 @@ class Starter {
     private $requestUrl;
 
     public function init() {
+        $this->isResolved = false;
+
         $this->ensureSessionStartAndSetLanguage();
 
         $this->noHtmlCalls = array();
         $this->requestUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
+        if ($this->requestUrl == "/favicon.ico") return;
+
         $this->setupRoutingExceptions();
         $this->getControllerAndActionFromRequestUrl();
         $this->resolveControllerInstance();
-        $this->getDefaultActionIfNoneSpecified();
         $this->applyRountingExceptions();
+        $this->getDefaultActionIfNoneSpecified();
+
+        $this->isResolved = true;
     }
 
 
@@ -33,7 +41,7 @@ class Starter {
     }
 
     private function setupRoutingExceptions() {
-        array_push($this->noHtmlCalls, "deckEditor/getJsDeck");
+        array_push($this->noHtmlCalls, "DeckEditorController/getJsDeck");
     }
 
     private function getControllerAndActionFromRequestUrl() {
@@ -56,8 +64,6 @@ class Starter {
 
     private function resolveControllerInstance() {
         try {
-            if ($this->requestUrl == "/favicon.ico") return;
-            
             $targetController = $this->controller;
             $this->controllerInstance = new $targetController();
         } catch (\Throwable $th) {
@@ -76,7 +82,7 @@ class Starter {
 
     private function applyRountingExceptions() {
         // call action without rendering any HTML. This ensures that only the return value of the action is really rendered. Used for JavaScript HTTP GET calls.
-        if (in_array("$this->controller/$this->action", $this->noHtmlCalls)) {
+        if (in_array(get_class($this->controllerInstance)."/".$this->action, $this->noHtmlCalls)) {
             $this->controllerInstance->{$this->action}();
             exit;
         }

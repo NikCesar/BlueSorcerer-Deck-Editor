@@ -20,7 +20,11 @@
 
         <div class="content">
             <div id="content-header"></div>
-                <?php $starter->controllerInstance->{$starter->action}(); ?>
+                <?php 
+                    if ($starter->isResolved) {
+                        $starter->controllerInstance->{$starter->action}();
+                    }
+                ?>
             </div>
         </div>
         <footer></footer>
