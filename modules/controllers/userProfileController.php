@@ -1,9 +1,14 @@
 <?php
 
+require_once "$_SERVER[DOCUMENT_ROOT]/modules/view/userProfileView.php";
+require_once "$_SERVER[DOCUMENT_ROOT]/modules/models/userProfileModel.php";
+
 class UserProfileController {
 
     private $userProfileModel;
     private $userProfileView;
+
+    public $defaultAction = "index";
 
     function __construct() {
         $this->userProfileModel = new UserProfileModel();
@@ -15,7 +20,7 @@ class UserProfileController {
         $this->userProfileView->renderUserProfile();
     }
 
-    public function updateUserProfile() {
+    public function saveUserProfile() {
         $id = $_SESSION["user"]->Id;
         $username = strip_tags($_POST["Username"]);
         $email = strip_tags($_POST["Email"]);
@@ -23,6 +28,8 @@ class UserProfileController {
         $updatedUser = $this->userProfileModel->updateUser($id, $username, $email);
 
         $_SESSION["user"] = $updatedUser;
+
+        redirect("userProfile", "index");
     }
 
     public function logout() {

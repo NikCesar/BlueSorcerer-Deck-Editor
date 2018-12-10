@@ -1,5 +1,5 @@
 <?php
-class LoginView {
+class UserProfileView {
 
     private $isEditMode;
 
@@ -8,7 +8,7 @@ class LoginView {
         $this->isEditMode = (isset($_POST["isEditMode"]) && $_POST["isEditMode"]) ? "isEditMode" : "isReadMode";
     }
 
-    public function renderLogin() {
+    public function renderUserProfile() {
             echo "<section class=\"" . $this->isEditMode . "\">";
             echo "<form action=\"/userProfile/saveUserProfile\" method=\"POST\">";
             echo "    <div>";
