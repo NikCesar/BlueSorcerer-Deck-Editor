@@ -18,7 +18,7 @@ class DecksOverviewController {
 
     /** @view method */
     public function index() {
-        redirectToLoginIfNotLoggedIn();
+        redirectToLoginIfNotLoggedIn("decksOverview");
     
         $decks = $this->decksOverviewModel->getDecksByUserId($_SESSION["user"]->Id);
         $this->decksOverviewView->renderDecksOverview($decks);
