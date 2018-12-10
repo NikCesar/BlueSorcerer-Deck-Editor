@@ -2,7 +2,7 @@ var deckManager = new DeckManager();
 
 function searchForCards(query) {
     delay(function () {
-        callPhpFunction("searchForCards", "query=" + query, function (result) {
+        callPhpFunction("cardSearch", "searchForCards", { query: query }, function (result) {
             // do something with the result.
             console.log(result);
         });
@@ -10,11 +10,11 @@ function searchForCards(query) {
 }
 
 // #region Helper methods
-function callPhpFunction(functionName, param, successCallback) {
+function callPhpFunction(controller, action, data, successCallback) {
     $.ajax({
         type: "GET",
-        url: "http://" + window.location.hostname + "/modules/requestHandler.php",
-        data: "functionname=" + functionName + "&" + param,
+        url: "http://" + window.location.hostname + "/" + controller + "/" + action,
+        data: data,
         success: successCallback
     });
 }
