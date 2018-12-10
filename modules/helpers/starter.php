@@ -67,7 +67,7 @@ class Starter {
             $targetController = $this->controller;
             $this->controllerInstance = new $targetController();
         } catch (\Throwable $th) {
-            redirect("home", "notFound", "page=" . $this->controller);
+            redirect("home", "notFound", "page=" . str_replace("Controller", "", $this->controller));
         }
     }
 
