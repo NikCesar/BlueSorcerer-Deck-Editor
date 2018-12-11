@@ -1,47 +1,51 @@
 <?php
-    $cardService = new CardService();
 
-    if(isset($_GET['functionname']) && $_GET['functionname'] == "searchForCards"){
+require_once "$_SERVER[DOCUMENT_ROOT]/modules/view/CardSearchView.php";
+require_once "$_SERVER[DOCUMENT_ROOT]/modules/models/cardSearchModel.php";
+
+class CardSearchController {
+
+    private $cardModel;
+    private $cardSearchView;
+
+    public $defaultAction = "results";
+
+    function __construct()
+    {
+        $this->cardModel = new CardSearchModel();
+        $this->cardSearchView = new CardSearchView();
+    }
+
+    /** @view method */
+    public function index() {
+        $this->cardSearchView->renderFilterPanel();
+    }
+
+    /** @view method */
+    public function results() {
+        $cardSearchResult = $this->cardModel->searchForCardsByQueries();
+        $this->cardSearchView->renderWithoutAddLink($cardSearchResult);
+    }
+
+    /** @JSON ONLY method */
+    public function searchForCards() {
         $query = $_GET['query'];
-        echo json_encode($cardService->searchForCards($query));
+
+        $foundCards = array();
+
+        if (trim($query) == '') {
+            echo json_encode($foundCards);
+            return;
+        }
+
+        foreach ($this->cardModel->getCardsMap() as $card) {
+            if (strpos(strtolower($card->name), strtolower($query)) !== false) {
+                array_push($foundCards, $card);
+            }
+        }
+
+        echo json_encode($foundCards);
     }
-//    if (isset($_GET['functionname']) && $_GET['functionname'] == "searchForCardsByQueries"){
-//        $queries = $_GET['queries'];
-//        echo json_encode($cardService->searchForCardsByQueries($queries));
-//    }
-    if (isset($_POST['functionname']) && $_POST['functionname'] == "searchForCardsByQueries") {
-        $queries = array();
-        if (isset($_POST['cardName']) && $_POST['cardName'] !== "") {
-            $queries['name'] = strip_tags($_POST['cardName']);
-        }
-        if (isset($_POST['cardText']) && $_POST['cardText'] !== "") {
-            $queries['text'] = strip_tags($_POST['cardText']);
-        }
-        if (isset($_POST['cardCost']) && $_POST['cardCost'] !== "") {
-            $queries['cost'] = strip_tags($_POST['cardCost']);
-        }
-        if (isset($_POST['cardAttack']) && $_POST['cardAttack'] !== "") {
-            $queries['attack'] = strip_tags($_POST['cardAttack']);
-        }
-        if (isset($_POST['cardHealth']) && $_POST['cardHealth'] !== "") {
-            $queries['health'] = strip_tags($_POST['cardHealth']);
-        }
-        if (isset($_GET['page']) && $_GET['page'] === "deckEditor" && isset($_SESSION['deckClass']) && $_SESSION['deckClass'] !== "") {
-            $queries['deckClass'] = strip_tags($_SESSION['deckClass']);
-        };
-        if (isset($_POST['classSelect']) && $_POST['classSelect'] !== "") {
-            $queries['cardClass'] = strip_tags($_POST['classSelect']);
-        }
-        if (isset($_POST['typeSelect']) && $_POST['typeSelect'] !== "") {
-            $queries['type'] = strip_tags($_POST['typeSelect']);
-        }
-        if ((isset($_POST['raceSelect']) && $_POST['raceSelect'] !== "") && (isset($_POST['typeSelect']) && ($_POST['typeSelect'] === "Minion" || $_POST['typeSelect'] === ""))) {
-            $queries['race'] = strip_tags($_POST['raceSelect']);
-        }
-        if (isset($_POST['setSelect']) && $_POST['setSelect'] !== "") {
-            $queries['set'] = strip_tags($_POST['setSelect']);
-        }
-        $queries['collectible'] = true;
-        $GLOBALS['cardSearchResult'] = new CardSearchResult($cardService->searchForCardsByQueries($queries));
-    }
+
+}
 ?>

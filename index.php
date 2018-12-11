@@ -1,21 +1,12 @@
 <?php
-    include "modules/helpers/globals.php";
+    require_once "modules/helpers/globals.php";
+    require_once "modules/helpers/starter.php";
 
-    include "modules/requestHandler.php";
-    include "modules/helpers/contentRenderer.php";
+    require_once "modules/requestHandler.php";
+    require_once "modules/helpers/contentRenderer.php";
 
-    if (!isset($_SESSION))
-    {
-        session_start();
-    }
-
-    if (isset($_GET["page"])) {
-        $pageId = urldecode($_GET["page"]);
-    } else {
-        $pageId = "home";
-    }
-
-    $_SESSION["language"] = "en";
+    $starter = new Starter();
+    $starter->init();
 ?>
 
 <!doctype html>
@@ -27,8 +18,15 @@
     <body>
         <?php require "pages/partials/_topBar.php"; ?>
 
-       <?php renderContent($pageId); ?>
-
+        <div class="content">
+            <div id="content-header"></div>
+                <?php 
+                    if ($starter->isResolved) {
+                        $starter->controllerInstance->{$starter->action}();
+                    }
+                ?>
+            </div>
+        </div>
         <footer></footer>
     </body>
 </html>

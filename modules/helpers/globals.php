@@ -20,25 +20,29 @@
     }
 
     function redirectToLoginIfNotLoggedIn($redirectTo = "") {
-        if (!isLoggedIn()) {    
-            $redirect = $redirectTo !== "" && $redirectTo !== null ? "&redirect=" . $redirectTo : "";
-            $url = "http://" . $_SERVER["SERVER_NAME"] . "?page=login" . $redirect;
-            echo "<script type='text/javascript'>document.location.href='{$url}';</script>";
-            exit;
+        if (!isLoggedIn()) {
+            $_SESSION["redirectTo"] = $redirectTo;
+            redirect("login");
         }
     }
 
-    function redirect($page = "home", $params = "") {
-        if ($params !== "") {
-            header("Location: http://{$_SERVER["SERVER_NAME"]}?page={$page}&{$params}");
+    function redirect($controller = "home", $action = "", $params = "") {
+        if (!empty($params)) {
+            echo "<script type=\"text/javascript\">location.href='http://{$_SERVER["SERVER_NAME"]}/{$controller}/{$action}?{$params}';</script>";
+            //header("Location: http://{$_SERVER["SERVER_NAME"]}/{$controller}/{$action}?{$params}");
             exit;
         }
 
-        header("Location: http://{$_SERVER["SERVER_NAME"]}?page={$page}");
+        //header("Location: http://{$_SERVER["SERVER_NAME"]}/{$controller}/{$action}");
+        echo "<script type=\"text/javascript\">location.href='http://{$_SERVER["SERVER_NAME"]}/{$controller}/{$action}';</script>";
         exit;
     }
 
     function getCardImgLink($cardId) {
         return "https://art.hearthstonejson.com/v1/render/latest/enUS/256x/{$cardId}.png";
+    }
+
+    function setPageTitle($pageTitle) {
+        echo "<script type=\"text/javascript\">document.title='$pageTitle';</script>";
     }
 ?>

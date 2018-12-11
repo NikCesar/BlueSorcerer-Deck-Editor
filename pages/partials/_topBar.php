@@ -5,18 +5,19 @@
             <h3><?php echo text("DeckEditor"); ?></h3>
             <img id="headerImage" src="http://<?php echo $_SERVER['SERVER_NAME']; ?>/assets/img/sorcerer_header.png" />
         </a>
+        <form id="changeLanguage" action="/home/changeLanguage" method="POST">
+            <input type="submit" value="<?php echo text("ChangeLanguage"); ?>"/>
+        </form>
     </header>
         
     <nav>
         <ul>
-            <li><a href="/?page=cardSearch"><?php echo text("CardSearch")?></a></li>
-            <li><a href="/?page=decksOverview"><?php echo text("DeckEditor")?></a></li>
-            <li><a href="#">Link 3</a></li>
-            <li><a href="#">Link 4</a></li>
+            <li><a href="/cardSearch"><?php echo text("CardSearch")?></a></li>
+            <li><a href="/decksOverview"><?php echo text("DeckEditor")?></a></li>
             <?php if (isLoggedIn()) {
-                    echo '<li id="loginItem"><a href="/?page=userProfile">User profile</a></li>';
+                    echo '<li id="loginItem"><a href="/userProfile">User profile</a></li>';
                 } else {
-                    echo '<li id="loginItem"><a href="/?page=login">Login</a></li>';
+                    echo '<li id="loginItem"><a href="/login">Login</a></li>';
                 }
             ?>
         </ul>
