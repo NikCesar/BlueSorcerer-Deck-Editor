@@ -8,6 +8,7 @@ class CardSearchModel {
     }
 
     public function searchForCardsByQueries() {
+        $urlComponents = explode('/',  parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
         $queries = array();
         if (isset($_POST['cardName']) && $_POST['cardName'] !== "") {
             $queries['name'] = strip_tags($_POST['cardName']);
@@ -24,7 +25,7 @@ class CardSearchModel {
         if (isset($_POST['cardHealth']) && $_POST['cardHealth'] !== "") {
             $queries['health'] = strip_tags($_POST['cardHealth']);
         }
-        if (isset($_GET['page']) && $_GET['page'] === "deckEditor" && isset($_SESSION['deckClass']) && $_SESSION['deckClass'] !== "") {
+        if ($urlComponents[1] === "deckEditor" && isset($_SESSION['deckClass']) && $_SESSION['deckClass'] !== "") {
             $queries['deckClass'] = strip_tags($_SESSION['deckClass']);
         };
         if (isset($_POST['classSelect']) && $_POST['classSelect'] !== "") {
