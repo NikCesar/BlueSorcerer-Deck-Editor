@@ -71,7 +71,7 @@ class DbService
         $currentCount = $this->getCardCount($deckId, $cardId);
         $deckSize = $this->getCardCountInDeck($deckId);
 
-        if ($deckSize !== null && $deckSize === 30) {
+        if ($deckSize !== null && $deckSize === "30") {
             return false;
         }
 
