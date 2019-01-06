@@ -97,20 +97,28 @@ class DeckEditorController {
             $deckName = strip_tags($_POST["deckName"]);
             $deckDescription = isset($_POST["deckDescription"]) ? strip_tags($_POST["deckDescription"]) : null;
             $deckClass = strip_tags($_POST["deckClass"]);
-            $deckPublished = strip_tags($_POST["deckPublished"]);
+
+            $deckPublished = "";
+            if (isset($_POST["deckPublished"])) {
+                $deckPublished = strip_tags($_POST["deckPublished"]);
+            }
+
             $publishDate = null;
-            if ($deckPublished === 1) {
-                $publishDate = time();
+            if ($deckPublished !== "") {
+                $deckPublished = "j";
+                $publishDate = date('Y-m-d H:i:s');
+            } else {
+                $deckPublished = "n";
             }
 
 
             if (trim($deckName) === "" || trim($deckClass) === "") {
-                redirect("decksOverview", "message=createDeckFail");
+                redirect("decksOverview", $this->defaultAction,"message=createDeckFail");
             }
 
             $deck = $this->deckEditorModel->addDeck($userId, $deckName, $deckDescription, $deckClass, $deckPublished, $publishDate);
 
-            redirect("deckEditor", "", "deckId=" . $deck->Id);
+            redirect("deckEditor", $this->defaultAction, "deckId=" . $deck->Id);
         }
         
         redirect("decksOverview", "message=createDeckFail");
@@ -125,20 +133,32 @@ class DeckEditorController {
             $deckName = strip_tags($_POST["deckName"]);
             $deckDescription = isset($_POST["deckDescription"]) ? strip_tags($_POST["deckDescription"]) : null;
             $deckClass = strip_tags($_POST["deckClass"]);
-            $deckPublished = strip_tags($_POST["deckPublished"]);
-            $publishDate = null;
-            if ($deckPublished === 1) {
-                $publishDate = time();
+
+            $deckPublished = "";
+            if (isset($_POST["deckPublished"])) {
+                $deckPublished = strip_tags($_POST["deckPublished"]);
             }
 
+            $preSavedDeck = $this->deckEditorModel->getDeck($deckId);
+            $publishDate = null;
+            if ($deckPublished !== "") {
+                $deckPublished = "j";
+                if ($preSavedDeck->Published === "j") {
+                    $publishDate = $preSavedDeck->PublishDate;
+                } else {
+                    $publishDate = date('Y-m-d H:i:s');
+                }
+            } else {
+                $deckPublished = "n";
+            }
 
             if (trim($deckName) === "" || trim($deckClass) === "") {
-                redirect("deckEditor", "deckId={$deckId}&message=updateDeckFail");
+                redirect("deckEditor", $this->defaultAction, "deckId={$deckId}&message=updateDeckFail");
             }
 
             $this->deckEditorModel->updateDeck($deckId, $deckName, $deckDescription, $deckClass, $deckPublished, $publishDate);
 
-            redirect("deckEditor", "deckId=" . $deckId);
+            redirect("deckEditor", $this->defaultAction, "deckId=" . $deckId);
         }
         
         redirect("deckEditor", "deckId={$deckId}&message=updateDeckFail");

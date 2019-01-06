@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 05. Okt 2018 um 16:56
+-- Erstellungszeit: 06. Jan 2019 um 15:15
 -- Server-Version: 10.1.36-MariaDB
 -- PHP-Version: 7.2.10
 
@@ -31,12 +31,12 @@ SET time_zone = "+00:00";
 CREATE TABLE `deck` (
   `Id` int(11) NOT NULL,
   `UserId` int(11) NOT NULL,
-  `Name` varchar(100) NOT NULL,
-  `Description` varchar(250) DEFAULT NULL,
-  `Class` varchar(100) DEFAULT NULL,
-  `Published` tinyint(1) DEFAULT NULL,
-  `PublishDate` TIMESTAMP DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Description` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Class` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Published` char(1) COLLATE utf8mb4_unicode_ci DEFAULT 'n',
+  `PublishDate` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -46,9 +46,9 @@ CREATE TABLE `deck` (
 
 CREATE TABLE `deckcard` (
   `DeckId` int(11) NOT NULL,
-  `CardId` varchar(10) NOT NULL,
+  `CardId` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Count` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -58,8 +58,8 @@ CREATE TABLE `deckcard` (
 
 CREATE TABLE `role` (
   `Id` int(11) NOT NULL,
-  `Name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Daten für Tabelle `role`
@@ -77,18 +77,18 @@ INSERT INTO `role` (`Id`, `Name`) VALUES
 
 CREATE TABLE `user` (
   `Id` int(11) NOT NULL,
-  `Username` varchar(100) NOT NULL,
-  `Password` varchar(100) NOT NULL,
-  `Email` varchar(100) NOT NULL,
+  `Username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Password` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `RoleId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Daten für Tabelle `user`
 --
 
 INSERT INTO `user` (`Id`, `Username`, `Password`, `Email`, `RoleId`) VALUES
-(1, 'admin', '$2y$10$3dAA8rRh89l4RsMeRFIu1eE.Ysmeh5yYDBCySXW7z88Uh7NhIMCke', 'admin@admin.com', 1);
+(1, 'admin', '$2y$10$3dAA8rRh89l4RsMeRFIu1eE.Ysmeh5yYDBCySXW7z88Uh7NhIMCke', 'silbert111', 1);
 
 --
 -- Indizes der exportierten Tabellen
@@ -127,19 +127,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `deck`
 --
 ALTER TABLE `deck`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT für Tabelle `role`
 --
 ALTER TABLE `role`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints der exportierten Tabellen

@@ -11,7 +11,7 @@ class DeckEditorView {
         echo "    <section id=\"deckEditor\">";
         echo "        <h1>" . text("EditDeck") . "</h1>";
 
-        echo "        <form id=\"editDeckForm\" action=\"/deckEditor/saveDeck&deckId=$deck->Id\" method=\"POST\">";
+        echo "        <form id=\"editDeckForm\" action=\"/deckEditor/saveDeck?deckId=$deck->Id\" method=\"POST\">";
         echo "            <div>";
         echo "                <label>" . text("DeckName") . "</label>";
         echo "                <input type=\"text\" name=\"deckName\" value=\"$deck->Name\" />";
@@ -35,7 +35,8 @@ class DeckEditorView {
         echo "                </select>";
         echo "            </div>";
         echo "            <div>";
-        echo "                <input type=\"checkbox\" name=\"deckPublished\" value=\"1\">" . text("DeckPublished"). "</input>";
+        echo "                <label>" . text("DeckPublished"). "</label>";
+        echo "                <input type=\"checkbox\" name=\"deckPublished\" value=\"j\" ". ($deck->Published === "j"?"checked":"") . ">";
         echo "            </div>";
         echo "            <input type=\"submit\" value=\"" . text("Save") . "\" /> ";
         echo "        </form>";

@@ -121,7 +121,7 @@ class DbService
     public function addDeck($userId, $deckName, $deckDescription, $deckClass, $published, $publishDate)
     {
         $query = $this->sqlClient->prepare("INSERT INTO deck (UserId, Name, Description, Class, Published, PublishDate) VALUES (?, ?, ?, ?, ?, ?)");
-        $query->bind_param("isss", $userId, $deckName, $deckDescription, $deckClass);
+        $query->bind_param("isssss", $userId, $deckName, $deckDescription, $deckClass, $published, $publishDate);
         $query->execute();
 
         if ($query->affected_rows === 0) {
@@ -133,7 +133,7 @@ class DbService
     public function updateDeck($deckId, $deckName, $deckDescription, $deckClass, $published, $publishDate)
     {
         $query = $this->sqlClient->prepare("UPDATE deck SET Name = ?, Description = ?, Class = ?, Published=?, PublishDate=? WHERE Id = ?");
-        $query->bind_param("sssi", $deckName, $deckDescription, $deckClass, $deckId);
+        $query->bind_param("sssssi", $deckName, $deckDescription, $deckClass, $published, $publishDate, $deckId);
         $query->execute();
 
         if ($query->affected_rows === 0) {
@@ -156,6 +156,24 @@ class DbService
             return $deck;
         }
         // throw exception;
+        return null;
+    }
+
+    public function getNewestDecks()
+    {
+        $query = $this->sqlClient->prepare("SELECT Id, UserId, Name, Description, Class, Published, PublishDate FROM deck ORDER BY PublishDate DESC LIMIT 10");
+        $query->execute();
+
+        $newestDecks = $query->get_result()->fetch_all(MYSQLI_ASSOC);
+        $result = array();
+
+        if (sizeof($newestDecks) >= 0) {
+            foreach($newestDecks as $deck) {
+                array_push($result, (object)$deck);
+            }
+            return $result;
+        }
+        //throw exception
         return null;
     }
 
