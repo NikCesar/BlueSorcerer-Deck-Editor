@@ -3,7 +3,7 @@
 class DbService
 {
     private $sqlClient;
-    private $debug = false;
+    private $debug = true;
 
     function __construct()
     {
