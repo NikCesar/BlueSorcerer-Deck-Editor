@@ -10,12 +10,12 @@ class AdminView {
 
     public function renderUsers($users, $roles) {
 
+        validationMessageFor("resetPasswordSuccess");
+
         foreach($users as $user) {
 
             $roleName = $this->getRoleNameByRoleId($user->RoleId, $roles);
             
-            validationMessageFor("resetPasswordSuccess");
-
             echo "<section class=\"" . ($this->editModeForUserId == $user->Id ? "isEditMode" : "isReadMode") . "\">";
             echo "<form action=\"/admin/saveUser\" method=\"POST\">";
             echo "    <div>";
