@@ -50,6 +50,20 @@ class DbService
         }
         return $this->getUserByUsername($username);
     }
+
+    public function getRoles()
+    {
+        $query = $this->sqlClient->prepare("SELECT Id, Name FROM role");
+        $query->execute();
+
+        $roles = $query->get_result()->fetch_all(MYSQLI_ASSOC);
+        
+        $result = array();
+        foreach ($roles as $role) {
+            array_push($result, (object)$role);
+        }
+        return $result;
+    }
 #endregion
 
 #region Decks
