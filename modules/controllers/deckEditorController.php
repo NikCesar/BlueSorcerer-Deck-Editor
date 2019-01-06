@@ -97,13 +97,18 @@ class DeckEditorController {
             $deckName = strip_tags($_POST["deckName"]);
             $deckDescription = isset($_POST["deckDescription"]) ? strip_tags($_POST["deckDescription"]) : null;
             $deckClass = strip_tags($_POST["deckClass"]);
+            $deckPublished = strip_tags($_POST["deckPublished"]);
+            $publishDate = null;
+            if ($deckPublished === 1) {
+                $publishDate = time();
+            }
 
 
             if (trim($deckName) === "" || trim($deckClass) === "") {
                 redirect("decksOverview", "message=createDeckFail");
             }
 
-            $deck = $this->deckEditorModel->addDeck($userId, $deckName, $deckDescription, $deckClass);
+            $deck = $this->deckEditorModel->addDeck($userId, $deckName, $deckDescription, $deckClass, $deckPublished, $publishDate);
 
             redirect("deckEditor", "", "deckId=" . $deck->Id);
         }
@@ -120,13 +125,18 @@ class DeckEditorController {
             $deckName = strip_tags($_POST["deckName"]);
             $deckDescription = isset($_POST["deckDescription"]) ? strip_tags($_POST["deckDescription"]) : null;
             $deckClass = strip_tags($_POST["deckClass"]);
+            $deckPublished = strip_tags($_POST["deckPublished"]);
+            $publishDate = null;
+            if ($deckPublished === 1) {
+                $publishDate = time();
+            }
 
 
             if (trim($deckName) === "" || trim($deckClass) === "") {
                 redirect("deckEditor", "deckId={$deckId}&message=updateDeckFail");
             }
 
-            $this->deckEditorModel->updateDeck($deckId, $deckName, $deckDescription, $deckClass);
+            $this->deckEditorModel->updateDeck($deckId, $deckName, $deckDescription, $deckClass, $deckPublished, $publishDate);
 
             redirect("deckEditor", "deckId=" . $deckId);
         }

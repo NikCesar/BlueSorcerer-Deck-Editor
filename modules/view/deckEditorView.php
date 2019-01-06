@@ -34,6 +34,9 @@ class DeckEditorView {
         echo "                    <option value=\"Warlock\" ". ($deck->Class === "Warlock"?"selected=selected":"") . " >" . text("ClassWarlock") . "</option>";
         echo "                </select>";
         echo "            </div>";
+        echo "            <div>";
+        echo "                <input type=\"checkbox\" name=\"deckPublished\" value=\"1\">" . text("DeckPublished"). "</input>";
+        echo "            </div>";
         echo "            <input type=\"submit\" value=\"" . text("Save") . "\" /> ";
         echo "        </form>";
         echo "    </section>";

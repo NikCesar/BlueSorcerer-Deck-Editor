@@ -33,7 +33,9 @@ CREATE TABLE `deck` (
   `UserId` int(11) NOT NULL,
   `Name` varchar(100) NOT NULL,
   `Description` varchar(250) DEFAULT NULL,
-  `Class` varchar(100) DEFAULT NULL
+  `Class` varchar(100) DEFAULT NULL,
+  `Published` tinyint(1) DEFAULT NULL,
+  `PublishDate` TIMESTAMP DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
