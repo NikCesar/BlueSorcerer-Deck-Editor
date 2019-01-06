@@ -101,7 +101,11 @@
         "passwordResetEmailBody" => array("en" => "Dear Sir or Madam\n\nPlease click on this link in order to reset your password:\n{{link}}\n\nKind regards\nBlueSorcerer Team\n\n<strong>This is a system-generated email.</strong>", "de" => "Guten Tag\n\nBitte klicken Sie auf folgenden Link, um Ihr Passwort zurückzusetzen:\n{{link}}\n\nFreundliche Grüsse\nBlueSorcerer Team\n\n<strong>This is a system-generated email.</strong>"),
         "resetPasswordBadInput" => array("en" => "Please enter a password that is at least 4 characters long and check that both passwords match.", "de" => "Bitte verwenden Sie 4 oder mehr Zeichen und stellen sicher, dass beide Passwörter übereinstimmen."),
         "resetPasswordSuccess" => array("en" => "Password successfully reset.", "de" => "Passwort erfolreich gesetzt."),
-        "resetPasswordFail" => array("en" => "", "Password reset has failed. Please contact a system administrator." => "Passwort zurücksetzen ist fehlgeschlagen. Bitte kontaktieren Sie ein System-Administrator."),
+        "resetPasswordFail" => array("en" => "Password reset has failed. Please contact a system administrator.", "de" => "Passwort zurücksetzen ist fehlgeschlagen. Bitte kontaktieren Sie ein System-Administrator."),
+        "Password" => array("en" => "Password", "de" => "Passwort"),
+        "PasswordConfirm" => array("en" => "Confirm password", "de" => "Passwort bestätigen"),
+        "ResetPassword" => array("en" => "Reset your password", "de" => "Passwort zurücksetzen"),
+        "Confirm" => array("en" => "Confirm", "de" => "Bestätigen"),
     );
 
     function text($key){
