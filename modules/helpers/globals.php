@@ -26,13 +26,6 @@
         }
     }
 
-    function redirectToLoginIfNotAuthorized($redirectTo = "") {
-        if (!isAdmin($_SESSION["user"])) {
-            $_SESSION["redirectTo"] = $redirectTo;
-            redirect("login");
-        }
-    }
-
     function redirect($controller = "home", $action = "", $params = "") {
         if (!empty($params)) {
             echo "<script type=\"text/javascript\">location.href='http://{$_SERVER["SERVER_NAME"]}/{$controller}/{$action}?{$params}';</script>";
@@ -51,11 +44,5 @@
 
     function setPageTitle($pageTitle) {
         echo "<script type=\"text/javascript\">document.title='$pageTitle';</script>";
-    }
-
-    function isAdmin($user) {
-        $roles = [ "Administrator" => 1, "Guest" => 2 ];
-        
-        return $user->RoleId == $roles["Administrator"];
     }
 ?>
