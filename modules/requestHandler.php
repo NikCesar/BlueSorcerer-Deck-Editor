@@ -9,7 +9,7 @@
     require_once "$_SERVER[DOCUMENT_ROOT]/modules/services/mailService.php";
     require_once "$_SERVER[DOCUMENT_ROOT]/modules/services/roleService.php";
     
-    require_once "$_SERVER[DOCUMENT_ROOT]/modules/controllers/cardSearchController.php";
+    require_once "$_SERVER[DOCUMENT_ROOT]/modules/controllers/visitDeckController.php";
     require_once "$_SERVER[DOCUMENT_ROOT]/modules/controllers/loginController.php";
     require_once "$_SERVER[DOCUMENT_ROOT]/modules/controllers/homeController.php";
     require_once "$_SERVER[DOCUMENT_ROOT]/modules/controllers/userProfileController.php";

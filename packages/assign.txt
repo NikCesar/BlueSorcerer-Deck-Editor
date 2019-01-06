@@ -1,0 +1,101 @@
+"BlueSorcerer Hearthstone deck-editor" Project Team (Matthias Thomann, Nikola Cesarov)
+
+**-------------------------------------------------------------------------------------------**
+
+Assignment 01 HTML:
+
+The page uses echo to print the html elements of each view.
+Certain partial page content is written solely in php/html as it does not require a MCV triad.
+
+The views are contained in modules/view/...
+
+
+**-------------------------------------------------------------------------------------------**
+
+Assignment 02 CSS:
+
+We used SCSS, a CSS pre-processor, to give our CSS more power with syntax advancements.
+Most of the CSS is contained in the root.scss file. But for certain partial page content we created 
+own CSS files to keep it separated.
+
+The SCSS files are contained in assets/css/...
+
+**-------------------------------------------------------------------------------------------**
+
+Assignment 03 PHP1:
+
+As we do not have products, we store all currently the available Hearthstone-Cards,
+that we load from a third-party API, in a Array on the first page startup. 
+These cards are stored in 'modules/services/cardService.php' but instead of price, etc. we store id, name,
+and other relevant card information in this array for further use.
+
+The navigation area is conatined in the pages/partials/_topBar.php file. This file is dynamically included,
+that way every page has acces to the navigation top bar. 
+
+**-------------------------------------------------------------------------------------------**
+
+Assignment 04 PHP2:
+
+The web application is hosted on a public free webserver. 
+
+At the time we did create our webpage as a multi-page PHP File, but later assignments required a rebuild to MVC.
+
+The page supports English and German as languages. The multilanguage text is stored in assets/values/languages.php
+We created a helper function, that only requires the array key of the text. It will then search for that text
+with the currently selected language option, that is saved in $_SESSION and return the correct version of the text, if it exists.
+
+Code reusage with helper functions can be found in many places. From the language text retrieval to the
+generic redirect function in modules/helpers/globals.php
+
+**-------------------------------------------------------------------------------------------**
+
+Assignment 05 Forms:
+
+The pages/partials/cardSearchFilterPanel.php is a card search form that uses different input types.
+The modules/view/deckEditorView.php uses another form to let the user input the deck information. 
+
+As the cards are not bought or shipped, we do not have a Shipping or Confirmation Form.
+
+**-------------------------------------------------------------------------------------------**
+
+Assignment 06 Javascript:
+
+Our Javascript code is contained in assets/js/...
+All the scripts are included in the pages/partials/_scripts.php file, so we can manage them in one place.
+
+The cardSearchFilterPanel.php uses formValidation on submit of a search query. 
+E.g.: A card can only have a 'race' attribute, if it is of type 'minion'. If not, the browser will display a alert
+and cancel the execution of the search. Same if the manacost of the card is higher than 20, as there are no cards
+that have a higher mana cost than 20. 
+
+The page uses opentip-jquery as an enhanced tooltip library.
+In the cardSearchFilterPanel each input field contains a tooltip if you hover over the input field. 
+The tooltips are assigned with the use jquery. 
+
+The deckEditor also works in an enhanced way with Javascript. It still works if Javascript is disabled, just slower
+as every added card to the deck requires a reload of the entire page.
+
+
+**-------------------------------------------------------------------------------------------**
+
+Assignment 07 MySQL:
+
+We use a MySQL database to store user information, created decks of our users and contained cards in the decks.
+
+We mainly used phpMyAdmin to access and manage our database directly. 
+
+Our MySQL user is 'root' without password. 
+
+All our database access in PHP is contained in the modules/services/dbService.php file. Here all the prepared
+statements to insert, update, retrieve or delete data in and from the database can be found. 
+
+There is a C-Panel to manage users and their credentials. 
+
+**-------------------------------------------------------------------------------------------**
+
+Assignment 08 Sessions:
+
+We do not use Cookies, because we were able to solve all the problems that arose from keeping information via the Session-File
+and the database.
+
+Our webpage supports user authentication with Login-name, password and 

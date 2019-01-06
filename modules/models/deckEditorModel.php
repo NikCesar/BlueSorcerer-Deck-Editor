@@ -43,8 +43,13 @@ class DeckEditorModel {
         return $success;
     }
 
-    public function addDeck($userId, $deckName, $deckDescription, $deckClass) {
-        $deck = $this->dbService->addDeck($userId, $deckName, $deckDescription, $deckClass);
+    public function addDeck($userId, $deckName, $deckDescription, $deckClass, $deckPublished, $publishDate) {
+        $deck = $this->dbService->addDeck($userId, $deckName, $deckDescription, $deckClass, $deckPublished, $publishDate);
+        return $deck;
+    }
+
+    public function updateDeck($userId, $deckName, $deckDescription, $deckClass, $deckPublished, $publishDate) {
+        $deck = $this->dbService->updateDeck($userId, $deckName, $deckDescription, $deckClass, $deckPublished, $publishDate);
         return $deck;
     }
 

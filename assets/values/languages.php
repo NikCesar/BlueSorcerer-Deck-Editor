@@ -85,6 +85,8 @@
         "DeckDescription" => array("en" => "Deck description", "de" => "Deck Beschreibung"),
         "UserProfile" => array("en" => "User Profile", "de" => "User Profil"),
         "createUserFail" => array("en" => "Failed to create a new user. Ensure that both username and email are set.", "de" => "Erstellen des Benutzers ist fehlgeschlagen. Stellen Sie sicher, dass Benutzername und Email ausgefüllt sind."),
+        "DeckPublished" => array("en" => "Deck published", "de" => "Deck veröffentlicht"),
+        "VisitDeck" => array("en" => "View Deck", "de" => "Deck ansehen")
         "updateUserBadMail" => array("en" => "Failed to update the user. Please enter a valid email address.", "de" => "Aktualisieren des Benutzers ist fehlgeschlagen. Bitte geben Sie eine gültige Email-Adresse ein."),
         "createUserBadMail" => array("en" => "Failed to create a new user. Please enter a valid email address.", "de" => "Erstellen des Benutzers ist fehlgeschlagen. Bitte geben Sie eine gültige Email-Adresse ein."),
         "createUserSuccess" => array("en" => "User successfully created. He/She will receive a password reset link shortly.", "de" => "Benutzer erfolgreich erstellt. Er/Sie wird in Kürze eine 'Passwort zurücksetzen' Email erhalten."),
