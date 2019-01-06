@@ -83,6 +83,9 @@
         "createDeckFail" => array("en" => "Failed to create a new deck. Ensure that both name and class are set.", "de" => "Erstellen des Decks ist fehlgeschlagen. Stellen Sie sicher, dass Name und Klasse ausgefüllt sind."),
         "DeckName" => array("en" => "Deck name", "de" => "Deck Name"),
         "DeckDescription" => array("en" => "Deck description", "de" => "Deck Beschreibung"),
+        "UserProfile" => array("en" => "User Profile", "de" => "User Profil"),
+        "Login" => array("en" => "Login", "de" => "Login"),
+        "Admin" => array("en" => "Admin", "de" => "Admin"),
     );
 
     function text($key){
