@@ -8,9 +8,13 @@ class AdminView {
         $this->editModeForUserId = (isset($_POST["editModeForUserId"]) && $_POST["editModeForUserId"] !== -1) ? (int)$_POST["editModeForUserId"] : -1;  
     }
 
-    public function renderUsers($users) {
+    public function renderUsers($users, $roles) {
 
         foreach($users as $user) {
+
+            $roleName = $this->getRoleNameByRoleId($user->RoleId, $roles);
+            
+
             echo "<section class=\"" . ($this->editModeForUserId == $user->Id ? "isEditMode" : "isReadMode") . "\">";
             echo "<form action=\"/admin/saveUser\" method=\"POST\">";
             echo "    <div>";
@@ -30,19 +34,57 @@ class AdminView {
             echo "    </div>";
             echo "    <div>";
             echo "        <label>Role: </label>";
-            echo "        <label class=\"readMode\">{$user->RoleId}</label>";
-            echo "        <input class=\"editMode\" type=\"text\" name=\"RoleId\" value=\"{$user->RoleId}\" />";
+            echo "        <label class=\"readMode\">".text("Role_".$roleName)."</label>";
+            echo "        <select class=\"editMode\" name=\"RoleId\" value=\"$user->RoleId\">";
+            foreach ($roles as $role) {
+            echo "          <option value=\"{$role->Id}\" ". ($user->RoleId === $role->Id ? "selected=selected" : "").">".text("Role_".$role->Name)."</option>";
+            }
+            echo "        </select>";
             echo "    </div>";
 
             echo "    <input class=\"editMode\" type=\"button\" value=\"Cancel\" onclick=\"window.location.href = window.location.href;\" />";
             echo "    <input class=\"editMode\" type=\"submit\" value=\"Save\" />";
             echo "</form>";
 
+            validationMessageFor("updateUserBadMail{$user->Id}", "updateUserBadMail");
+            
             echo "<form action=\"/admin\" method=\"POST\">";
             echo "    <input class=\"readMode hidden\" type=\"text\" name=\"editModeForUserId\" value=\"{$user->Id}\" />";
             echo "    <input class=\"readMode\" type=\"submit\" value=\"Edit\" />";
             echo "</form>";
             echo "</section>";
         }
-    }   
+
+        // render "create new user".
+
+        echo "<hr/>";
+
+        echo "<section>";
+        echo "  <h1>" . text("CreateUser") . "</h1>";
+
+        echo "  <form id=\"createUserForm\" action=\"/admin/createUser\" method=\"POST\">";
+        echo "      <div>";
+        echo "          <label>" . text("Username") . "</label>";
+        echo "          <input type=\"text\" name=\"username\" />";
+        echo "      </div>";
+        echo "      <div>";
+        echo "          <label>" . text("Email") . "</label>";
+        echo "          <input type=\"text\" name=\"email\" />";
+        echo "      </div>";
+        echo "      <div>";
+        echo "          <label>" . text("Role") . "</label>";
+        echo "        <select name=\"roleId\">";
+        foreach ($roles as $role) {
+        echo "          <option value=\"{$role->Id}\">".text("Role_".$role->Name)."</option>";
+        }
+        echo "        </select>";
+        echo "      </div>";
+
+        validationMessageFor("createUserFail");
+        validationMessageFor("createUserBadMail");
+
+        echo "      <input type=\"submit\" value=\"" . text("Create") . "\" />";          
+        echo "  </form>";
+        echo "</section>";
+    }
 }
