@@ -24,8 +24,9 @@ class UserProfileController {
         $id = $_SESSION["user"]->Id;
         $username = strip_tags($_POST["Username"]);
         $email = strip_tags($_POST["Email"]);
+        $roleId = $_SESSION["user"]->RoleId;
 
-        $updatedUser = $this->userProfileModel->updateUser($id, $username, $email);
+        $updatedUser = $this->userProfileModel->updateUser($id, $username, $email, $roleId);
 
         $_SESSION["user"] = $updatedUser;
 
