@@ -18,10 +18,15 @@ class AdminController {
     /** @view method */
     public function index() {
         redirectToLoginIfNotLoggedIn("admin");
-        redirectToLoginIfNotAuthorized("admin");
+        if (!$_SESSION["user"]->IsAdmin)
+        {
+            redirect("home");
+        }
 
         $users = $this->adminModel->getAllUsers();
-        $this->adminView->renderUsers($users);
+        $roles = $this->adminModel->getRoles();
+
+        $this->adminView->renderUsers($users, $roles);
     }
 
     public function saveUser() {

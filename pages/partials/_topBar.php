@@ -20,6 +20,10 @@
                     echo '<li id="loginItem"><a href="/login">'.text("Login").'</a></li>';
                 }
             ?>
+            <?php if (isLoggedIn() && $_SESSION["user"]->IsAdmin) {
+                    echo '<li id="loginItem"><a href="/admin">'.text("Admin").'</a></li>';
+                }
+            ?>
         </ul>
         <div style="clear: both"></div>
     </nav>
