@@ -80,7 +80,8 @@ CREATE TABLE `user` (
   `Username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Password` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `RoleId` int(11) NOT NULL
+  `RoleId` int(11) NOT NULL,
+  `ResetToken` varchar(50) COLLATE utf8mb4_unicode_ci NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
