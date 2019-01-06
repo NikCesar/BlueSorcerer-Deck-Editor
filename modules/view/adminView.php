@@ -87,4 +87,30 @@ class AdminView {
         echo "  </form>";
         echo "</section>";
     }
+    
+    private function getRoleNameByRoleId($roleId, $roles) {
+        foreach ($roles as $key => $role) {
+            if ($role->Id === $roleId) {
+                return $role->Name;
+            }
+        }
+        return "NotFound";
+    }
+
+    public function renderPasswordReset($userId) {
+        echo "<section>";
+        echo "<form action=\"/admin/resetPassword\" method=\"POST\">";
+        echo "    <div>";
+        echo "        <label>Id: </label>";
+        echo "        <label class=\"readMode\">{$user->Id}</label>";
+        echo "        <input class=\"editMode\" type=\"text\" name=\"Id\" value=\"{$user->Id}\" readonly=\"readonly\" />";
+        echo "    </div>";
+        echo "    <div>";
+        echo "        <label>Username: </label>";
+        echo "        <label class=\"readMode\">{$user->Username}</label>";
+        echo "        <input class=\"editMode\" type=\"text\" name=\"Username\" value=\"{$user->Username}\" />";
+        echo "    </div>";
+        echo "</form>";
+        echo "</section>";
+    }
 }

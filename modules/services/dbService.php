@@ -31,6 +31,21 @@ class DbService
         // throw exception;
         return null;
     }
+    
+    public function getUserByResetToken($token)
+    {
+        $query = $this->sqlClient->prepare("SELECT Id, Username, Password, Email, RoleId, ResetToken FROM user WHERE ResetToken = ?");
+        $query->bind_param("s", $token);
+        $query->execute();
+
+        $users = $query->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        if (sizeof($users) === 1) {
+            return (object)$users[0];
+        }
+        // throw exception;
+        return null;
+    }
 
     public function getAllUsers()
     {
@@ -58,6 +73,30 @@ class DbService
         return $this->getUserByUsername($username);
     }
 
+    public function saveResetToken($id, $token)
+    {
+        $query = $this->sqlClient->prepare("UPDATE user SET ResetToken = ? WHERE Id = ?");
+        $query->bind_param("si", $token, $id);
+        $query->execute();
+
+        if ($query->affected_rows === 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public function createUser($username, $email, $roleId)
+    {
+        $query = $this->sqlClient->prepare("INSERT INTO user (Username, Email, RoleId) VALUES (?, ?, ?)");
+        $query->bind_param("ssi", $username, $email, $roleId);
+        $query->execute();
+
+        if ($query->affected_rows === 0) {
+            return null;
+        }
+        return $this->getUserByUsername($username);
+    }
+
     public function getRoles()
     {
         $query = $this->sqlClient->prepare("SELECT Id, Name FROM role");
@@ -70,6 +109,18 @@ class DbService
             array_push($result, (object)$role);
         }
         return $result;
+    }
+
+    public function resetPassword($userId, $password)
+    {
+        $query = $this->sqlClient->prepare("UPDATE user SET ResetToken = NULL, Password = ? WHERE Id = ?");
+        $query->bind_param("si", $password, $id);
+        $query->execute();
+
+        if ($query->affected_rows === 0) {
+            return false;
+        }
+        return true;
     }
 #endregion
 
