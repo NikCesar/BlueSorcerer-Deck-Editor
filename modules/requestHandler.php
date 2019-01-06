@@ -11,4 +11,5 @@
     include "controllers/userProfileController.php";
     include "controllers/deckEditorController.php";
     include "controllers/decksOverviewController.php";
+    include "controllers/adminController.php";
 ?>
