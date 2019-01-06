@@ -114,7 +114,7 @@ class DbService
     public function resetPassword($userId, $password)
     {
         $query = $this->sqlClient->prepare("UPDATE user SET ResetToken = NULL, Password = ? WHERE Id = ?");
-        $query->bind_param("si", $password, $id);
+        $query->bind_param("si", $password, $userId);
         $query->execute();
 
         if ($query->affected_rows === 0) {
