@@ -6,8 +6,8 @@ class UserProfileModel {
         $this->dbService = new DbService();
     }
 
-    public function updateUser($id, $username, $email) {
-        return $this->dbService->updateUser($id, $username, $email);
+    public function updateUser($id, $username, $email, $roleId) {
+        return $this->dbService->updateUser($id, $username, $email, $roleId);
     }
 }
 ?>

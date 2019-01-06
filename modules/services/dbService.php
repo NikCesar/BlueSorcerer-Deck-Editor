@@ -12,7 +12,7 @@ class DbService
 #region User
     public function getUserByUsername($username)
     {
-        $query = $this->sqlClient->prepare("SELECT Id, Username, Password, Email FROM user WHERE Username = ?");
+        $query = $this->sqlClient->prepare("SELECT Id, Username, Password, Email, RoleId FROM user WHERE Username = ?");
         $query->bind_param("s", $username);
         $query->execute();
 
@@ -25,10 +25,24 @@ class DbService
         return null;
     }
 
-    public function updateUser($id, $username, $email)
+    public function getAllUsers()
     {
-        $query = $this->sqlClient->prepare("UPDATE user SET Username = ?, Email = ? WHERE Id = ?");
-        $query->bind_param("ssi", $username, $email, $id);
+        $query = $this->sqlClient->prepare("SELECT Id, Username, Password, Email, RoleId FROM user");
+        $query->execute();
+
+        $users = $query->get_result()->fetch_all(MYSQLI_ASSOC);
+        
+        $result = array();
+        foreach ($users as $user) {
+            array_push($result, (object)$user);
+        }
+        return $result;
+    }
+
+    public function updateUser($id, $username, $email, $roleId)
+    {
+        $query = $this->sqlClient->prepare("UPDATE user SET Username = ?, Email = ?, RoleId = ? WHERE Id = ?");
+        $query->bind_param("ssii", $username, $email, $roleId, $id);
         $query->execute();
 
         if ($query->affected_rows === 0) {
