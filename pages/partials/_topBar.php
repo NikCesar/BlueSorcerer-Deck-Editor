@@ -15,9 +15,13 @@
             <li><a href="/cardSearch"><?php echo text("CardSearch")?></a></li>
             <li><a href="/decksOverview"><?php echo text("DeckEditor")?></a></li>
             <?php if (isLoggedIn()) {
-                    echo '<li id="loginItem"><a href="/userProfile">User profile</a></li>';
+                    echo '<li id="loginItem"><a href="/userProfile">'.text("UserProfile").'</a></li>';
                 } else {
-                    echo '<li id="loginItem"><a href="/login">Login</a></li>';
+                    echo '<li id="loginItem"><a href="/login">'.text("Login").'</a></li>';
+                }
+            ?>
+            <?php if (isLoggedIn() && $_SESSION["user"]->IsAdmin) {
+                    echo '<li id="loginItem"><a href="/admin">'.text("Admin").'</a></li>';
                 }
             ?>
         </ul>

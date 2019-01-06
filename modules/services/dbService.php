@@ -3,16 +3,23 @@
 class DbService
 {
     private $sqlClient;
+    private $debug = true;
 
     function __construct()
     {
-        $this->sqlClient = new mysqli("localhost", "root", "", "bluesorcerer");
+        if ($this->debug) {
+            $this->sqlClient = new mysqli("localhost", "root", "", "bluesorcerer");
+        }
+        else
+        {
+            $this->sqlClient = new mysqli("sql200.epizy.com", "epiz_23077044", "MV2HlNt4", "epiz_23077044_bluesorcerer");
+        }
     }
 
 #region User
     public function getUserByUsername($username)
     {
-        $query = $this->sqlClient->prepare("SELECT Id, Username, Password, Email FROM user WHERE Username = ?");
+        $query = $this->sqlClient->prepare("SELECT Id, Username, Password, Email, RoleId FROM user WHERE Username = ?");
         $query->bind_param("s", $username);
         $query->execute();
 
@@ -24,17 +31,96 @@ class DbService
         // throw exception;
         return null;
     }
-
-    public function updateUser($id, $username, $email)
+    
+    public function getUserByResetToken($token)
     {
-        $query = $this->sqlClient->prepare("UPDATE user SET Username = ?, Email = ? WHERE Id = ?");
-        $query->bind_param("ssi", $username, $email, $id);
+        $query = $this->sqlClient->prepare("SELECT Id, Username, Password, Email, RoleId, ResetToken FROM user WHERE ResetToken = ?");
+        $query->bind_param("s", $token);
+        $query->execute();
+
+        $users = $query->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        if (sizeof($users) === 1) {
+            return (object)$users[0];
+        }
+        // throw exception;
+        return null;
+    }
+
+    public function getAllUsers()
+    {
+        $query = $this->sqlClient->prepare("SELECT Id, Username, Password, Email, RoleId FROM user");
+        $query->execute();
+
+        $users = $query->get_result()->fetch_all(MYSQLI_ASSOC);
+        
+        $result = array();
+        foreach ($users as $user) {
+            array_push($result, (object)$user);
+        }
+        return $result;
+    }
+
+    public function updateUser($id, $username, $email, $roleId)
+    {
+        $query = $this->sqlClient->prepare("UPDATE user SET Username = ?, Email = ?, RoleId = ? WHERE Id = ?");
+        $query->bind_param("ssii", $username, $email, $roleId, $id);
         $query->execute();
 
         if ($query->affected_rows === 0) {
             return null;
         }
         return $this->getUserByUsername($username);
+    }
+
+    public function saveResetToken($id, $token)
+    {
+        $query = $this->sqlClient->prepare("UPDATE user SET ResetToken = ? WHERE Id = ?");
+        $query->bind_param("si", $token, $id);
+        $query->execute();
+
+        if ($query->affected_rows === 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public function createUser($username, $email, $roleId)
+    {
+        $query = $this->sqlClient->prepare("INSERT INTO user (Username, Email, RoleId) VALUES (?, ?, ?)");
+        $query->bind_param("ssi", $username, $email, $roleId);
+        $query->execute();
+
+        if ($query->affected_rows === 0) {
+            return null;
+        }
+        return $this->getUserByUsername($username);
+    }
+
+    public function getRoles()
+    {
+        $query = $this->sqlClient->prepare("SELECT Id, Name FROM role");
+        $query->execute();
+
+        $roles = $query->get_result()->fetch_all(MYSQLI_ASSOC);
+        
+        $result = array();
+        foreach ($roles as $role) {
+            array_push($result, (object)$role);
+        }
+        return $result;
+    }
+
+    public function resetPassword($userId, $password)
+    {
+        $query = $this->sqlClient->prepare("UPDATE user SET ResetToken = NULL, Password = ? WHERE Id = ?");
+        $query->bind_param("si", $password, $userId);
+        $query->execute();
+
+        if ($query->affected_rows === 0) {
+            return false;
+        }
+        return true;
     }
 #endregion
 
@@ -71,7 +157,7 @@ class DbService
         $currentCount = $this->getCardCount($deckId, $cardId);
         $deckSize = $this->getCardCountInDeck($deckId);
 
-        if ($deckSize !== null && $deckSize === 30) {
+        if ($deckSize !== null && $deckSize === "30") {
             return false;
         }
 
@@ -118,10 +204,10 @@ class DbService
         return true;
     }
 
-    public function addDeck($userId, $deckName, $deckDescription, $deckClass)
+    public function addDeck($userId, $deckName, $deckDescription, $deckClass, $published, $publishDate)
     {
-        $query = $this->sqlClient->prepare("INSERT INTO deck (UserId, Name, Description, Class) VALUES (?, ?, ?, ?)");
-        $query->bind_param("isss", $userId, $deckName, $deckDescription, $deckClass);
+        $query = $this->sqlClient->prepare("INSERT INTO deck (UserId, Name, Description, Class, Published, PublishDate) VALUES (?, ?, ?, ?, ?, ?)");
+        $query->bind_param("isssss", $userId, $deckName, $deckDescription, $deckClass, $published, $publishDate);
         $query->execute();
 
         if ($query->affected_rows === 0) {
@@ -130,10 +216,10 @@ class DbService
         return $this->getDeckById($query->insert_id);
     }
 
-    public function updateDeck($deckId, $deckName, $deckDescription, $deckClass)
+    public function updateDeck($deckId, $deckName, $deckDescription, $deckClass, $published, $publishDate)
     {
-        $query = $this->sqlClient->prepare("UPDATE deck SET Name = ?, Description = ?, Class = ? WHERE Id = ?");
-        $query->bind_param("sssi", $deckName, $deckDescription, $deckClass, $deckId);
+        $query = $this->sqlClient->prepare("UPDATE deck SET Name = ?, Description = ?, Class = ?, Published=?, PublishDate=? WHERE Id = ?");
+        $query->bind_param("sssssi", $deckName, $deckDescription, $deckClass, $published, $publishDate, $deckId);
         $query->execute();
 
         if ($query->affected_rows === 0) {
@@ -144,7 +230,7 @@ class DbService
 
     public function getDeckById($deckId)
     {
-        $query = $this->sqlClient->prepare("SELECT Id, UserId, Name, Description, Class FROM deck WHERE Id = ?");
+        $query = $this->sqlClient->prepare("SELECT Id, UserId, Name, Description, Class, Published, PublishDate FROM deck WHERE Id = ?");
         $query->bind_param("i", $deckId);
         $query->execute();
 
@@ -159,9 +245,27 @@ class DbService
         return null;
     }
 
+    public function getNewestDecks()
+    {
+        $query = $this->sqlClient->prepare("SELECT Id, UserId, Name, Description, Class, Published, PublishDate FROM deck ORDER BY PublishDate DESC LIMIT 10");
+        $query->execute();
+
+        $newestDecks = $query->get_result()->fetch_all(MYSQLI_ASSOC);
+        $result = array();
+
+        if (sizeof($newestDecks) >= 0) {
+            foreach($newestDecks as $deck) {
+                array_push($result, (object)$deck);
+            }
+            return $result;
+        }
+        //throw exception
+        return null;
+    }
+
     public function getDecksByUserId($userId)
     {
-        $query = $this->sqlClient->prepare("SELECT Id, UserId, Name, Description, Class FROM deck WHERE UserId = ?");
+        $query = $this->sqlClient->prepare("SELECT Id, UserId, Name, Description, Class, Published, PublishDate FROM deck WHERE UserId = ?");
         $query->bind_param("i", $userId);
         $query->execute();
 

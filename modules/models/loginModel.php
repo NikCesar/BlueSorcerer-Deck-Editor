@@ -1,13 +1,17 @@
 <?php
 class LoginModel {
     private $dbService;
+    private $roleService;
 
     function __construct() {
         $this->dbService = new DbService();
+        $this->roleService = new RoleService();
     }
 
     function getUserByUsername($username) {
-        return $this->dbService->getUserByUsername($username);
+        $user = $this->dbService->getUserByUsername($username);
+        $user->IsAdmin = $this->roleService->isAdmin($user);
+        return $user;
     }
 }
 ?>

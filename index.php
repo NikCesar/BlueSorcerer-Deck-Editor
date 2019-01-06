@@ -3,7 +3,6 @@
     require_once "modules/helpers/starter.php";
 
     require_once "modules/requestHandler.php";
-    require_once "modules/helpers/contentRenderer.php";
 
     $starter = new Starter();
     $starter->init();

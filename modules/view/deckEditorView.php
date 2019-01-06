@@ -7,50 +7,57 @@ class DeckEditorView {
 
     /** @view method */
     public function renderDeckEditor($deck, $deckList, $sideBarDeck, $cardSearchResults = null) {
-        echo "<section id=\"deckEditor\">";
-        echo "    <h1>" . text("EditDeck") . "</h1>";
+        echo "<div id=\"deckEditorContent\">";
+        echo "    <section id=\"deckEditor\">";
+        echo "        <h1>" . text("EditDeck") . "</h1>";
 
-        echo "    <form id=\"editDeckForm\" action=\"/deckEditor/saveDeck&deckId=$deck->Id\" method=\"POST\">";
-        echo "        <div>";
-        echo "            <label>" . text("DeckName") . "</label>";
-        echo "            <input type=\"text\" name=\"deckName\" value=\"$deck->Name\" />";
-        echo "        </div>";
-        echo "        <div>";
-        echo "            <label>" . text("DeckDescription") . "</label>";
-        echo "            <textarea type=\"text\" name=\"deckDescription\" form=\"editDeckForm\">$deck->Description</textarea>";
-        echo "        </div>";
-        echo "        <div>";
-        echo "            <label>" . text("DeckClass"). "</label>";
-        echo "            <select name=\"deckClass\" value=\"$deck->Class\">";
-        echo "                <option value=\"\"></option>";
-        echo "                <option value=\"Druid\" ". ($deck->Class === "Druid"?"selected=selected":"") . ">" . text("ClassDruid") . "</option>";
-        echo "                <option value=\"Hunter\" ". ($deck->Class === "Hunter"?"selected=selected":"") . " >" . text("ClassHunter") . "</option>";
-        echo "                <option value=\"Mage\" ". ($deck->Class === "Mage"?"selected=selected":"") . " >" . text("ClassMage") . "</option>";
-        echo "                <option value=\"Paladin\" ". ($deck->Class === "Paladin"?"selected=selected":"") . " >" . text("ClassPaladin") . "</option>";
-        echo "                <option value=\"Priest\" ". ($deck->Class === "Priest"?"selected=selected":"") . " >" . text("ClassPriest") . "</option>";
-        echo "                <option value=\"Rogue\" ". ($deck->Class === "Rogue"?"selected=selected":"") . " >" . text("ClassRogue") . "</option>";
-        echo "                <option value=\"Shaman\" ". ($deck->Class === "Shaman"?"selected=selected":"") . " >" . text("ClassShaman") . "</option>";
-        echo "                <option value=\"Warlock\" ". ($deck->Class === "Warlock"?"selected=selected":"") . " >" . text("ClassWarlock") . "</option>";
-        echo "            </select>";
-        echo "        </div>";
-        echo "        <input type=\"submit\" value=\"" . text("Save") . "\" /> ";           
-        echo "    </form>";
-        echo "</section>";
+        echo "        <form id=\"editDeckForm\" action=\"/deckEditor/saveDeck?deckId=$deck->Id\" method=\"POST\">";
+        echo "            <div>";
+        echo "                <label>" . text("DeckName") . "</label>";
+        echo "                <input type=\"text\" name=\"deckName\" value=\"$deck->Name\" />";
+        echo "            </div>";
+        echo "            <div>";
+        echo "                <label>" . text("DeckDescription") . "</label>";
+        echo "                <textarea type=\"text\" name=\"deckDescription\" form=\"editDeckForm\">$deck->Description</textarea>";
+        echo "            </div>";
+        echo "            <div>";
+        echo "                <label>" . text("DeckClass"). "</label>";
+        echo "                <select name=\"deckClass\" value=\"$deck->Class\">";
+        echo "                    <option value=\"\"></option>";
+        echo "                    <option value=\"Druid\" ". ($deck->Class === "Druid"?"selected=selected":"") . ">" . text("ClassDruid") . "</option>";
+        echo "                    <option value=\"Hunter\" ". ($deck->Class === "Hunter"?"selected=selected":"") . " >" . text("ClassHunter") . "</option>";
+        echo "                    <option value=\"Mage\" ". ($deck->Class === "Mage"?"selected=selected":"") . " >" . text("ClassMage") . "</option>";
+        echo "                    <option value=\"Paladin\" ". ($deck->Class === "Paladin"?"selected=selected":"") . " >" . text("ClassPaladin") . "</option>";
+        echo "                    <option value=\"Priest\" ". ($deck->Class === "Priest"?"selected=selected":"") . " >" . text("ClassPriest") . "</option>";
+        echo "                    <option value=\"Rogue\" ". ($deck->Class === "Rogue"?"selected=selected":"") . " >" . text("ClassRogue") . "</option>";
+        echo "                    <option value=\"Shaman\" ". ($deck->Class === "Shaman"?"selected=selected":"") . " >" . text("ClassShaman") . "</option>";
+        echo "                    <option value=\"Warlock\" ". ($deck->Class === "Warlock"?"selected=selected":"") . " >" . text("ClassWarlock") . "</option>";
+        echo "                </select>";
+        echo "            </div>";
+        echo "            <div>";
+        echo "                <label>" . text("DeckPublished"). "</label>";
+        echo "                <input type=\"checkbox\" name=\"deckPublished\" value=\"j\" ". ($deck->Published === "j"?"checked":"") . ">";
+        echo "            </div>";
+        echo "            <input type=\"submit\" value=\"" . text("Save") . "\" /> ";
+        echo "        </form>";
+        echo "    </section>";
 
-        $this->renderSideBarDeckList($deck, $sideBarDeck);
-
-        echo "<hr/>";
+        echo "    <hr/>";
 
         $GLOBALS["cardSearchUrl"] = "/deckEditor/results?deckId=" . $deck->Id;
         require "pages/partials/_cardSearchFilterPanel.php";
 
-        echo "<hr/>";
+        echo "    <hr/>";
 
-        echo "<section>";
-        echo "    <h3>" . text("ClickCardToAdd") . "</h3>";
-        echo "</section>";
+        echo "    <section>";
+        echo "        <h3>" . text("ClickCardToAdd") . "</h3>";
+        echo "    </section>";
 
         $this->renderWithAddLink($cardSearchResults, $deck);
+
+        echo "</div>";
+
+        $this->renderSideBarDeckList($deck, $sideBarDeck);
     }
 
     private function renderSideBarDeckList($deck, $sideBarDeck) {

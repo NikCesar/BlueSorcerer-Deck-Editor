@@ -103,13 +103,13 @@ h3 {
                 display: none;
             }
             .editMode {
-                display: block;
+                display: inline-block;
             }
         }
 
         &.isReadMode {
             .readMode {
-                display: block;
+                display: inline-block;
             }
             .editMode {
                 display: none;
@@ -147,7 +147,8 @@ h3 {
     }
 }
 
-.editor-content {
+#deckEditorContent {
+    width:85%;
     padding-left: 15%;
 }
 
@@ -173,7 +174,7 @@ h3 {
     }
 }
 
-#searchedCards {
+#searchedCards, #visitedDeckContent {
     max-width: 1000px;
     margin: 1em auto;
     text-align: center;
@@ -183,6 +184,11 @@ h3 {
     display: inline-block;
     width: 240px;
     transition: all 0.2s ease;
+
+    .cardCount {
+        text-align: center;
+        font-size: 1.5em;
+    }
 
     &.hover-plus {
         .add-card {

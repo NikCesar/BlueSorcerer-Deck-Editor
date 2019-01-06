@@ -24,8 +24,13 @@ class UserProfileController {
         $id = $_SESSION["user"]->Id;
         $username = strip_tags($_POST["Username"]);
         $email = strip_tags($_POST["Email"]);
+        $roleId = $_SESSION["user"]->RoleId;
 
-        $updatedUser = $this->userProfileModel->updateUser($id, $username, $email);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            redirect("userProfile", "index", "message=updateUserBadMail");
+        }
+
+        $updatedUser = $this->userProfileModel->updateUser($id, $username, $email, $roleId);
 
         $_SESSION["user"] = $updatedUser;
 
