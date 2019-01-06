@@ -11,10 +11,13 @@
         return isset($_GET["message"]) && $_GET["message"] === $message;
     }
 
-    function validationMessageFor($messageName) {
+    function validationMessageFor($messageName, $textLookup = null) {
+        if ($textLookup === null) {
+            $textLookup = $messageName;
+        }
         if (hasMessage($messageName)) {
             echo "<section>" .
-                    "<label class=\"validation-error\">" . text($messageName) . "</label>" .
+                    "<label class=\"validation-error\">" . text($textLookup) . "</label>" .
                  "</section>";
         }        
     }
