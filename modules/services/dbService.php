@@ -3,10 +3,17 @@
 class DbService
 {
     private $sqlClient;
+    private $debug = false;
 
     function __construct()
     {
-        $this->sqlClient = new mysqli("localhost", "root", "", "bluesorcerer");
+        if ($this->debug) {
+            $this->sqlClient = new mysqli("localhost", "root", "", "bluesorcerer");
+        }
+        else
+        {
+            $this->sqlClient = new mysqli("sql200.epizy.com", "epiz_23077044", "MV2HlNt4", "epiz_23077044_bluesorcerer");
+        }
     }
 
 #region User
