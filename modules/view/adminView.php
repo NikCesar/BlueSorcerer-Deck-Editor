@@ -14,6 +14,7 @@ class AdminView {
 
             $roleName = $this->getRoleNameByRoleId($user->RoleId, $roles);
             
+            validationMessageFor("resetPasswordSuccess");
 
             echo "<section class=\"" . ($this->editModeForUserId == $user->Id ? "isEditMode" : "isReadMode") . "\">";
             echo "<form action=\"/admin/saveUser\" method=\"POST\">";
@@ -47,7 +48,7 @@ class AdminView {
             echo "</form>";
 
             validationMessageFor("updateUserBadMail{$user->Id}", "updateUserBadMail");
-            
+
             echo "<form action=\"/admin\" method=\"POST\">";
             echo "    <input class=\"readMode hidden\" type=\"text\" name=\"editModeForUserId\" value=\"{$user->Id}\" />";
             echo "    <input class=\"readMode\" type=\"submit\" value=\"Edit\" />";
@@ -98,19 +99,26 @@ class AdminView {
     }
 
     public function renderPasswordReset($userId) {
-        echo "<section>";
-        echo "<form action=\"/admin/resetPassword\" method=\"POST\">";
-        echo "    <div>";
-        echo "        <label>Id: </label>";
-        echo "        <label class=\"readMode\">{$user->Id}</label>";
-        echo "        <input class=\"editMode\" type=\"text\" name=\"Id\" value=\"{$user->Id}\" readonly=\"readonly\" />";
-        echo "    </div>";
-        echo "    <div>";
-        echo "        <label>Username: </label>";
-        echo "        <label class=\"readMode\">{$user->Username}</label>";
-        echo "        <input class=\"editMode\" type=\"text\" name=\"Username\" value=\"{$user->Username}\" />";
-        echo "    </div>";
+        echo "<div class=\"centered small-centered\">";
+        echo "<h2>".text("ResetPassword")."</h2>";
+        echo "<form action=\"/admin/doResetPassword\" method=\"POST\">";
+        echo "    <input type=\"text\" class=\"hidden\" name=\"userId\" value=\"{$userId}\">";
+        echo "    <input type=\"text\" class=\"hidden\" name=\"token\" value=\"{$_GET["token"]}\">";
+        echo "    <section>";
+        echo "        <label>".text("Password").": </label>";
+        echo "        <input type=\"password\" name=\"password\" />";
+        echo "    </section>";
+        echo "    <section>";
+        echo "        <label>".text("PasswordConfirm").": </label>";
+        echo "        <input type=\"password\" name=\"passwordConfirm\" />";
+        echo "    </section>";
+       
+        echo "    <input type=\"submit\" value=\"".text("Confirm")."\" style=\"margin-bottom: 10px\" />";
         echo "</form>";
-        echo "</section>";
+        
+        validationMessageFor("resetPasswordBadInput");
+        validationMessageFor("resetPasswordFail");
+
+        echo "</div>";
     }
 }
