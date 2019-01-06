@@ -103,13 +103,13 @@ h3 {
                 display: none;
             }
             .editMode {
-                display: block;
+                display: inline-block;
             }
         }
 
         &.isReadMode {
             .readMode {
-                display: block;
+                display: inline-block;
             }
             .editMode {
                 display: none;
