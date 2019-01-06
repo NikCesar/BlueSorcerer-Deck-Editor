@@ -35,9 +35,8 @@ class MailService
       $this->passwordResetEmailBody = str_replace("{{link}}", "<a href=\"".$passwordResetLink."\" />", $this->passwordResetEmailBody);
       $this->passwordResetEmailBody = $this->passwordResetEmailBody."\n\n\n<hr/>";
 
-      $headers = "MIME-Version: 1.0" . "\r\n";
-      $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-      $headers .= 'From: system@bluesorcerer.com' . "\r\n";
+      $headers = "Content-type:text/html\r\n";
+      $headers .= "From:system@bluesorcerer.com\r\n";
 
       mail($email, $this->passwordResetEmailSubject, $this->passwordResetEmailBody, $headers);
 
