@@ -1,0 +1,376 @@
+@import "../opentip.css";
+:root {
+  /* Hearthstone Brown-hues */
+  --hueDarkBrown: #3A2125;
+  --hueBrown: #542909;
+  --hueDarkOrange:#AF4900;
+  --hueOrange: #B86500;
+  --hueDarkYellow:#CC8617;
+  --hueYellow: #F2B737;
+  /* Hearthstone Blue-hues */
+  --hueDarkViolet:#37253B;
+  --hueViolet: #645F97;
+  --hueBlue: #236FF6;
+  --hueTurquoise: #71FBFF;
+  --hueWhite: #E1FFFF;
+  /* Custom hues */
+  --hueSlateGray: #302d2b;
+  --hueGreen: #1ED172;
+  --hueBackground: #f1d4ab;
+  --hueLightBrown: #d9bf9a;
+  --hueBackgroundDark: rgb(175, 159, 124);
+}
+
+@font-face {
+  font-family: HeadingFont;
+  src: url("../../fonts/Belwe Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: TitleFont;
+  src: url("../../fonts/bliz-quadrata.otf") format("opentype");
+}
+form div label {
+  width: 25%;
+  display: inline-block;
+}
+form div input, form div select, form div textarea {
+  width: 25%;
+  display: inline-block;
+}
+form input[type=button], form input[type=submit], form button, form a.button {
+  padding: 5px 10px;
+}
+form input:focus {
+  box-shadow: 0 0 5px #51cbee;
+}
+
+header {
+  background-image: url(../../img/header_big.png);
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: repeat-x;
+  height: 150px;
+}
+
+nav {
+  background-image: url(../../img/header.png);
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: repeat-x;
+}
+
+#topBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
+}
+#topBar h1, #topBar h3 {
+  font-family: "TitleFont";
+  position: absolute;
+  color: var(--hueWhite);
+  text-shadow: 0 0 5px var(--hueBlue);
+}
+#topBar h1 {
+  font-size: 3em;
+  left: 160px;
+  top: 35px;
+}
+#topBar h3 {
+  font-size: 1em;
+  left: 475px;
+  top: 64px;
+}
+
+#headerImage {
+  height: 120px;
+  padding-top: 10px;
+  padding-left: 20px;
+}
+
+#changeLanguage {
+  float: right;
+}
+
+nav a {
+  color: var(--hueWhite);
+  text-shadow: 0 0 5px var(--hueBlue);
+  text-decoration: none;
+  transition: all 0.3s linear;
+}
+nav a:hover, nav a:active {
+  color: var(--hueYellow);
+}
+nav #loginItem {
+  float: right;
+}
+nav ul {
+  display: block;
+}
+nav ul li {
+  float: left;
+  padding: 20px;
+}
+
+.load-container {
+  overflow: hidden;
+  position: absolute;
+  top: 5em;
+  left: calc(50% - 61px);
+}
+.load-container .loader, .load-container .loader:after {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+}
+.load-container .loader {
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-left: 1.1em solid #ffffff;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: loading 1.1s infinite linear;
+  animation: loading 1.1s infinite linear;
+}
+
+@-webkit-keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+#sideBarDeckList {
+  height: 100%;
+  width: 15%;
+  position: fixed;
+  z-index: 1;
+  top: 205px;
+  left: 0;
+  background-color: #B86500;
+  overflow-x: hidden;
+  padding-top: 20px;
+  transition: filter 0.2s ease-in-out;
+  filter: brightness(100%);
+}
+#sideBarDeckList .load-container {
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0;
+}
+#sideBarDeckList.loading {
+  filter: brightness(80%);
+}
+#sideBarDeckList.loading .load-container {
+  opacity: 1;
+}
+
+html {
+  height: calc(100% - 260px);
+}
+
+body {
+  font-family: "Franklin Gothic Book";
+  height: 100%;
+  background: var(--hueSlateGray);
+}
+
+h1 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 1.4em;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.content {
+  min-height: 100%;
+  margin-top: 260px;
+  background: url(../../img/background.jpg);
+  color: black;
+}
+.content #content-header {
+  background-image: url(../../img/content-header.png);
+  background-position: center -2px;
+  height: 100px;
+  width: 100%;
+  transform: translate(0, -40px);
+  margin-bottom: -40px;
+}
+.content .centered {
+  text-align: center;
+  margin: 3em auto;
+}
+.content .centered.small-centered {
+  margin-top: 0;
+  padding-top: 70px;
+  border: 2px solid var(--hueDarkBrown);
+  max-width: 500px;
+  background-image: url(../../img/header_small.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: var(--hueLightBrown);
+}
+.content .centered.small-centered form section label {
+  width: 30%;
+  float: left;
+  text-align: right;
+}
+.content .centered.small-centered form section input {
+  width: 40%;
+}
+.content .centered.small-centered input[type=submit] {
+  margin-left: 55%;
+}
+.content input {
+  background: white;
+}
+.content input[type=button], .content input[type=submit] {
+  border: 1px solid var(--hueDarkBrown);
+  background: white;
+  color: var(--hueDarkBrown);
+}
+.content section {
+  margin: 1em;
+}
+.content section.isEditMode .readMode {
+  display: none;
+}
+.content section.isEditMode .editMode {
+  display: inline-block;
+}
+.content section.isReadMode .readMode {
+  display: inline-block;
+}
+.content section.isReadMode .editMode {
+  display: none;
+}
+.content.small-content {
+  min-width: 400px;
+  max-width: 500px;
+}
+.content .deck-listing {
+  padding: 10px 10px 20px 10px;
+  margin: 5px 0;
+  border: 2px solid black;
+}
+.content .deck-listing > div {
+  display: inline-block;
+}
+.content .deck-listing > div.description {
+  width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.content .deck-listing > div.class {
+  width: 30%;
+}
+.content .deck-listing > div.score {
+  /* width does not need to be declared. */
+}
+
+#deckEditorContent {
+  width: 85%;
+  padding-left: 15%;
+}
+
+#register {
+  text-align: center;
+  margin: 1em auto;
+  padding: 1em;
+}
+#register div {
+  margin: 1em;
+}
+
+#profile {
+  padding: 1em 0;
+}
+#profile input {
+  background: white;
+}
+#profile div {
+  margin: 2em;
+}
+
+#searchedCards {
+  max-width: 1000px;
+  margin: 1em auto;
+  text-align: center;
+}
+
+.displayedCard {
+  display: inline-block;
+  width: 240px;
+  transition: all 0.2s ease;
+}
+.displayedCard.hover-plus .add-card {
+  display: none;
+}
+.displayedCard.hover-plus:hover .add-card {
+  display: block;
+  position: absolute;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  top: 20px;
+  left: 27px;
+  font-size: 4em;
+  z-index: 1;
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.displayedCard.hover-plus:hover img {
+  filter: brightness(50%);
+}
+.displayedCard:hover {
+  transform: translateY(0) scale(1.1);
+}
+
+.not-found {
+  text-align: center;
+  position: relative;
+}
+.not-found:hover > span.four-oh-four {
+  opacity: 1;
+}
+.not-found > span.name {
+  position: absolute;
+  top: 265px;
+  left: calc(50% - 0.5em);
+  font-weight: bold;
+}
+.not-found > span.four-oh-four {
+  transition: all 0.2s linear;
+  opacity: 0;
+  position: absolute;
+  top: 150px;
+  left: calc(50% - 52px);
+  font-size: 4em;
+}
+
+/*# sourceMappingURL=styles.css.map */
