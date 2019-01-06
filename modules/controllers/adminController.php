@@ -37,7 +37,7 @@ class AdminController {
 
         $resetToken = $_GET["token"];
 
-        $user = $this->adminModel->getUserIdByResetToken($resetToken);
+        $user = $this->adminModel->getUserByResetToken($resetToken);
 
         $this->adminView->renderPasswordReset($user->Id);
     }
@@ -101,13 +101,20 @@ class AdminController {
             $passwordConfirm = strip_tags($_POST["passwordConfirm"]);
 
             if ($password !== $passwordConfirm || strlen($password) < 4) {
-                redirect("admin", "passwordreset", "message=resetPasswordFail");
+                redirect("admin", "passwordreset", "message=resetPasswordBadInput&token=".$_POST["token"]);
             }
 
-            $success = $this->adminModel->resetPassword($userId, password_hash($password));
+            $success = $this->adminModel->resetPassword($userId, password_hash($password, PASSWORD_DEFAULT));
 
-            redirect("admin", "index", $success ? "message=resetPasswordSuccess" : "message=resetPasswordFail");
+            if ($success) {
+                redirect("admin", "index", "message=resetPasswordSuccess");
+            }
+            else {
+                redirect("admin", "passwordreset", "message=resetPasswordFail&token=".$_POST["token"]);
+            }
         }
+
+        redirect("admin", "passwordreset", "message=resetPasswordBadInput&token=".$_POST["token"]);
     }
 }
 ?>
