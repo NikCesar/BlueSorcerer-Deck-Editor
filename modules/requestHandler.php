@@ -13,6 +13,7 @@
     require_once "$_SERVER[DOCUMENT_ROOT]/modules/controllers/loginController.php";
     require_once "$_SERVER[DOCUMENT_ROOT]/modules/controllers/homeController.php";
     require_once "$_SERVER[DOCUMENT_ROOT]/modules/controllers/userProfileController.php";
+    require_once "$_SERVER[DOCUMENT_ROOT]/modules/controllers/cardSearchController.php";
     require_once "$_SERVER[DOCUMENT_ROOT]/modules/controllers/deckEditorController.php";
     require_once "$_SERVER[DOCUMENT_ROOT]/modules/controllers/decksOverviewController.php";
     require_once "$_SERVER[DOCUMENT_ROOT]/modules/controllers/adminController.php";
