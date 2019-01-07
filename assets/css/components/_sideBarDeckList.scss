@@ -1,7 +1,10 @@
 
 #sideBarDeckList {
-  background: linear-gradient(to right, transparent 70%, rgb(77, 58, 43) 100%),
-      url(../../img/background.jpg);
+  background-image: url(../../img/background.jpg), url(../../img/header-sideways.png);
+  background-size: 96% 100%;
+  background-position: top left, top right;
+  background-repeat: no-repeat;
+  float: left;
   height: 100%;
   width: 26%;
   position: fixed;
