@@ -13,7 +13,7 @@ class AdminModel {
     function getAllUsers() {
         $users = $this->dbService->getAllUsers();
         foreach ($users as $user) {
-            $user->isAdmin = $this->roleService->isAdmin($user);
+            $user->isAdmin = $this->roleService->isAdmin($user->RoleId);
         }
         return $users;
     }
