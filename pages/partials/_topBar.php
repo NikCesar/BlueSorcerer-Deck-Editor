@@ -12,6 +12,7 @@
         
     <nav>
         <ul>
+            <li><a href="/home"><?php echo text("NewestDecks")?></a></li>
             <li><a href="/cardSearch"><?php echo text("CardSearch")?></a></li>
             <li><a href="/decksOverview"><?php echo text("DeckEditor")?></a></li>
             <?php if (isLoggedIn()) {
