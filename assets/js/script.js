@@ -1,24 +1,5 @@
 var deckManager = new DeckManager();
 
-function searchForCards(query) {
-    delay(function () {
-        callPhpFunction("cardSearch", "searchForCards", { query: query }, function (result) {
-            // do something with the result.
-            console.log(result);
-        });
-    }, 500);
-}
-
-// #region Helper methods
-function callPhpFunction(controller, action, data, successCallback) {
-    $.ajax({
-        type: "GET",
-        url: "http://" + window.location.hostname + "/" + controller + "/" + action,
-        data: data,
-        success: successCallback
-    });
-}
-
 var delay = (function () {
     var timer = 0;
     return function (callback, ms) {
