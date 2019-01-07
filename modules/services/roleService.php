@@ -18,8 +18,8 @@ class RoleService
         return $this->roles;
     }
 
-    function isAdmin($user) {
-        return $user->RoleId === $this->getRoleIdByRoleName("Administrator");
+    function isAdmin($roleId) {
+        return $roleId === $this->getRoleIdByRoleName("Administrator");
     }
 
     function getRoleIdByRoleName($roleName) {

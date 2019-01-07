@@ -112,6 +112,18 @@ class DbService
         return $this->getUserByUsername($username);
     }
 
+    public function registerUser($username, $email, $password, $roleId)
+    {
+        $query = $this->sqlClient->prepare("INSERT INTO user (Username, Email, Password, RoleId) VALUES (?, ?, ?, ?)");
+        $query->bind_param("sssi", $username, $email, $password, $roleId);
+        $query->execute();
+
+        if ($query->affected_rows === 0) {
+            return null;
+        }
+        return $this->getUserByUsername($username);
+    }
+
     public function getRoles()
     {
         $query = $this->sqlClient->prepare("SELECT Id, Name FROM role");
