@@ -52,9 +52,9 @@ class LoginController {
                 redirect($redirectTo);
             }
 
-            redirect("home", "message=loginSuccess");
+            redirect("home", "index", "message=loginSuccess");
         } else {
-            redirect("login", "message=loginFail");
+            redirect("login", "index", "message=loginFail");
         }
     }
 

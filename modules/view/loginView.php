@@ -18,11 +18,11 @@ class LoginView {
         echo "          <input id=\"password\" name=\"password\" type=\"password\" />";
         echo "     </section>";
 
-        validationMessageFor("loginFail");
-        validationMessageFor("registerSuccess");
-
         echo "      <input type=\"submit\" value=\"Login\" />";
         echo "  </form>";
+
+        validationMessageFor("loginFail");
+        validationMessageFor("registerSuccess");
 
         echo "  <div id=\"register\">";
         echo "      <div>";
