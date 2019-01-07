@@ -25,7 +25,7 @@ class LoginView {
 
         echo "  <div id=\"register\">";
         echo "      <div>";
-        echo "          <a href=\"#\">Forgot Password?</a>";
+        echo "          <a href=\"/admin/renderPasswordForgot\">Forgot Password?</a>";
         echo "      </div>";
         echo "      <div>";
         echo "          <a href=\"#\">No Account? Register now!</a>";
