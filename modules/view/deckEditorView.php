@@ -49,10 +49,6 @@ class DeckEditorView {
 
         echo "    <hr/>";
 
-        echo "    <section>";
-        echo "        <h3>" . text("ClickCardToAdd") . "</h3>";
-        echo "    </section>";
-
         $this->renderWithAddLink($cardSearchResults, $deck);
 
         echo "</div>";
@@ -64,6 +60,9 @@ class DeckEditorView {
         echo "<div id=\"sideBarDeckList\">";
         echo "<div class=\"load-container\"><div class=\"loader\">Loading...</div></div>";
 
+        echo "    <section>";
+        echo "      <h1>".text("Decklist")."</h1>";
+        echo "    </section>";
         echo "    <section id=\"deckList\">";
         echo "        <ul>";
         foreach ($sideBarDeck as $deckEntry) {
@@ -85,6 +84,10 @@ class DeckEditorView {
     private function renderWithAddLink($cardSearchResults, $deck)
     {
         if (!isset($cardSearchResults)) return;
+
+        echo "    <section>";
+        echo "        <h3>" . text("ClickCardToAdd") . "</h3>";
+        echo "    </section>";
 
         echo "<section id=\"searchedCards\">";
         foreach ($cardSearchResults as $card) {

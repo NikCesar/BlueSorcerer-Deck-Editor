@@ -10,7 +10,7 @@ class LoginView {
         echo "  <form action=\"/login/doLogin\" method=\"POST\">";
         echo "      <section>";
         echo "          <label>Username: </label>";
-        echo "          <input id=\"username\" name=\"username\" />";
+        echo "          <input type=\"text\" id=\"username\" name=\"username\" />";
         echo "      </section>";
 
         echo "      <section>";
