@@ -10,7 +10,7 @@ class LoginModel {
 
     function getUserByUsername($username) {
         $user = $this->dbService->getUserByUsername($username);
-        $user->IsAdmin = $this->roleService->isAdmin($user);
+        $user->IsAdmin = $this->roleService->isAdmin($user->RoleId);
         return $user;
     }
 }
