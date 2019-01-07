@@ -10,10 +10,6 @@
 
 @import "../opentip.css";
 
-html {
-    height: calc(100% - 235px);
-}
-
 body {
     font-family: "Franklin Gothic Book";
     height: 100%;
@@ -36,6 +32,7 @@ h3 {
 .content {
     min-height: 100%;
     margin-top: 260px;
+    padding-bottom: 20px;
 
     #content-header {
         background-image: url(../../img/content-header.png);
@@ -142,7 +139,7 @@ h3 {
           background: url(/assets/img/deck-banners/druid.png);
           background-repeat: no-repeat;
           background-size: 50%;
-          background-position: 100% 20%;
+          background-position: 100% 40%;
         }
         &.Hunter {
           background: url(/assets/img/deck-banners/hunter.png);
@@ -160,7 +157,7 @@ h3 {
           background: url(/assets/img/deck-banners/paladin.png);
           background-repeat: no-repeat;
           background-size: 50%;
-          background-position: 100% 10%;
+          background-position: 100% 20%;
         }
         &.Warlock {
           background: url(/assets/img/deck-banners/warlock.png);
