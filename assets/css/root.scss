@@ -11,7 +11,7 @@
 @import "../opentip.css";
 
 html {
-    height: calc(100% - 260px);
+    height: calc(100% - 235px);
 }
 
 body {
@@ -137,7 +137,62 @@ h3 {
         padding: 10px 10px 20px 10px;
         margin: 5px 0;
         border: 2px solid black;
-
+  
+        &.Druid {
+          background: url(/assets/img/deck-banners/druid.png);
+          background-repeat: no-repeat;
+          background-size: 50%;
+          background-position: 100% 20%;
+        }
+        &.Hunter {
+          background: url(/assets/img/deck-banners/hunter.png);
+          background-repeat: no-repeat;
+          background-size: 50%;
+          background-position: 100% 10%;
+        }
+        &.Mage {
+          background: url(/assets/img/deck-banners/mage.png);
+          background-repeat: no-repeat;
+          background-size: 50%;
+          background-position: 100% 10%;
+        }
+        &.Paladin {
+          background: url(/assets/img/deck-banners/paladin.png);
+          background-repeat: no-repeat;
+          background-size: 50%;
+          background-position: 100% 10%;
+        }
+        &.Warlock {
+          background: url(/assets/img/deck-banners/warlock.png);
+          background-repeat: no-repeat;
+          background-size: 50%;
+          background-position: 100% 10%;
+        }
+        &.Priest {
+          background: url(/assets/img/deck-banners/priest.png);
+          background-repeat: no-repeat;
+          background-size: 50%;
+          background-position: 100% 10%;
+        }
+        &.Rogue {
+          background: url(/assets/img/deck-banners/rogue.png);
+          background-repeat: no-repeat;
+          background-size: 50%;
+          background-position: 100% 10%;
+        }
+        &.Shaman {
+          background: url(/assets/img/deck-banners/shaman.png);
+          background-repeat: no-repeat;
+          background-size: 50%;
+          background-position: 100% 10%;
+        }
+        &.Warrior {
+          background: url(/assets/img/deck-banners/warrior.png);
+          background-repeat: no-repeat;
+          background-size: 50%;
+          background-position: 100% 10%;
+        }
+        
         > div {
             display: inline-block;
 

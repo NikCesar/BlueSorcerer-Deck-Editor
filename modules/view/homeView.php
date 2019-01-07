@@ -11,7 +11,7 @@ class HomeView {
         echo '<section id="newestDecks">';
         echo '  <h2>' . text("NewestDecks") . '</h2>';
         foreach($model->newestDecks as $index=>$deck) {
-            echo '<div class="deck-listing">';
+            echo '<div class="deck-listing '.$deck->Class.'">';
             echo '  <h3>' . $deck->Name . '</h3>';
             echo '  <div class="description">' . $deck->Description . '</div>';
             echo '  <div class="class">' . $deck->Class . '</div>';
