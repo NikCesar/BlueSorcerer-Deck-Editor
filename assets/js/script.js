@@ -57,7 +57,8 @@ $(document).ready(function() {
 
 function addToDeckWithoutPosting(event) {
     var cardId = $(event.target).parent()[0].cardId.value;
-    deckManager.addToDeck(cardId);
+    var cardRarirty = $(event.target).parent()[0].isLegendary.value;
+    deckManager.addToDeck(cardId, cardRarirty);
 
     event.preventDefault();
 }
