@@ -112,6 +112,9 @@
         "passwordForgotSentSuccess" => array("en" => "Password reset mail was sent successfully.", "de" => "Das Passwort-zurücksetzen Email wurde erfolgreich verschickt."),
         "ForgotPassword" => array("en" => "Forgot password? - Enter your email", "de" => "Passwort vergessen? - Geben Sie Ihre Email an"),
         "Decklist" => array("en" => "Decklist", "de" => "Deckliste"),
+        "RegisterUser" => array("en" => "Register", "de" => "Registrieren"),
+        "registerSuccess" => array("en" => "Register", "de" => "Registrieren"),
+        "registerBadInput" => array("en" => "User successfully registered. You can login now.", "de" => "Benutzer erfolgreich registriert. Sie können Sich jetzt einloggen."),
     );
 
     function text($key){
