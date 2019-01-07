@@ -185,10 +185,6 @@ nav ul li {
   opacity: 1;
 }
 
-html {
-  height: calc(100% - 260px);
-}
-
 body {
   font-family: "Franklin Gothic Book";
   height: 100%;
@@ -211,6 +207,7 @@ h3 {
 .content {
   min-height: 100%;
   margin-top: 260px;
+  padding-bottom: 20px;
   background: url(../../img/background.jpg);
   color: black;
 }
@@ -289,6 +286,60 @@ h3 {
   padding: 10px 10px 20px 10px;
   margin: 5px 0;
   border: 2px solid black;
+}
+.content .deck-listing.Druid {
+  background: url(/assets/img/deck-banners/druid.png);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: 100% 40%;
+}
+.content .deck-listing.Hunter {
+  background: url(/assets/img/deck-banners/hunter.png);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: 100% 10%;
+}
+.content .deck-listing.Mage {
+  background: url(/assets/img/deck-banners/mage.png);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: 100% 10%;
+}
+.content .deck-listing.Paladin {
+  background: url(/assets/img/deck-banners/paladin.png);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: 100% 20%;
+}
+.content .deck-listing.Warlock {
+  background: url(/assets/img/deck-banners/warlock.png);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: 100% 10%;
+}
+.content .deck-listing.Priest {
+  background: url(/assets/img/deck-banners/priest.png);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: 100% 10%;
+}
+.content .deck-listing.Rogue {
+  background: url(/assets/img/deck-banners/rogue.png);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: 100% 10%;
+}
+.content .deck-listing.Shaman {
+  background: url(/assets/img/deck-banners/shaman.png);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: 100% 10%;
+}
+.content .deck-listing.Warrior {
+  background: url(/assets/img/deck-banners/warrior.png);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: 100% 10%;
 }
 .content .deck-listing > div {
   display: inline-block;

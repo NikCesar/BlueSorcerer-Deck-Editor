@@ -11,7 +11,7 @@ class DecksOverviewView {
 
         foreach($decks as $index=>$deck)
         {
-            echo "<div class=\"deck-listing\">";
+            echo "<div class=\"deck-listing $deck->Class\">";
             echo "<h3>" . $deck->Name . "</h3>";
             echo "<div class=\"description\">" . $deck->Description . "</div>";
             echo "<div class=\"class\">" . $deck->Class . "</div>";

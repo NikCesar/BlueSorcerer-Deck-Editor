@@ -11,12 +11,11 @@ class HomeView {
         echo '<section id="newestDecks">';
         echo '  <h2>' . text("NewestDecks") . '</h2>';
         foreach($model->newestDecks as $index=>$deck) {
-            echo '<div class="deck-listing">';
+            echo '<div class="deck-listing '.$deck->Class.'">';
             echo '  <h3>' . $deck->Name . '</h3>';
             echo '  <div class="description">' . $deck->Description . '</div>';
             echo '  <div class="class">' . $deck->Class . '</div>';
             echo '  <div class="publishDate">' . $deck->PublishDate . '</div>';
-            echo "  <div class=\"class\">" . $deck->Class . "</div>";
             echo "    <form id=\"viewDeck" . $deck->Id . "\" action=\"/visitDeck\" method=\"GET\">";
             echo "        <input type=\"text\" name=\"deckId\" value=\"" . $deck->Id . "\" class=\"hidden\" />";
             echo "        <input type=\"submit\" value=\"" . text("VisitDeck") . "\" />";
