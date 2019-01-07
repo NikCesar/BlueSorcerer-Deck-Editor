@@ -86,7 +86,7 @@
         "UserProfile" => array("en" => "User Profile", "de" => "User Profil"),
         "createUserFail" => array("en" => "Failed to create a new user. Ensure that both username and email are set.", "de" => "Erstellen des Benutzers ist fehlgeschlagen. Stellen Sie sicher, dass Benutzername und Email ausgefüllt sind."),
         "DeckPublished" => array("en" => "Deck published", "de" => "Deck veröffentlicht"),
-        "VisitDeck" => array("en" => "View Deck", "de" => "Deck ansehen")
+        "VisitDeck" => array("en" => "View Deck", "de" => "Deck ansehen"),
         "updateUserBadMail" => array("en" => "Failed to update the user. Please enter a valid email address.", "de" => "Aktualisieren des Benutzers ist fehlgeschlagen. Bitte geben Sie eine gültige Email-Adresse ein."),
         "createUserBadMail" => array("en" => "Failed to create a new user. Please enter a valid email address.", "de" => "Erstellen des Benutzers ist fehlgeschlagen. Bitte geben Sie eine gültige Email-Adresse ein."),
         "createUserSuccess" => array("en" => "User successfully created. He/She will receive a password reset link shortly.", "de" => "Benutzer erfolgreich erstellt. Er/Sie wird in Kürze eine 'Passwort zurücksetzen' Email erhalten."),
@@ -100,7 +100,7 @@
         "Role_Guest" => array("en" => "Guest", "de" => "Gast"),
         "Role_NotFound" => array("en" => "Unknown", "de" => "Unbekannt"),
         "passwordResetEmailSubject" => array("en" => "BlueSorcerer - Password Reset Link", "de" => "BlueSorcerer - Passwort zurücksetzen"),
-        "passwordResetEmailBody" => array("en" => "Dear Sir or Madam\n\nPlease click on this link in order to reset your password:\n{{link}}\n\nKind regards\nBlueSorcerer Team", "de" => "Guten Tag\n\nBitte klicken Sie auf folgenden Link, um Ihr Passwort zurückzusetzen:\n{{link}}\n\nFreundliche Grüsse\nBlueSorcerer Team"),
+        "passwordResetEmailBody" => array("en" => "Dear Sir or Madam<br><br>Please click on this link in order to reset your password:<br>{{link}}<br><br>Kind regards<br>BlueSorcerer Team", "de" => "Guten Tag<br><br>Bitte klicken Sie auf folgenden Link, um Ihr Passwort zurückzusetzen:<br>{{link}}<br><br>Freundliche Grüsse<br>BlueSorcerer Team"),
         "resetPasswordBadInput" => array("en" => "Please enter a password that is at least 4 characters long and check that both passwords match.", "de" => "Bitte verwenden Sie 4 oder mehr Zeichen und stellen sicher, dass beide Passwörter übereinstimmen."),
         "resetPasswordSuccess" => array("en" => "Password successfully reset.", "de" => "Passwort erfolreich gesetzt."),
         "resetPasswordFail" => array("en" => "Password reset has failed. Please contact a system administrator.", "de" => "Passwort zurücksetzen ist fehlgeschlagen. Bitte kontaktieren Sie ein System-Administrator."),
@@ -108,6 +108,10 @@
         "PasswordConfirm" => array("en" => "Confirm password", "de" => "Passwort bestätigen"),
         "ResetPassword" => array("en" => "Reset your password", "de" => "Passwort zurücksetzen"),
         "Confirm" => array("en" => "Confirm", "de" => "Bestätigen"),
+        "passwordForgotBadInput" => array("en" => "Please enter a valid email address of an existing user.", "de" => "Bitte geben Sie eine gültige Email-Adresse eines bestehenden Benutzers ein."),
+        "passwordForgotSentSuccess" => array("en" => "Password reset mail was sent successfully.", "de" => "Das Passwort-zurücksetzen Email wurde erfolgreich verschickt."),
+        "ForgotPassword" => array("en" => "Forgot password? - Enter your email", "de" => "Passwort vergessen? - Geben Sie Ihre Email an"),
+        "Decklist" => array("en" => "Decklist", "de" => "Deckliste"),
     );
 
     function text($key){

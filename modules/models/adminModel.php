@@ -38,6 +38,10 @@ class AdminModel {
         return $this->dbService->getUserByResetToken($token);
     }
     
+    public function getUserByEmail($email) {
+        return $this->dbService->getUserByEmail($email);
+    }
+    
     public function resetPassword($userId, $password) {
         return $this->dbService->resetPassword($userId, $password);
     }

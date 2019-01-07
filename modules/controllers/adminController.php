@@ -30,6 +30,11 @@ class AdminController {
     }
 
     /** @VIEW method */
+    public function renderPasswordForgot() {
+        $this->adminView->renderPasswordForgot();
+    }
+
+    /** @VIEW method */
     public function passwordReset() {
         if (!isset($_GET["token"])) {
             redirect("home");
@@ -40,6 +45,23 @@ class AdminController {
         $user = $this->adminModel->getUserByResetToken($resetToken);
 
         $this->adminView->renderPasswordReset($user->Id);
+    }
+
+    public function passwordForgot() {
+        if (!isset($_POST["email"]) || !filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+            redirect("login", "renderPasswordForgot", "message=passwordForgotBadInput");
+        }
+        
+        $email = strip_tags($_POST["email"]);
+        $user = $this->adminModel->getUserByEmail($email);
+        
+        if ($user === null) {
+            redirect("login", "renderPasswordForgot", "message=passwordForgotBadInput");
+        }
+
+        $this->adminModel->sendPasswordResetEmail($user->Id, $user->Email);
+
+        redirect("home", "index", "message=passwordForgotSentSuccess");
     }
 
     public function saveUser() {

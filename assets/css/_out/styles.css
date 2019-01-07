@@ -160,8 +160,9 @@ nav ul li {
   }
 }
 #sideBarDeckList {
+  background: linear-gradient(to right, transparent 70%, #4d3a2b 100%), url(../../img/background.jpg);
   height: 100%;
-  width: 15%;
+  width: 26%;
   position: fixed;
   z-index: 1;
   top: 205px;
@@ -245,13 +246,21 @@ h3 {
 .content .centered.small-centered input[type=submit] {
   margin-left: 55%;
 }
-.content input {
-  background: white;
+.content input[type=text], .content input[type=email], .content input[type=password], .content input[type=number], .content textarea, .content select {
+  background: #fff3dd;
+  border: 2px solid rosybrown;
+  box-shadow: 2px 2px 10px rgba(100, 100, 100, 0.5);
+  margin-bottom: 10px;
+  height: 20px;
 }
 .content input[type=button], .content input[type=submit] {
   border: 1px solid var(--hueDarkBrown);
-  background: white;
+  background: #aa9b7e;
   color: var(--hueDarkBrown);
+  font-weight: bold;
+}
+.content select {
+  height: 25px;
 }
 .content section {
   margin: 1em;
@@ -293,8 +302,12 @@ h3 {
 }
 
 #deckEditorContent {
-  width: 85%;
-  padding-left: 15%;
+  width: 72%;
+  padding-left: 28%;
+}
+#deckEditorContent input[type=checkbox] {
+  text-align: left;
+  width: 20px;
 }
 
 #register {
@@ -316,7 +329,7 @@ h3 {
   margin: 2em;
 }
 
-#searchedCards {
+#searchedCards, #visitedDeckContent {
   max-width: 1000px;
   margin: 1em auto;
   text-align: center;
@@ -326,6 +339,10 @@ h3 {
   display: inline-block;
   width: 240px;
   transition: all 0.2s ease;
+}
+.displayedCard .cardCount {
+  text-align: center;
+  font-size: 1.5em;
 }
 .displayedCard.hover-plus .add-card {
   display: none;

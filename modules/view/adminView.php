@@ -121,4 +121,21 @@ class AdminView {
 
         echo "</div>";
     }
+
+    public function renderPasswordForgot() {
+        echo "<div class=\"centered small-centered\">";
+        echo "<h2>".text("ForgotPassword")."</h2>";
+        echo "<form action=\"/admin/passwordForgot\" method=\"POST\">";
+        echo "    <section>";
+        echo "        <label>".text("Email").": </label>";
+        echo "        <input type=\"text\" name=\"email\" />";
+        echo "    </section>";
+       
+        echo "    <input type=\"submit\" value=\"".text("Confirm")."\" style=\"margin-bottom: 10px\" />";
+        echo "</form>";
+        
+        validationMessageFor("passwordForgotBadInput");
+
+        echo "</div>";
+    }
 }

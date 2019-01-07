@@ -10,7 +10,7 @@ class LoginView {
         echo "  <form action=\"/login/doLogin\" method=\"POST\">";
         echo "      <section>";
         echo "          <label>Username: </label>";
-        echo "          <input id=\"username\" name=\"username\" />";
+        echo "          <input type=\"text\" id=\"username\" name=\"username\" />";
         echo "      </section>";
 
         echo "      <section>";
@@ -25,7 +25,7 @@ class LoginView {
 
         echo "  <div id=\"register\">";
         echo "      <div>";
-        echo "          <a href=\"#\">Forgot Password?</a>";
+        echo "          <a href=\"/admin/renderPasswordForgot\">Forgot Password?</a>";
         echo "      </div>";
         echo "      <div>";
         echo "          <a href=\"#\">No Account? Register now!</a>";

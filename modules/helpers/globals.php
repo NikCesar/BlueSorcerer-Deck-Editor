@@ -16,8 +16,10 @@
             $textLookup = $messageName;
         }
         if (hasMessage($messageName)) {
+            $validationType = strpos($messageName, "Success") >= 0 ? "success" : "error";
+
             echo "<section>" .
-                    "<label class=\"validation-error\">" . text($textLookup) . "</label>" .
+                    "<label class=\"validation-{$validationType}\">" . text($textLookup) . "</label>" .
                  "</section>";
         }        
     }

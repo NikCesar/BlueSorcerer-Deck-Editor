@@ -6,9 +6,10 @@ class HomeView {
     }
 
     public function renderIndex($model) {
+        validationMessageFor("passwordForgotSentSuccess");
+        
         echo '<section id="newestDecks">';
         echo '  <h2>' . text("NewestDecks") . '</h2>';
-        echo '  <input type="text" onkeyup="searchForCards(this.value);" />';
         foreach($model->newestDecks as $index=>$deck) {
             echo '<div class="deck-listing">';
             echo '  <h3>' . $deck->Name . '</h3>';

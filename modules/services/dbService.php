@@ -47,6 +47,21 @@ class DbService
         return null;
     }
 
+    public function getUserByEmail($email)
+    {
+        $query = $this->sqlClient->prepare("SELECT Id, Username, Password, Email, RoleId, ResetToken FROM user WHERE Email = ?");
+        $query->bind_param("s", $email);
+        $query->execute();
+
+        $users = $query->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        if (sizeof($users) === 1) {
+            return (object)$users[0];
+        }
+        // throw exception;
+        return null;
+    }
+
     public function getAllUsers()
     {
         $query = $this->sqlClient->prepare("SELECT Id, Username, Password, Email, RoleId FROM user");
