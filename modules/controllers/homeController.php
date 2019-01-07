@@ -28,7 +28,8 @@ class HomeController {
         } else {
             $_SESSION["language"] = "en";
         }
-        redirectToLoginIfNotLoggedIn("home");
+
+        redirect("home");
     }
 }
 ?>
