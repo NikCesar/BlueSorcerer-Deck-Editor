@@ -23,8 +23,12 @@ class DeckManager {
         });
     }
 
-    addToDeck(cardId) {
+    addToDeck(cardId, cardRarity) {
         if (DeckManager.deckList[cardId] !== undefined) {
+            if (cardRarity === "LEGENDARY") {
+                console.log("already 1 of this legendary card in deck");
+                return;
+            }
             if (DeckManager.deckList[cardId] >= 2) {
                 console.log("already 2 in deck");
                 return;
