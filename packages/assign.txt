@@ -16,9 +16,10 @@ Assignment 02 CSS:
 
 We used SCSS, a CSS pre-processor, to give our CSS more power with syntax advancements.
 Most of the CSS is contained in the root.scss file. But for certain partial page content we created 
-own CSS files to keep it separated.
+own CSS files to keep them separated.
 
 The SCSS files are contained in assets/css/...
+
 
 **-------------------------------------------------------------------------------------------**
 
@@ -31,6 +32,7 @@ and other relevant card information in this array for further use.
 
 The navigation area is conatined in the pages/partials/_topBar.php file. This file is dynamically included,
 that way every page has acces to the navigation top bar. 
+
 
 **-------------------------------------------------------------------------------------------**
 
@@ -46,6 +48,7 @@ with the currently selected language option, that is saved in $_SESSION and retu
 
 Code reusage with helper functions can be found in many places. From the language text retrieval to the
 generic redirect function in modules/helpers/globals.php
+
 
 **-------------------------------------------------------------------------------------------**
 
@@ -73,7 +76,7 @@ In the cardSearchFilterPanel each input field contains a tooltip if you hover ov
 The tooltips are assigned with the use jquery. 
 
 The deckEditor also works in an enhanced way with Javascript. It still works if Javascript is disabled, just slower
-as every added card to the deck requires a reload of the entire page.
+as every added/removed card to the deck requires a reload of the entire page.
 
 
 **-------------------------------------------------------------------------------------------**
@@ -91,11 +94,46 @@ statements to insert, update, retrieve or delete data in and from the database c
 
 There is a C-Panel to manage users and their credentials. 
 
+
 **-------------------------------------------------------------------------------------------**
 
 Assignment 08 Sessions:
 
-We do not use Cookies, because we were able to solve all the problems that arose from keeping information via the Session-File
+We do not use custom Cookies, because we were able to solve all the problems that arose from keeping information via the Session-File
 and the database.
 
-Our webpage supports user authentication with Login-name, password and 
+Our webpage supports user authentication (login, logout, reset password if forgotten)
+
+The administrator area 'Admin' is only accessible if the correct user role is set in the database.
+
+
+**-------------------------------------------------------------------------------------------**
+
+Assignment 09 PHP-OO:
+
+Our services in modules/services/... are self-contained classes that offer specific functions to the whole application. 
+
+
+**-------------------------------------------------------------------------------------------**
+
+Assignment 10 AJAX:
+
+We use AJAX in assets/js/modules/deck-manager.js to enable javascript enhanced deck-editing.
+In this way a card can be added and removed without the need of a page reload.
+
+
+**-------------------------------------------------------------------------------------------**
+
+Assignment 11 MVC:
+
+We rebuilt the whole web application to adhere to the MVC-way.
+Every page that requires its own logic and view has a MVC-triad. They can be found in modules/controllers/... , modules/models/... , modules/view/...
+
+In modules/helpers/starter.php we extract the controller and action from the Url in order to allow semantic Urls
+
+
+**-------------------------------------------------------------------------------------------**
+
+Assignment 12 Responsive:
+
+The CSS is mostly using proportional units like em and %
