@@ -272,9 +272,9 @@ class DbService
         return null;
     }
 
-    public function getNewestDecks()
+    public function getNewestPublishedDecks()
     {
-        $query = $this->sqlClient->prepare("SELECT Id, UserId, Name, Description, Class, Published, PublishDate FROM deck ORDER BY PublishDate DESC LIMIT 10");
+        $query = $this->sqlClient->prepare("SELECT Id, UserId, Name, Description, Class, Published, PublishDate FROM deck WHERE Published = 'j' ORDER BY PublishDate DESC LIMIT 10");
         $query->execute();
 
         $newestDecks = $query->get_result()->fetch_all(MYSQLI_ASSOC);
