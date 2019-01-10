@@ -25,7 +25,7 @@ class DeckManager {
 
     addToDeck(cardId, cardRarity) {
         if (DeckManager.deckList[cardId] !== undefined) {
-            if (cardRarity === "LEGENDARY") {
+            if (cardRarity === "LEGENDARY" && DeckManager.deckList[cardId] >= 1) {
                 console.log("already 1 of this legendary card in deck");
                 return;
             }
