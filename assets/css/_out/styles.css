@@ -419,6 +419,9 @@ h3 {
 .displayedCard.hover-plus:hover img {
   filter: brightness(50%);
 }
+.displayedCard.hover-plus input:focus {
+  box-shadow: none;
+}
 .displayedCard:hover {
   transform: translateY(0) scale(1.1);
 }
