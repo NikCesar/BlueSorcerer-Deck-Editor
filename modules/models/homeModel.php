@@ -7,7 +7,7 @@ class HomeModel {
     function __construct() {
         $this->dbService = new DbService();
 
-        $this->newestDecks = $this->dbService->getNewestDecks();
+        $this->newestDecks = $this->dbService->getNewestPublishedDecks();
     } 
 }
 ?>
