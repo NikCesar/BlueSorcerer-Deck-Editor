@@ -25,6 +25,7 @@
         "ClassRogue" => array("en" => "Rogue", "de" => "Schurke"),
         "ClassShaman" => array("en" => "Shaman", "de" => "Schamane"),
         "ClassWarlock" => array("en" => "Warlock", "de" => "Hexenmeister"),
+        "ClassWarrior" => array("en" => "Warrior", "de" => "Krieger"),
         "CardRaceBeast" => array("en" => "Beast", "de" => "Wildtier"),
         "CardRaceDemon" => array("en" => "Demon", "de" => "Dämon"),
         "CardRaceDragon" => array("en" => "Dragon", "de" => "Drache"),

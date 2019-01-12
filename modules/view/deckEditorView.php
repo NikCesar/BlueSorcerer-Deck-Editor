@@ -32,6 +32,7 @@ class DeckEditorView {
         echo "                    <option value=\"Rogue\" ". ($deck->Class === "Rogue"?"selected=selected":"") . " >" . text("ClassRogue") . "</option>";
         echo "                    <option value=\"Shaman\" ". ($deck->Class === "Shaman"?"selected=selected":"") . " >" . text("ClassShaman") . "</option>";
         echo "                    <option value=\"Warlock\" ". ($deck->Class === "Warlock"?"selected=selected":"") . " >" . text("ClassWarlock") . "</option>";
+        echo "                    <option value=\"Warrior\" ". ($deck->Class === "Warrior"?"selected=selected":"") . " >" . text("ClassWarrior") . "</option>";
         echo "                </select>";
         echo "            </div>";
         echo "            <div>";

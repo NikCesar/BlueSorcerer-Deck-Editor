@@ -17,8 +17,6 @@ class VisitDeckController
 
     /** @view method */
     public function index() {
-        redirectToLoginIfNotLoggedIn("decksOverview");
-
         $deckId = 0;
         if (isset($_GET['deckId'])) {
             $deckId = strip_tags($_GET['deckId']);

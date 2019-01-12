@@ -49,6 +49,7 @@ class DecksOverviewView {
         echo "              <option value=\"Rogue\">" . text("ClassRogue") . "</option>";
         echo "              <option value=\"Shaman\">" . text("ClassShaman") . "</option>";
         echo "              <option value=\"Warlock\">" . text("ClassWarlock") . "</option>";
+        echo "              <option value=\"Warrior\">" . text("ClassWarrior") . "</option>";
         echo "          </select>";
         echo "      </div>";
 

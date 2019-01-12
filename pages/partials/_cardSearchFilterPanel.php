@@ -49,6 +49,7 @@
                 <option value="Rogue"><?php echo text("ClassRogue"); ?></option>
                 <option value="Shaman"><?php echo text("ClassShaman"); ?></option>
                 <option value="Warlock"><?php echo text("ClassWarlock"); ?></option>
+                <option value="Warrior"><?php echo text("ClassWarrior"); ?></option>
             </select>
         </div>
 
