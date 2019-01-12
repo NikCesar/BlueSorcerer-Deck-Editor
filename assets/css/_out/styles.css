@@ -184,7 +184,10 @@ nav ul li {
 #sideBarDeckList.loading .load-container {
   opacity: 1;
 }
-html {height: calc(100% - 290px);} 
+
+html {
+  height: calc(100% - 290px);
+}
 
 body {
   font-family: "Franklin Gothic Book";
@@ -206,9 +209,9 @@ h3 {
 }
 
 .content {
-  min-height: 100%;
+  height: 100%;
   margin-top: 260px;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   background: url(../../img/background.jpg);
   color: black;
 }
