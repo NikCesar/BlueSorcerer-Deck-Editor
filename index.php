@@ -11,6 +11,7 @@
 <!doctype html>
 <html>
     <head>
+        <meta content="initial-scale=1.0" name="viewport">
         <?php require "pages/partials/_scripts.php"; ?>
     </head>
 
