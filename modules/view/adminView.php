@@ -48,6 +48,7 @@ class AdminView {
             echo "</form>";
 
             validationMessageFor("updateUserBadMail{$user->Id}", "updateUserBadMail");
+            validationMessageFor("updateUserBadUsername{$user->Id}", "updateUserBadUsername");
 
             echo "<form action=\"/admin\" method=\"POST\">";
             echo "    <input class=\"readMode hidden\" type=\"text\" name=\"editModeForUserId\" value=\"{$user->Id}\" />";

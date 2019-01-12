@@ -42,6 +42,14 @@ class AdminModel {
         return $this->dbService->getUserByEmail($email);
     }
     
+    public function getUserByUsername($username) {
+        $user = $this->dbService->getUserByUsername($username);
+        if ($user !== null) {
+            $user->IsAdmin = $this->roleService->isAdmin($user->RoleId);
+        }
+        return $user;
+    }
+    
     public function resetPassword($userId, $password) {
         return $this->dbService->resetPassword($userId, $password);
     }
