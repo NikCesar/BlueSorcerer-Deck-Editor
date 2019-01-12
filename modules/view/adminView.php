@@ -38,7 +38,7 @@ class AdminView {
             echo "        <label class=\"readMode\">".text("Role_".$roleName)."</label>";
             echo "        <select class=\"editMode\" name=\"RoleId\" value=\"$user->RoleId\">";
             foreach ($roles as $role) {
-            echo "          <option value=\"{$role->Id}\" ". ($user->RoleId === $role->Id ? "selected=selected" : "").">".text("Role_".$role->Name)."</option>";
+            echo "          <option value=\"{$role->Id}\" ". ($user->RoleId === $role->Id ? "selected=selected" : "")." ".($user->Id == $_SESSION["user"]->Id ? "disabled=\"disabled\"":"").">".text("Role_".$role->Name)."</option>";
             }
             echo "        </select>";
             echo "    </div>";

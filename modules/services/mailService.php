@@ -35,7 +35,7 @@ class MailService
       $this->passwordResetEmailBody = str_replace("{{link}}", "<a href=\"".$passwordResetLink."\" />Link</a>", $this->passwordResetEmailBody);
       $this->passwordResetEmailBody = $this->passwordResetEmailBody."<br><br><hr/>";
 
-      $headers  = "Content-type: text/html; charset=iso-8859-1\r\n";
+      $headers  = "Content-type: text/html\r\n";
       $headers .= "From: BlueSorcerer <system@bluesorcerer.com>\r\n";
       $headers .= "X-Mailer: PHP/" . phpversion();
 
