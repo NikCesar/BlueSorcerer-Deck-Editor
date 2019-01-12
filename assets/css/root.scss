@@ -11,7 +11,8 @@
 @import "../opentip.css";
 
 html {
-    height: calc(100% - 290px);
+    height: calc(100% - 307px);
+    background: url(../../assets/img/background.jpg);
 }
 
 body {
@@ -34,9 +35,9 @@ h3 {
 }
 
 .content {
-    height: 100%;
+    min-height: 100%;
     margin-top: 260px;
-    padding-bottom: 30px;
+    padding-bottom: 47px;
 
     #content-header {
         background-image: url(../../img/content-header.png);
@@ -44,8 +45,8 @@ h3 {
 
         height: 100px;
         width: 100%;
-        transform: translate(0, -40px);
-        margin-bottom: -40px;
+        transform: translate(0, -55px);
+        margin-bottom: -55px;
     }
 
     .centered {
@@ -200,6 +201,11 @@ h3 {
         
         > div {
             display: inline-block;
+
+            &.publishDate {
+                display: block;
+                padding: 10px 0;
+            }
 
             &.description {
                 width: 50%;
