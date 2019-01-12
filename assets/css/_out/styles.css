@@ -184,7 +184,10 @@ nav ul li {
 #sideBarDeckList.loading .load-container {
   opacity: 1;
 }
-html {height: calc(100% - 290px);} 
+
+html {
+  height: calc(100% - 290px);
+}
 
 body {
   font-family: "Franklin Gothic Book";
@@ -206,7 +209,7 @@ h3 {
 }
 
 .content {
-  min-height: 100%;
+  height: 100%;
   margin-top: 260px;
   padding-bottom: 20px;
   background: url(../../img/background.jpg);
@@ -346,12 +349,12 @@ h3 {
   display: inline-block;
 }
 .content .deck-listing > div.description {
-  width: 50%;
+  width: 40%;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .content .deck-listing > div.class {
-  width: 30%;
+  width: 15%;
 }
 .content .deck-listing > div.score {
   /* width does not need to be declared. */
