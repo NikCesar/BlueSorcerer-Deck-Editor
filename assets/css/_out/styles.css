@@ -186,7 +186,8 @@ nav ul li {
 }
 
 html {
-  height: calc(100% - 290px);
+  height: calc(100% - 307px);
+  background: url(../../assets/img/background.jpg);
 }
 
 body {
@@ -209,9 +210,9 @@ h3 {
 }
 
 .content {
-  height: 100%;
+  min-height: 100%;
   margin-top: 260px;
-  padding-bottom: 20px;
+  padding-bottom: 47px;
   background: url(../../img/background.jpg);
   color: black;
 }
@@ -220,8 +221,8 @@ h3 {
   background-position: center -2px;
   height: 100px;
   width: 100%;
-  transform: translate(0, -40px);
-  margin-bottom: -40px;
+  transform: translate(0, -55px);
+  margin-bottom: -55px;
 }
 .content .centered {
   text-align: center;
@@ -348,13 +349,17 @@ h3 {
 .content .deck-listing > div {
   display: inline-block;
 }
+.content .deck-listing > div.publishDate {
+  display: block;
+  padding: 10px 0;
+}
 .content .deck-listing > div.description {
-  width: 40%;
+  width: 50%;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .content .deck-listing > div.class {
-  width: 15%;
+  width: 30%;
 }
 .content .deck-listing > div.score {
   /* width does not need to be declared. */
@@ -450,6 +455,21 @@ h3 {
   top: 150px;
   left: calc(50% - 52px);
   font-size: 4em;
+}
+
+#deckList .deckListElement {
+  height: auto;
+  min-height: 2em;
+  position: relative;
+}
+#deckList .deckListElement .cardAmount {
+  font-weight: bold;
+  font-size: 24px;
+}
+#deckList .removeCardForm {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 /*# sourceMappingURL=styles.css.map */

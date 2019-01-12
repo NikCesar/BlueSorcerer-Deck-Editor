@@ -70,7 +70,7 @@ class DeckManager {
             var html = '<li class="deckListElement">' +
             '    <label class="cardAmount">{count}</label>' +
             '    <label class="cardName">{cardName}</label>' +
-            '    <form id="remove_{cardId}" action="/deckEditor/removeCard" method="POST">' +
+            '    <form id="remove_{cardId}" class="removeCardForm" action="/deckEditor/removeCard" method="POST">' +
             '        <input type="text" name="cardId" value="{cardId}" class="hidden">' +
             '        <input type="text" name="deckId" value="{deckId}" class="hidden">' +
             '        <input type="submit" value=" - " class="remove-card">' +

@@ -69,7 +69,7 @@ class DeckEditorView {
             echo "      <li class=\"deckListElement\">";
             echo "          <label class=\"cardAmount\">" . $deckEntry->Count . "</label>";
             echo "          <label class=\"cardName\">" . $deckEntry->Name . "</label>";
-            echo "          <form id=\"remove_" . $deckEntry->Id . "\" action=\"/deckEditor/removeCard\" method=\"POST\">";
+            echo "          <form id=\"remove_" . $deckEntry->Id . "\" class=\"removeCardForm\" action=\"/deckEditor/removeCard\" method=\"POST\">";
             echo "              <input type=\"text\" name=\"cardId\" value=\"" . $deckEntry->Id . "\" class=\"hidden\" />";
             echo "              <input type=\"text\" name=\"deckId\" value=\"" . $deck->Id . "\" class=\"hidden\" />";
             echo "              <input type=\"submit\" value=\" - \" class=\"remove-card\" />";
