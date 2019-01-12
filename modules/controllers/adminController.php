@@ -80,6 +80,11 @@ class AdminController {
             redirect("admin", "index", "message=updateUserBadMail{$id}");
         }
 
+        $existingUser = $this->adminModel->getUserByUsername($username);
+        if ($existingUser->Id != $id) {
+            redirect("admin", "index", "message=updateUserBadUsername{$id}"); 
+        }
+
         $updatedUser = $this->adminModel->updateUser($id, $username, $email, $roleId);
 
         redirect("admin", "index");

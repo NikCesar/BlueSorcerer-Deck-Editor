@@ -31,6 +31,9 @@ class UserProfileView {
             echo "    <input class=\"editMode\" type=\"submit\" value=\"Save\" />";
             echo "</form>";
 
+            validationMessageFor("updateUserBadMail");
+            validationMessageFor("updateUserBadUsername");
+
             echo "<form action=\"/userProfile\" method=\"POST\">";
             echo "    <input class=\"readMode hidden\" type=\"text\" name=\"isEditMode\" value=\"true\" />";
             echo "    <input class=\"readMode\" type=\"submit\" value=\"Edit\" />";

@@ -30,6 +30,11 @@ class UserProfileController {
             redirect("userProfile", "index", "message=updateUserBadMail");
         }
 
+        $existingUser = $this->userProfileModel->getUserByUsername($username);
+        if ($existingUser->Id != $id) {
+            redirect("userProfile", "index", "message=updateUserBadUsername"); 
+        }
+
         $updatedUser = $this->userProfileModel->updateUser($id, $username, $email, $roleId);
 
         $_SESSION["user"] = $updatedUser;
