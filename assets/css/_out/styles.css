@@ -457,4 +457,19 @@ h3 {
   font-size: 4em;
 }
 
+#deckList .deckListElement {
+  height: auto;
+  min-height: 2em;
+  position: relative;
+}
+#deckList .deckListElement .cardAmount {
+  font-weight: bold;
+  font-size: 24px;
+}
+#deckList .removeCardForm {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 /*# sourceMappingURL=styles.css.map */

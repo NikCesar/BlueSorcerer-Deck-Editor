@@ -342,3 +342,23 @@ h3 {
         font-size: 4em;
     }
 }
+
+#deckList {
+    .deckListElement {
+        height: auto;
+        min-height: 2em;
+        position: relative;
+
+        .cardAmount {
+            font-weight: bold;
+            font-size: 24px;
+        }
+    }
+    
+    .removeCardForm {
+        position: absolute;
+        right: 0;
+        top: 0;
+        
+    }
+}
