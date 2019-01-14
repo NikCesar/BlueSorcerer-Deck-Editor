@@ -81,7 +81,7 @@ class AdminController {
         }
 
         $existingUser = $this->adminModel->getUserByUsername($username);
-        if ($existingUser->Id != $id) {
+        if ($existingUser != null && $existingUser->Id != $id) {
             redirect("admin", "index", "message=updateUserBadUsername{$id}"); 
         }
 
